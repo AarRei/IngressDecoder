@@ -612,6 +612,10 @@ public class GUI extends JFrame implements ActionListener,ChangeListener,KeyList
 		}
 	}
 	
+	public void vinegere(){
+		char[] passcode = tf_vinegerepass.getText().toCharArray();
+	}
+	
 	public String removeSpaces(String input){
 		char[] withSpace = input.toCharArray();
 		input="";

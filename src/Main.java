@@ -17,6 +17,5 @@ public class Main {
 		    // If Nimbus is not available, you can set the GUI to another look and feel.
 		}
 		GUI gui = new GUI();
-		//Test commit M0P
 	}
 }
