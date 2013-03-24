@@ -21,6 +21,10 @@ import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+/**
+ * @author Xenowar
+ *
+ */
 
 public class GUI extends JFrame implements ActionListener,ChangeListener,KeyListener{
 	JPanel mainpanel = new JPanel(new GridBagLayout());
@@ -84,8 +88,6 @@ public class GUI extends JFrame implements ActionListener,ChangeListener,KeyList
 		"R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7",
 		"8","9"
 	};
-	
-	String[] caesar = {"0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25"};
 	
 	JTextField tf_code = new JTextField();
 	
@@ -412,6 +414,7 @@ public class GUI extends JFrame implements ActionListener,ChangeListener,KeyList
 			pattmorstoascii();
 			caesarianShift();
 			atbash();
+			vinegere();
 			dectoasc();
 		}
 		else if(e.getSource().equals(alwaysontop)){
@@ -614,6 +617,35 @@ public class GUI extends JFrame implements ActionListener,ChangeListener,KeyList
 	
 	public void vinegere(){
 		char[] passcode = tf_vinegerepass.getText().toCharArray();
+		char[] codeline = tf_code.getText().toCharArray();
+		String result = "";
+		for(int i = 0,j=0;i < codeline.length;i++){
+			if(codeline[i] >= 'a' && codeline[i] <= 'z'){
+				if((codeline[i]-Character.toLowerCase(passcode[j])) +'a'< 'a'){
+					codeline[i]= (char)(('z'+1)+(codeline[i]-Character.toLowerCase(passcode[j])));
+				}
+				else
+					codeline[i]= (char)(codeline[i]-(Character.toLowerCase(passcode[j])-'a'));
+			}
+			else if(codeline[i] >= 'A' && codeline[i] <= 'Z'){
+				if((codeline[i]-Character.toUpperCase(passcode[j])) +'A'< 'A'){
+					codeline[i]= (char)(('Z'+1)+(codeline[i]-Character.toUpperCase(passcode[j])));
+				}
+				else
+					codeline[i]= (char)(codeline[i]-(Character.toUpperCase(passcode[j])-'A'));
+			}
+			if(j==passcode.length-1){
+				j=0;
+			}
+			else{
+				j++;
+			}
+		}
+		for(int i = 0; i < codeline.length;i++){
+			result+= codeline[i];
+		}
+		tf_vinegere.setText(result);
+		
 	}
 	
 	public String removeSpaces(String input){
