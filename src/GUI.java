@@ -664,13 +664,6 @@ public class GUI extends JFrame implements ActionListener,ChangeListener,KeyList
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getSource().equals(tf_code)){
-			reverse();
-			patttobin();
-			pattmorstoascii();
-			caesarianShift();
-			atbash();
-			dectoasc();
-		}
+
 	}
 }
