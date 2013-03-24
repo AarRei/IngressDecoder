@@ -463,31 +463,40 @@ public class GUI extends JFrame implements ActionListener,ChangeListener,KeyList
 	
 	public void dectoasc(){
 		char[] codeline = removeSpaces(tf_code.getText()).toCharArray();
-		String[] parted = new String[(int)((codeline.length+2)/3)];
+		boolean check = true;
 		String solution="";
-		for(int i =0; i < parted.length;i++){
-			parted[i]="";
-		}
-		for(int i = 0,j = 0; i < codeline.length;i++){
-			if(i==0){
-				parted[j]+=codeline[i];
-			}
-			else if(i%3==0){
-				j++;
-				parted[j]+=codeline[i];
-			}
-			else
-				parted[j]+=codeline[i];
-		}
-
-		for(int i =0; i < parted.length;i++){
-			if(Integer.parseInt(parted[i]) < 123){
-				solution += asciitable[Integer.parseInt(parted[i])];
-			}
-			else
-				solution += '\u2718';
-			}
 		
+		for( int i=0;i< codeline.length;i++){
+			if(codeline[i]<'0' || codeline[i] >'9')
+				check=false;
+		}
+		
+		if(check){
+			String[] parted = new String[(int)((codeline.length+2)/3)];
+
+			for(int i =0; i < parted.length;i++){
+				parted[i]="";
+			}
+			for(int i = 0,j = 0; i < codeline.length;i++){
+				if(i==0){
+					parted[j]+=codeline[i];
+				}
+				else if(i%3==0){
+					j++;
+					parted[j]+=codeline[i];
+				}
+				else
+					parted[j]+=codeline[i];
+			}
+	
+			for(int i =0; i < parted.length;i++){
+				if(Integer.parseInt(parted[i]) < 123){
+					solution += asciitable[Integer.parseInt(parted[i])];
+				}
+				else
+					solution += '\u2718';
+			}
+		}
 		tf_dectoasc.setText(solution);
 	}
 	
@@ -616,7 +625,13 @@ public class GUI extends JFrame implements ActionListener,ChangeListener,KeyList
 	}
 	
 	public void vinegere(){
-		char[] passcode = tf_vinegerepass.getText().toCharArray();
+		char[] passcode;
+		if(!tf_vinegerepass.getText().equals(""))
+			 passcode = tf_vinegerepass.getText().toCharArray();
+		else{
+			passcode = new char[1];
+			passcode[0]= 'a';
+		}
 		char[] codeline = tf_code.getText().toCharArray();
 		String result = "";
 		for(int i = 0,j=0;i < codeline.length;i++){
