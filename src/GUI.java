@@ -104,6 +104,8 @@ public class GUI extends JFrame implements ActionListener,ChangeListener,KeyList
 	
 	JTextField tf_vinegere = new JTextField();
 	JTextField tf_vinegerepass = new JTextField();
+	JTextField tf_lettertonumber = new JTextField();
+	JTextField tf_l2n_start = new JTextField();
 	
 	JSlider sl_caesarian = new JSlider(JSlider.HORIZONTAL,0, 25,0);
 	//JComboBox cb_caesarian = new JComboBox(caesar);
@@ -141,6 +143,7 @@ public class GUI extends JFrame implements ActionListener,ChangeListener,KeyList
 		tf_caesarian.setEditable(false);
 		tf_atbash.setEditable(false);
 		tf_vinegere.setEditable(false);
+		tf_lettertonumber.setEditable(false);
 		
 		//set the font to monospaced
 		tf_code.setFont(font);
@@ -156,6 +159,8 @@ public class GUI extends JFrame implements ActionListener,ChangeListener,KeyList
 		tf_atbash.setFont(font);
 		tf_vinegere.setFont(font);
 		tf_vinegerepass.setFont(font);
+		tf_lettertonumber.setFont(font);
+		tf_l2n_start.setFont(font);
 		
 		add(mainpanel);
 		
@@ -400,6 +405,38 @@ public class GUI extends JFrame implements ActionListener,ChangeListener,KeyList
 		c.insets = new Insets(0,5,5,5);
 		panel2.add(tf_vinegere,c);
 		
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 1.0;
+		c.gridx = 0;
+		c.gridy = 3;
+		c.gridwidth = 4;
+		c.insets = new Insets(0,5,0,5);
+		panel2.add(new JLabel("<html><b>Letters to Numbers</b></html>"),c);
+		
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 0.01;
+		c.gridx = 0;
+		c.gridy = 4;
+		c.gridwidth = 1;
+		c.insets = new Insets(0,5,2,5);
+		panel2.add(new JLabel("a = "),c);
+		
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 1.0;
+		c.gridx = 1;
+		c.gridy = 4;
+		c.gridwidth = 3;
+		c.insets = new Insets(0,5,2,5);
+		panel2.add(tf_l2n_start,c);
+		
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 1;
+		c.gridx = 0;
+		c.gridy = 5;
+		c.gridwidth = 4;
+		c.insets = new Insets(0,5,5,5);
+		panel2.add(tf_lettertonumber,c);
+		
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
@@ -415,6 +452,7 @@ public class GUI extends JFrame implements ActionListener,ChangeListener,KeyList
 			caesarianShift();
 			atbash();
 			vinegere();
+			lettertonumber();
 			dectoasc();
 		}
 		else if(e.getSource().equals(alwaysontop)){
@@ -661,6 +699,17 @@ public class GUI extends JFrame implements ActionListener,ChangeListener,KeyList
 		}
 		tf_vinegere.setText(result);
 		
+	}
+	
+	public void lettertonumber(){
+		char[] codeline = tf_code.getText().toCharArray();
+		int start = Integer.parseInt(tf_l2n_start.getText());
+		String result ="";
+		for(int i = 0; i<codeline.length;i++){
+			if( Character.toLowerCase(codeline[i]) >= 'a' && Character.toLowerCase(codeline[i]) <= 'z')
+				result += (Character.toLowerCase(codeline[i])-'a')+start;
+		}
+		tf_lettertonumber.setText(result);
 	}
 	
 	public String removeSpaces(String input){
