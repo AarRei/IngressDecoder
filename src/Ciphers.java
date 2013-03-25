@@ -91,45 +91,6 @@ public class Ciphers {
 		return result;
 	}
 	
-	public static String dectoasc(String code){
-		char[] codeline = removeSpaces(code).toCharArray();
-		boolean check = true;
-		String solution="";
-		
-		for( int i=0;i< codeline.length;i++){
-			if(codeline[i]<'0' || codeline[i] >'9')
-				check=false;
-		}
-		
-		if(check){
-			String[] parted = new String[(int)((codeline.length+2)/3)];
-
-			for(int i =0; i < parted.length;i++){
-				parted[i]="";
-			}
-			for(int i = 0,j = 0; i < codeline.length;i++){
-				if(i==0){
-					parted[j]+=codeline[i];
-				}
-				else if(i%3==0){
-					j++;
-					parted[j]+=codeline[i];
-				}
-				else
-					parted[j]+=codeline[i];
-			}
-	
-			for(int i =0; i < parted.length;i++){
-				if(Integer.parseInt(parted[i]) < 123){
-					solution += asciitable[Integer.parseInt(parted[i])];
-				}
-				else
-					solution += '\u2718';
-			}
-		}
-		return solution;
-	}
-	
 	public static String atbash(String code){
 		char[] codeline = code.toCharArray();
 		String result = "";
@@ -288,5 +249,111 @@ public class Ciphers {
 		}
 		return input;
 	}
+	
+	public static String dectoasc(String code){
+		char[] codeline = removeSpaces(code).toCharArray();
+		boolean check = true;
+		String solution="";
+		
+		for( int i=0;i< codeline.length;i++){
+			if(codeline[i]<'0' || codeline[i] >'9')
+				check=false;
+		}
+		
+		if(check){
+			String[] parted = new String[(int)((codeline.length+2)/3)];
 
+			for(int i =0; i < parted.length;i++){
+				parted[i]="";
+			}
+			for(int i = 0,j = 0; i < codeline.length;i++){
+				if(i==0){
+					parted[j]+=codeline[i];
+				}
+				else if(i%3==0){
+					j++;
+					parted[j]+=codeline[i];
+				}
+				else
+					parted[j]+=codeline[i];
+			}
+	
+			for(int i =0; i < parted.length;i++){
+				if(Integer.parseInt(parted[i]) < 123){
+					solution += asciitable[Integer.parseInt(parted[i])];
+				}
+				else
+					solution += '\u2718';
+			}
+		}
+		return solution;
+	}
+	
+	public static String dectobin (String code){
+		boolean check = true;
+		char[] codeline = code.toCharArray();
+		boolean spaces = false;
+		int space=0;
+		String[] parts;
+		String result="";
+		
+		for(int i = 0;i < codeline.length;i++){
+			if(codeline[i] == ' '){
+				spaces = true;
+				space++;
+			}
+			if(codeline[i]<'0' || codeline[i] >'9')
+				check=false;
+		}
+		if(check){
+			if(spaces){
+				parts = new String[space+1];
+				parts[0]="";
+				for(int i = 0,j=0;i< codeline.length;i++){
+					if(codeline[i]==' '){
+						j++;
+						parts[j]="";
+					}
+					else{
+						parts[j]+=codeline[i];
+					}
+				}
+				for(int i = 0; i < parts.length; i++){
+					String temp = parts[i];
+					parts[i]="";
+					for(int j = 0; j < 8-Integer.toBinaryString(Integer.parseInt(temp)).length();j++ ){
+						parts[i]+="0";
+					}
+					parts[i]+=Integer.toBinaryString(Integer.parseInt(temp))+" ";
+					result+=parts[i];
+				}
+				return result;
+			}
+			else{
+				parts= new String[(int)((codeline.length+2)/3)];
+				parts[0]="";
+				for(int i = 0,j=0;i< codeline.length;i++){
+					if(i%3==0 && j!=parts.length-1 && i!=0){
+						j++;
+						parts[j]="";
+					}
+					parts[j]+=codeline[i];
+				}
+				for(int i = 0; i < parts.length; i++){
+					String temp = parts[i];
+					parts[i]="";
+					for(int j = 0; j < 8-Integer.toBinaryString(Integer.parseInt(temp)).length();j++ ){
+						parts[i]+="0";
+					}
+					parts[i]+=Integer.toBinaryString(Integer.parseInt(temp))+" ";
+					result+=parts[i];
+				}
+				return result;
+			}
+		}
+		return "";
+		
+	}
+	
+	
 }
