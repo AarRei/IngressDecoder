@@ -1,7 +1,6 @@
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Point;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -10,11 +9,15 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
 
+import javax.swing.JTextField;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 public class ListenerHandler extends MouseMotionAdapter implements
-        MouseListener, KeyListener, ActionListener, ChangeListener {
+        MouseListener, KeyListener, ActionListener, ChangeListener,
+        CaretListener {
 
     GUI2 gui;
     Point mouseclicked, windowlocation;
@@ -26,8 +29,57 @@ public class ListenerHandler extends MouseMotionAdapter implements
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
-        if (command != null) if (command.equals("onTop")) {
+        if (command != null) if (command.equals("onTop"))
             this.gui.setAlwaysOnTop(!this.gui.isAlwaysOnTop());
+        else if (command.equals("liveDecode")) {
+            this.gui.islivedecode = !this.gui.islivedecode;
+        } else if (command.equals("generate")) {
+            generateAll();
+        } else if (command.equals("conv_text")) {
+            ;// TODO conv text-> all
+        } else if (command.equals("conv_bin")) {
+            ;// TODO conv bin-> all
+        } else if (command.equals("conv_hex")) {
+            ;// TODO conv hex->all
+        } else if (command.equals("conv_base64")) {
+            ;// TODO conv base64->all
+        } else if (command.equals("conv_ascii")) {
+            ;// TODO conv ascii->all
+        }
+    }
+
+    @Override
+    public void caretUpdate(CaretEvent e) {
+        if (e.getSource() != null) {
+            String name = ((JTextField) e.getSource()).getName();
+            String code = this.gui.tf_code.getText().trim();
+            if (this.gui.islivedecode)
+                if (name.equals("code"))
+                    generateAll();
+                else if (name.equals("letter")) {
+                    int letter = 1;
+                    try {
+                        letter = Integer.parseInt(this.gui.cipher2.tf_letter
+                                .getText().trim());
+                        if (letter < 1 || letter > 26) letter = 1;
+                    } catch (Exception e1) {
+                        letter = 1;
+                    }
+                    this.gui.cipher2.tf_letterToNum.setText(Ciphers
+                            .lettertonumber(code, letter));
+                } else if (name.equals("vignere")) {
+                    this.gui.cipher2.tf_vinegere.setText(Ciphers.vinegere(code,
+                            this.gui.cipher2.tf_vinegerepass.getText().trim()));
+                } else if (name.equals("binary")) {
+                    this.gui.cipher1.tf_patttobin.setText(Ciphers.patttobin(
+                            code, this.gui.cipher1.tf_zeros.getText().trim(),
+                            this.gui.cipher1.tf_ones.getText().trim()));
+                } else if (name.equals("morse")) {
+                    this.gui.cipher1.tf_pattmorstoascii.setText(Ciphers
+                            .pattmorstoascii(code, this.gui.cipher1.tf_short
+                                    .getText().trim(), this.gui.cipher1.tf_long
+                                    .getText().trim()));
+                }
         }
     }
 
@@ -57,15 +109,12 @@ public class ListenerHandler extends MouseMotionAdapter implements
                 System.exit(0);
             else if (name.equals("minimize"))
                 this.gui.setState(Frame.ICONIFIED);
-            else if (name.equals("large"))
-                this.gui.setSize(new Dimension((int) (Toolkit
-                        .getDefaultToolkit().getScreenSize().width * 0.95), 500));
-            else if (name.equals("medium"))
-                this.gui.setSize(new Dimension((int) (Toolkit
-                        .getDefaultToolkit().getScreenSize().width * 0.66), 500));
             else if (name.equals("small"))
-                this.gui.setSize(new Dimension((int) (Toolkit
-                        .getDefaultToolkit().getScreenSize().width * 0.33), 500));
+                this.gui.setSize(new Dimension(450, 500));
+            else if (name.equals("medium"))
+                this.gui.setSize(new Dimension(900, 500));
+            else if (name.equals("large"))
+                this.gui.setSize(new Dimension(1300, 500));
 
     }
 
@@ -108,9 +157,39 @@ public class ListenerHandler extends MouseMotionAdapter implements
     }
 
     @Override
-    public void stateChanged(ChangeEvent arg0) {
-        // TODO Auto-generated method stub
+    public void stateChanged(ChangeEvent e) {
+        String code = this.gui.tf_code.getText().trim();
+        this.gui.cipher1.tf_caesarian.setText(Ciphers.caesarianShift(code,
+                this.gui.cipher1.sl_caesarian.getValue()));
 
     }
 
+    private void generateAll() {
+        String code = this.gui.tf_code.getText().trim();
+        int letter = 1;
+        // cipher 1
+        this.gui.cipher1.tf_reversed.setText(Ciphers.reverse(code));
+        this.gui.cipher1.tf_patttobin.setText(Ciphers.patttobin(code,
+                this.gui.cipher1.tf_zeros.getText().trim(),
+                this.gui.cipher1.tf_ones.getText().trim()));
+        this.gui.cipher1.tf_pattmorstoascii.setText(Ciphers.pattmorstoascii(
+                code, this.gui.cipher1.tf_short.getText().trim(),
+                this.gui.cipher1.tf_long.getText().trim()));
+        this.gui.cipher1.tf_caesarian.setText(Ciphers.caesarianShift(code,
+                this.gui.cipher1.sl_caesarian.getValue()));
+        // cipher 2
+        this.gui.cipher2.tf_atbash.setText(Ciphers.atbash(code));
+        this.gui.cipher2.tf_vinegere.setText(Ciphers.vinegere(code,
+                this.gui.cipher2.tf_vinegerepass.getText().trim()));
+        try {
+            letter = Integer.parseInt(this.gui.cipher2.tf_letter.getText()
+                    .trim());
+            if (letter < 1 || letter > 26) letter = 1;
+        } catch (Exception e1) {
+            letter = 1;
+        }
+        this.gui.cipher2.tf_letterToNum.setText(Ciphers.lettertonumber(
+                this.gui.tf_code.getText().trim(), letter));
+
+    }
 }

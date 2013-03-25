@@ -10,24 +10,27 @@ import javax.swing.JTextField;
 
 public class ConvertPanel extends JPanel {
 
-    GridBagConstraints c           = new GridBagConstraints();
-    Font               textfont    = new Font("Courier New", 1, 15);
-    Color              yellowColor = new Color(221, 186, 23);
-    Font               mono        = new Font(Font.MONOSPACED, Font.PLAIN, 12);
-    ListenerHandler    listener;
+    private static final long serialVersionUID = 7973879384634606607L;
 
-    JTextField         tf_dectoasc = new JTextField();
-    JTextField         tf_text     = new JTextField();
-    JTextField         tf_bin      = new JTextField();
-    JTextField         tf_hex      = new JTextField();
-    JTextField         tf_base64   = new JTextField();
-    JTextField         tf_ascii    = new JTextField();
+    GridBagConstraints        c                = new GridBagConstraints();
+    Font                      textfont         = new Font("Courier New", 1, 15);
+    Color                     yellowColor      = new Color(221, 186, 23);
+    Font                      mono             = new Font(Font.MONOSPACED,
+                                                       Font.PLAIN, 12);
+    ListenerHandler           listener;
 
-    JButton            btn_text    = new JButton("Text");
-    JButton            btn_bin     = new JButton("Binary");
-    JButton            btn_hex     = new JButton("Hex");
-    JButton            btn_base64  = new JButton("Base64");
-    JButton            btn_ascii   = new JButton("ASCII Dec/Char");
+    JTextField                tf_dectoasc      = new JTextField();
+    JTextField                tf_text          = new JTextField();
+    JTextField                tf_bin           = new JTextField();
+    JTextField                tf_hex           = new JTextField();
+    JTextField                tf_base64        = new JTextField();
+    JTextField                tf_ascii         = new JTextField();
+
+    JButton                   btn_text         = new JButton("Text");
+    JButton                   btn_bin          = new JButton("Binary");
+    JButton                   btn_hex          = new JButton("Hex");
+    JButton                   btn_base64       = new JButton("Base64");
+    JButton                   btn_ascii        = new JButton("ASCII Dec/Char");
 
     public ConvertPanel(ListenerHandler listenerHandler) {
         super(new GridBagLayout());
@@ -81,6 +84,19 @@ public class ConvertPanel extends JPanel {
         this.btn_base64.setForeground(this.yellowColor);
         this.btn_ascii.setBackground(Color.black);
         this.btn_ascii.setForeground(this.yellowColor);
+
+        // add listener stuff
+        this.btn_text.setActionCommand("conv_text");
+        this.btn_bin.setActionCommand("conv_bin");
+        this.btn_hex.setActionCommand("conv_hex");
+        this.btn_base64.setActionCommand("conv_base64");
+        this.btn_ascii.setActionCommand("conv_ascii");
+
+        this.btn_text.addActionListener(this.listener);
+        this.btn_bin.addActionListener(this.listener);
+        this.btn_hex.addActionListener(this.listener);
+        this.btn_base64.addActionListener(this.listener);
+        this.btn_ascii.addActionListener(this.listener);
 
         // add containers to panel
 

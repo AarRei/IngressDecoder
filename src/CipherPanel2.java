@@ -21,7 +21,7 @@ public class CipherPanel2 extends JPanel {
     JTextField         tf_atbash       = new JTextField();
     JTextField         tf_vinegerepass = new JTextField();
     JTextField         tf_vinegere     = new JTextField();
-    JTextField         tf_letter       = new JTextField();
+    JTextField         tf_letter       = new JTextField("1");
     JTextField         tf_letterToNum  = new JTextField();
 
     JSlider            sl_caesarian    = new JSlider(SwingConstants.HORIZONTAL,
@@ -96,6 +96,8 @@ public class CipherPanel2 extends JPanel {
         this.c.gridy = 3;
         this.c.gridwidth = 3;
         this.c.insets = new Insets(0, 5, 2, 5);
+        this.tf_vinegerepass.setName("vignere");
+        this.tf_vinegerepass.addCaretListener(this.listener);
         add(this.tf_vinegerepass, this.c);
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
@@ -128,6 +130,8 @@ public class CipherPanel2 extends JPanel {
         this.c.gridy = 6;
         this.c.gridwidth = 3;
         this.c.insets = new Insets(0, 5, 2, 5);
+        this.tf_letter.setName("letter");
+        this.tf_letter.addCaretListener(this.listener);
         add(this.tf_letter, this.c);
 
         this.c.fill = GridBagConstraints.HORIZONTAL;

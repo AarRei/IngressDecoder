@@ -32,19 +32,30 @@ public class GUI2 extends JFrame {
     JPanel             mainPanel, innerPane1, innerPane2;
     JTabbedPane        tabbedPane;
     JCheckBox          alwaysontop;
+    JCheckBox          livedecode;
+
     JTextField         tf_code;
     ColoredMenuBar     menubar;
     JButton            btn_generate;
-    GridBagConstraints c           = new GridBagConstraints();
+    GridBagConstraints c            = new GridBagConstraints();
 
-    Font               textfont    = new Font("Courier New", 1, 16);
+    Font               textfont     = new Font("Courier New", 1, 16);
 
-    Color              yellowColor = new Color(221, 186, 23);
+    Color              yellowColor  = new Color(221, 186, 23);
 
-    Font               mono        = new Font(Font.MONOSPACED, Font.PLAIN, 14);
+    Font               mono         = new Font(Font.MONOSPACED, Font.PLAIN, 14);
+    boolean            islivedecode = false;
+    CipherPanel        cipher1;
+    CipherPanel2       cipher2;
+    ConvertPanel       convert;
+    AboutPanel         about;
 
     public GUI2() {
         this.listener = new ListenerHandler(this);
+        this.cipher1 = new CipherPanel(this.listener);
+        this.cipher2 = new CipherPanel2(this.listener);
+        this.convert = new ConvertPanel(this.listener);
+        this.about = new AboutPanel(this.listener);
     }
 
     public void initGUI() {
@@ -104,17 +115,17 @@ public class GUI2 extends JFrame {
         // adding pannels to tabbed pain
         this.tabbedPane
                 .addTab("Cipher", makeImageIcon("/images/Ingress_Logo.png"),
-                        new CipherPanel(this.listener),
+                        this.cipher1,
                         "Reversed, Decimal to Ascii, Pattern to Binary, Morse, Caesarian Shift");
         this.tabbedPane.addTab("Cipher 2",
-                makeImageIcon("/images/Ingress_Logo.png"), new CipherPanel2(
-                        this.listener), "Atbash, Vigenere Key");
+                makeImageIcon("/images/Ingress_Logo.png"), this.cipher2,
+                "Atbash, Vigenere Key");
         this.tabbedPane.addTab("Converter",
-                makeImageIcon("/images/Ingress_Logo.png"), new ConvertPanel(
-                        this.listener), "Dec2ASCII");
+                makeImageIcon("/images/Ingress_Logo.png"), this.convert,
+                "Dec2ASCII");
         this.tabbedPane.addTab("About us",
-                makeImageIcon("/images/enlightened.png"), new AboutPanel(
-                        this.listener), "About us");
+                makeImageIcon("/images/enlightened.png"), this.about,
+                "About us");
 
         // adding components to mainpanel
         this.c.fill = GridBagConstraints.BOTH;
@@ -125,7 +136,7 @@ public class GUI2 extends JFrame {
         this.mainPanel.add(makeTextLabel("Code"), this.c);
 
         this.c.fill = GridBagConstraints.BOTH;
-        this.c.weightx = 0.0;
+        this.c.weightx = 0.01;
         this.c.gridx = 1;
         this.c.gridy = 0;
         this.c.insets = new Insets(0, 5, 0, 5);
@@ -136,17 +147,32 @@ public class GUI2 extends JFrame {
         this.alwaysontop.addActionListener(this.listener);
         this.mainPanel.add(this.alwaysontop, this.c);
 
-        this.c.fill = GridBagConstraints.BOTH;
+        this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 1.0;
         this.c.gridx = 0;
         this.c.gridy = 1;
-        this.c.gridwidth = 2;
+        // this.c.gridwidth = 2;
         this.c.insets = new Insets(0, 5, 5, 5);
         this.tf_code = new JTextField();
         this.tf_code.setBackground(Color.black);
         this.tf_code.setFont(this.mono);
         this.tf_code.setForeground(this.yellowColor);
+        this.tf_code.setName("code");
+        this.tf_code.addCaretListener(this.listener);
         this.mainPanel.add(this.tf_code, this.c);
+
+        this.c.fill = GridBagConstraints.HORIZONTAL;
+        this.c.weightx = 0.01;
+        this.c.gridx = 1;
+        this.c.gridy = 1;
+        // this.c.gridwidth = 2;
+        this.c.insets = new Insets(0, 5, 5, 5);
+        this.livedecode = new JCheckBox("Live Decoding");
+        this.livedecode.setFont(this.textfont);
+        this.livedecode.setForeground(this.yellowColor);
+        this.livedecode.setActionCommand("liveDecode");
+        this.livedecode.addActionListener(this.listener);
+        this.mainPanel.add(this.livedecode, this.c);
 
         this.c.fill = GridBagConstraints.BOTH;
         this.c.weightx = 1.0;
@@ -166,6 +192,8 @@ public class GUI2 extends JFrame {
         this.btn_generate.setBackground(Color.black);
         this.btn_generate.setFont(this.textfont);
         this.btn_generate.setForeground(this.yellowColor);
+        this.btn_generate.setActionCommand("generate");
+        this.btn_generate.addActionListener(this.listener);
         this.mainPanel.add(this.btn_generate, this.c);
 
         // adding components to frame

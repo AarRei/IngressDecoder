@@ -11,25 +11,28 @@ import javax.swing.SwingConstants;
 
 public class CipherPanel extends JPanel {
 
-    GridBagConstraints c                  = new GridBagConstraints();
-    Font               textfont           = new Font("Courier New", 1, 15);
-    Color              yellowColor        = new Color(221, 186, 23);
-    Font               mono               = new Font(Font.MONOSPACED,
-                                                  Font.PLAIN, 12);
-    ListenerHandler    listener;
+    private static final long serialVersionUID   = 7264231748098817482L;
 
-    JTextField         tf_reversed        = new JTextField();
-    JTextField         tf_zeros           = new JTextField();
-    JTextField         tf_ones            = new JTextField();
-    JTextField         tf_long            = new JTextField();
-    JTextField         tf_short           = new JTextField();
-    JTextField         tf_patttobin       = new JTextField();
-    JTextField         tf_pattmorstoascii = new JTextField();
-    JTextField         tf_caesarian       = new JTextField();
+    GridBagConstraints        c                  = new GridBagConstraints();
+    Font                      textfont           = new Font("Courier New", 1,
+                                                         15);
+    Color                     yellowColor        = new Color(221, 186, 23);
+    Font                      mono               = new Font(Font.MONOSPACED,
+                                                         Font.PLAIN, 12);
+    ListenerHandler           listener;
 
-    JSlider            sl_caesarian       = new JSlider(
-                                                  SwingConstants.HORIZONTAL, 0,
-                                                  25, 0);
+    JTextField                tf_reversed        = new JTextField();
+    JTextField                tf_zeros           = new JTextField();
+    JTextField                tf_ones            = new JTextField();
+    JTextField                tf_long            = new JTextField();
+    JTextField                tf_short           = new JTextField();
+    JTextField                tf_patttobin       = new JTextField();
+    JTextField                tf_pattmorstoascii = new JTextField();
+    JTextField                tf_caesarian       = new JTextField();
+
+    JSlider                   sl_caesarian       = new JSlider(
+                                                         SwingConstants.HORIZONTAL,
+                                                         0, 25, 0);
 
     public CipherPanel(ListenerHandler listenerHandler) {
         super(new GridBagLayout());
@@ -85,9 +88,6 @@ public class CipherPanel extends JPanel {
         this.sl_caesarian.setBackground(Color.black);
         this.sl_caesarian.setForeground(this.yellowColor);
 
-        // this.tf_code.setFont(this.font);
-        // this.tf_dectoasc.setFont(this.font);
-
         // add containers to panel
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 1.0;
@@ -104,22 +104,6 @@ public class CipherPanel extends JPanel {
         this.c.gridwidth = 4;
         this.c.insets = new Insets(0, 5, 5, 5);
         add(this.tf_reversed, this.c);
-
-        // this.c.fill = GridBagConstraints.HORIZONTAL;
-        // this.c.weightx = 1.0;
-        // this.c.gridx = 0;
-        // this.c.gridy = 4;
-        // this.c.gridwidth = 4;
-        // this.c.insets = new Insets(0, 5, 0, 5);
-        // add(new JLabel("<html><b>Decimal to Ascii</b></html>"), this.c);
-        //
-        // this.c.fill = GridBagConstraints.HORIZONTAL;
-        // this.c.weightx = 1.0;
-        // this.c.gridx = 0;
-        // this.c.gridy = 5;
-        // this.c.gridwidth = 4;
-        // this.c.insets = new Insets(0, 5, 5, 5);
-        // this.panel.add(this.tf_dectoasc, this.c);
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 1.0;
@@ -142,6 +126,8 @@ public class CipherPanel extends JPanel {
         this.c.gridx = 1;
         this.c.gridy = 7;
         this.c.insets = new Insets(0, 5, 5, 5);
+        this.tf_zeros.setName("binary");
+        this.tf_zeros.addCaretListener(this.listener);
         add(this.tf_zeros, this.c);
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
@@ -156,6 +142,8 @@ public class CipherPanel extends JPanel {
         this.c.gridx = 3;
         this.c.gridy = 7;
         this.c.insets = new Insets(0, 5, 5, 5);
+        this.tf_ones.setName("binary");
+        this.tf_ones.addCaretListener(this.listener);
         add(this.tf_ones, this.c);
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
@@ -187,6 +175,8 @@ public class CipherPanel extends JPanel {
         this.c.gridx = 1;
         this.c.gridy = 10;
         this.c.insets = new Insets(0, 5, 5, 5);
+        this.tf_short.setName("morse");
+        this.tf_short.addCaretListener(this.listener);
         add(this.tf_short, this.c);
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
@@ -201,6 +191,8 @@ public class CipherPanel extends JPanel {
         this.c.gridx = 3;
         this.c.gridy = 10;
         this.c.insets = new Insets(0, 5, 5, 5);
+        this.tf_long.setName("morse");
+        this.tf_long.addCaretListener(this.listener);
         add(this.tf_long, this.c);
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
