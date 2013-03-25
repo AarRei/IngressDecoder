@@ -26,7 +26,7 @@ public class GUI2 extends JFrame {
         JLabel label = new JLabel(text);
         label.setFont(new Font("Courier New", 1, 15));
         label.setForeground(new Color(221, 186, 23));
-        return label;
+        return label;//
     }
 
     ListenerHandler    listener;
