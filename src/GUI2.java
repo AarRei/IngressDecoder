@@ -8,6 +8,7 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.net.URL;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -37,6 +38,7 @@ public class GUI2 extends JFrame {
     JTextField         tf_code;
     ColoredMenuBar     menubar;
     JButton            btn_generate;
+    JButton            close, minimize, small, medium, large;
     GridBagConstraints c            = new GridBagConstraints();
 
     Font               textfont     = new Font("Courier New", 1, 16);
@@ -73,21 +75,43 @@ public class GUI2 extends JFrame {
         this.tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 
         // menu bar items
-        JLabel close = new JLabel(makeImageIcon("/images/close.png"));
-        close.setName("close");
-        close.addMouseListener(this.listener);
-        JLabel minimize = new JLabel(makeImageIcon("/images/minimize.png"));
-        minimize.setName("minimize");
-        minimize.addMouseListener(this.listener);
-        JLabel large = new JLabel(makeImageIcon("/images/large.png"));
-        large.setName("large");
-        large.addMouseListener(this.listener);
-        JLabel medium = new JLabel(makeImageIcon("/images/medium.png"));
-        medium.setName("medium");
-        medium.addMouseListener(this.listener);
-        JLabel small = new JLabel(makeImageIcon("/images/small.png"));
-        small.setName("small");
-        small.addMouseListener(this.listener);
+        this.close = new JButton(makeImageIcon("/images/close.png"));
+        this.close.setRolloverIcon(makeImageIcon("/images/close_hover.png"));
+        this.close.setPressedIcon(makeImageIcon("/images/close_pressed.png"));
+        this.close.setBorder(BorderFactory.createEmptyBorder());
+        this.close.setContentAreaFilled(false);
+        this.close.setName("close");
+        this.close.addMouseListener(this.listener);
+        this.minimize = new JButton(makeImageIcon("/images/minimize.png"));
+        this.minimize
+                .setRolloverIcon(makeImageIcon("/images/minimize_hover.png"));
+        this.minimize
+                .setPressedIcon(makeImageIcon("/images/minimize_pressed.png"));
+        this.minimize.setBorder(BorderFactory.createEmptyBorder());
+        this.minimize.setContentAreaFilled(false);
+        this.minimize.setName("minimize");
+        this.minimize.addMouseListener(this.listener);
+        this.large = new JButton(makeImageIcon("/images/large.png"));
+        this.large.setRolloverIcon(makeImageIcon("/images/large_hover.png"));
+        this.large.setPressedIcon(makeImageIcon("/images/large_pressed.png"));
+        this.large.setBorder(BorderFactory.createEmptyBorder());
+        this.large.setContentAreaFilled(false);
+        this.large.setName("large");
+        this.large.addMouseListener(this.listener);
+        this.medium = new JButton(makeImageIcon("/images/medium.png"));
+        this.medium.setRolloverIcon(makeImageIcon("/images/medium_hover.png"));
+        this.medium.setPressedIcon(makeImageIcon("/images/medium_pressed.png"));
+        this.medium.setBorder(BorderFactory.createEmptyBorder());
+        this.medium.setContentAreaFilled(false);
+        this.medium.setName("medium");
+        this.medium.addMouseListener(this.listener);
+        this.small = new JButton(makeImageIcon("/images/small.png"));
+        this.small.setRolloverIcon(makeImageIcon("/images/small_hover.png"));
+        this.small.setPressedIcon(makeImageIcon("/images/small_pressed.png"));
+        this.small.setBorder(BorderFactory.createEmptyBorder());
+        this.small.setContentAreaFilled(false);
+        this.small.setName("small");
+        this.small.addMouseListener(this.listener);
 
         JLabel ingressIcon = new JLabel(
                 makeImageIcon("/images/Ingress_Logo_Middle.png"));
@@ -106,11 +130,11 @@ public class GUI2 extends JFrame {
         this.menubar.add(Box.createHorizontalStrut(10));
         this.menubar.add(title);
         this.menubar.add(Box.createHorizontalGlue());
-        this.menubar.add(small);
-        this.menubar.add(medium);
-        this.menubar.add(large);
-        this.menubar.add(minimize);
-        this.menubar.add(close);
+        this.menubar.add(this.small);
+        this.menubar.add(this.medium);
+        this.menubar.add(this.large);
+        this.menubar.add(this.minimize);
+        this.menubar.add(this.close);
 
         // adding pannels to tabbed pain
         this.tabbedPane
@@ -119,7 +143,7 @@ public class GUI2 extends JFrame {
                         "Reversed, Decimal to Ascii, Pattern to Binary, Morse, Caesarian Shift");
         this.tabbedPane.addTab("Cipher 2",
                 makeImageIcon("/images/Ingress_Logo.png"), this.cipher2,
-                "Atbash, Vigenere Key");
+                "Atbash, Vigenere Key, Letter2Number");
         this.tabbedPane.addTab("Converter",
                 makeImageIcon("/images/Ingress_Logo.png"), this.convert,
                 "Dec2ASCII");
@@ -210,7 +234,7 @@ public class GUI2 extends JFrame {
         setVisible(true);
     }
 
-    private ImageIcon makeImageIcon(String relative_path) {
+    public ImageIcon makeImageIcon(String relative_path) {
         URL imgURL = getClass().getResource(relative_path);
         return new ImageIcon(imgURL);
     }
