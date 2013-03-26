@@ -14,7 +14,7 @@ public class ConvertPanel extends JPanel {
 
     GridBagConstraints        c                = new GridBagConstraints();
     Font                      textfont         = new Font("Courier New", 1, 15);
-    Color                     yellowColor      = new Color(221, 186, 23);
+    Color                     yellowColor      = new Color(107, 255, 103);
     Font                      mono             = new Font(Font.MONOSPACED,
                                                        Font.PLAIN, 12);
     ListenerHandler           listener;
@@ -24,13 +24,13 @@ public class ConvertPanel extends JPanel {
     JTextField                tf_bin           = new JTextField();
     JTextField                tf_hex           = new JTextField();
     JTextField                tf_base64        = new JTextField();
-    JTextField                tf_ascii         = new JTextField();
+    JTextField                tf_dec           = new JTextField();
 
-    JButton                   btn_text         = new JButton("Text");
+    JButton                   btn_text         = new JButton("Text/ASCII");
     JButton                   btn_bin          = new JButton("Binary");
     JButton                   btn_hex          = new JButton("Hex");
     JButton                   btn_base64       = new JButton("Base64");
-    JButton                   btn_ascii        = new JButton("ASCII Dec/Char");
+    JButton                   btn_dec          = new JButton("Dec/Char");
 
     public ConvertPanel(ListenerHandler listenerHandler) {
         super(new GridBagLayout());
@@ -43,7 +43,7 @@ public class ConvertPanel extends JPanel {
         this.tf_bin.setEditable(false);
         this.tf_hex.setEditable(false);
         this.tf_base64.setEditable(false);
-        this.tf_ascii.setEditable(false);
+        this.tf_dec.setEditable(false);
 
         // set the font to monospaced
         this.tf_dectoasc.setFont(this.mono);
@@ -51,13 +51,13 @@ public class ConvertPanel extends JPanel {
         this.tf_bin.setFont(this.mono);
         this.tf_hex.setFont(this.mono);
         this.tf_base64.setFont(this.mono);
-        this.tf_ascii.setFont(this.mono);
+        this.tf_dec.setFont(this.mono);
 
         this.btn_text.setFont(this.mono);
         this.btn_bin.setFont(this.mono);
         this.btn_hex.setFont(this.mono);
         this.btn_base64.setFont(this.mono);
-        this.btn_ascii.setFont(this.mono);
+        this.btn_dec.setFont(this.mono);
 
         // set the design
 
@@ -71,8 +71,8 @@ public class ConvertPanel extends JPanel {
         this.tf_hex.setForeground(this.yellowColor);
         this.tf_base64.setBackground(Color.black);
         this.tf_base64.setForeground(this.yellowColor);
-        this.tf_ascii.setBackground(Color.black);
-        this.tf_ascii.setForeground(this.yellowColor);
+        this.tf_dec.setBackground(Color.black);
+        this.tf_dec.setForeground(this.yellowColor);
 
         this.btn_text.setBackground(Color.black);
         this.btn_text.setForeground(this.yellowColor);
@@ -82,21 +82,21 @@ public class ConvertPanel extends JPanel {
         this.btn_hex.setForeground(this.yellowColor);
         this.btn_base64.setBackground(Color.black);
         this.btn_base64.setForeground(this.yellowColor);
-        this.btn_ascii.setBackground(Color.black);
-        this.btn_ascii.setForeground(this.yellowColor);
+        this.btn_dec.setBackground(Color.black);
+        this.btn_dec.setForeground(this.yellowColor);
 
         // add listener stuff
         this.btn_text.setActionCommand("conv_text");
         this.btn_bin.setActionCommand("conv_bin");
         this.btn_hex.setActionCommand("conv_hex");
         this.btn_base64.setActionCommand("conv_base64");
-        this.btn_ascii.setActionCommand("conv_ascii");
+        this.btn_dec.setActionCommand("conv_dec");
 
         this.btn_text.addActionListener(this.listener);
         this.btn_bin.addActionListener(this.listener);
         this.btn_hex.addActionListener(this.listener);
         this.btn_base64.addActionListener(this.listener);
-        this.btn_ascii.addActionListener(this.listener);
+        this.btn_dec.addActionListener(this.listener);
 
         // add containers to panel
 
@@ -133,7 +133,7 @@ public class ConvertPanel extends JPanel {
         this.c.gridx = 4;
         this.c.gridy = 0;
         this.c.insets = new Insets(0, 5, 0, 5);
-        add(this.btn_ascii, this.c);
+        add(this.btn_dec, this.c);
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 1.0;
@@ -213,7 +213,7 @@ public class ConvertPanel extends JPanel {
         this.c.gridy = 10;
         this.c.gridwidth = 5;
         this.c.insets = new Insets(0, 5, 5, 5);
-        add(this.tf_ascii, this.c);
+        add(this.tf_dec, this.c);
 
         // general panel settings
         setBackground(Color.black);

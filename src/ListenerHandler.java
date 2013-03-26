@@ -29,6 +29,7 @@ public class ListenerHandler extends MouseMotionAdapter implements
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
+        String code = this.gui.tf_code.getText();
         if (command != null) if (command.equals("onTop"))
             this.gui.setAlwaysOnTop(!this.gui.isAlwaysOnTop());
         else if (command.equals("liveDecode")) {
@@ -38,13 +39,18 @@ public class ListenerHandler extends MouseMotionAdapter implements
         } else if (command.equals("conv_text")) {
             ;// TODO conv text-> all
         } else if (command.equals("conv_bin")) {
-            ;// TODO conv bin-> all
+            ;// TODO conv text-> all
         } else if (command.equals("conv_hex")) {
             ;// TODO conv hex->all
         } else if (command.equals("conv_base64")) {
             ;// TODO conv base64->all
-        } else if (command.equals("conv_ascii")) {
-            ;// TODO conv ascii->all
+        } else if (command.equals("conv_dec")) {
+            this.gui.convert.tf_text.setText(Ciphers.dectoasc(code));
+            this.gui.convert.tf_bin.setText(Ciphers.dectobin(code));
+            this.gui.convert.tf_hex.setText("");// dectohex
+            this.gui.convert.tf_base64.setText("");// dectobase64
+            this.gui.convert.tf_dec.setText(code);
+
         }
     }
 
