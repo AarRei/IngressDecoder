@@ -129,67 +129,68 @@ public class Ciphers {
     }
 
     public static String dectobin(String code) {
-        boolean check = true;
-        char[] codeline = code.toCharArray();
-        boolean spaces = false;
-        int space = 0;
-        String[] parts;
-        String result = "";
-
-        for (char element : codeline) {
-            if (element == ' ') {
-                spaces = true;
-                space++;
-            }
-            if (element < '0' || element > '9') check = false;
-        }
-        if (check) {
-            if (spaces) {
-                parts = new String[space + 1];
-                parts[0] = "";
-                for (int i = 0, j = 0; i < codeline.length; i++) {
-                    if (codeline[i] == ' ') {
-                        j++;
-                        parts[j] = "";
-                    } else {
-                        parts[j] += codeline[i];
-                    }
-                }
-                for (int i = 0; i < parts.length; i++) {
-                    String temp = parts[i];
-                    parts[i] = "";
-                    for (int j = 0; j < 8 - Integer.toBinaryString(
-                            Integer.parseInt(temp)).length(); j++) {
-                        parts[i] += "0";
-                    }
-                    parts[i] += Integer.toBinaryString(Integer.parseInt(temp))
-                            + " ";
-                    result += parts[i];
-                }
-                return result;
-            }
-            parts = new String[(codeline.length + 2) / 3];
-            parts[0] = "";
-            for (int i = 0, j = 0; i < codeline.length; i++) {
-                if (i % 3 == 0 && j != parts.length - 1 && i != 0) {
-                    j++;
-                    parts[j] = "";
-                }
-                parts[j] += codeline[i];
-            }
-            for (int i = 0; i < parts.length; i++) {
-                String temp = parts[i];
-                parts[i] = "";
-                for (int j = 0; j < 8 - Integer.toBinaryString(
-                        Integer.parseInt(temp)).length(); j++) {
-                    parts[i] += "0";
-                }
-                parts[i] += Integer.toBinaryString(Integer.parseInt(temp))
-                        + " ";
-                result += parts[i];
-            }
-            return result;
-        }
+    	if(code !=""){
+	        boolean check = true;
+	        char[] codeline = code.toCharArray();
+	        boolean spaces = false;
+	        int space = 0;
+	        String[] parts;
+	        String result = "";
+	
+	        for (char element : codeline) {
+	            if (element == ' ') {
+	                spaces = true;
+	                space++;
+	            }
+	            if (element < '0' || element > '9') check = false;
+	        }
+	        if (check) {
+	            if (spaces) {
+	                parts = new String[space + 1];
+	                parts[0] = "";
+	                for (int i = 0, j = 0; i < codeline.length; i++) {
+	                    if (codeline[i] == ' ') {
+	                        j++;
+	                        parts[j] = "";
+	                    } else {
+	                        parts[j] += codeline[i];
+	                    }
+	                }
+	                for (int i = 0; i < parts.length; i++) {
+	                    String temp = parts[i];
+	                    parts[i] = "";
+	                    for (int j = 0; j < 8 - Integer.toBinaryString(Integer.parseInt(temp)).length(); j++) {
+	                        parts[i] += "0";
+	                    }
+	                    parts[i] += Integer.toBinaryString(Integer.parseInt(temp))
+	                            + " ";
+	                    result += parts[i];
+	                }
+	                return result;
+	            }
+	            parts = new String[(codeline.length + 2) / 3];
+	            parts[0] = "";
+	            for (int i = 0, j = 0; i < codeline.length; i++) {
+	                if (i % 3 == 0 && j != parts.length - 1 && i != 0) {
+	                    j++;
+	                    parts[j] = "";
+	                }
+	                parts[j] += codeline[i];
+	            }
+	            for (int i = 0; i < parts.length; i++) {
+	                String temp = parts[i];
+	                parts[i] = "";
+	                for (int j = 0; j < 8 - Integer.toBinaryString(
+	                        Integer.parseInt(temp)).length(); j++) {
+	                    parts[i] += "0";
+	                }
+	                parts[i] += Integer.toBinaryString(Integer.parseInt(temp))
+	                        + " ";
+	                result += parts[i];
+	            }
+	            return result;
+	        }
+    	}
         return "";
 
     }
@@ -198,8 +199,7 @@ public class Ciphers {
         char[] codeline = code.toCharArray();
         String result = "";
         for (char element : codeline) {
-            if (Character.toLowerCase(element) >= 'a'
-                    && Character.toLowerCase(element) <= 'z')
+            if (Character.toLowerCase(element) >= 'a' && Character.toLowerCase(element) <= 'z')
                 result += (Character.toLowerCase(element) - 'a') + start;
         }
         return result;
@@ -308,14 +308,11 @@ public class Ciphers {
                 if ((codeline[i] - Character.toLowerCase(passcode[j])) + 'a' < 'a') {
                     codeline[i] = (char) (('z' + 1) + (codeline[i] - Character
                             .toLowerCase(passcode[j])));
-                } else codeline[i] = (char) (codeline[i] - (Character
-                        .toLowerCase(passcode[j]) - 'a'));
+                } else codeline[i] = (char) (codeline[i] - (Character.toLowerCase(passcode[j]) - 'a'));
             } else if (codeline[i] >= 'A' && codeline[i] <= 'Z') {
                 if ((codeline[i] - Character.toUpperCase(passcode[j])) + 'A' < 'A') {
-                    codeline[i] = (char) (('Z' + 1) + (codeline[i] - Character
-                            .toUpperCase(passcode[j])));
-                } else codeline[i] = (char) (codeline[i] - (Character
-                        .toUpperCase(passcode[j]) - 'A'));
+                    codeline[i] = (char) (('Z' + 1) + (codeline[i] - Character.toUpperCase(passcode[j])));
+                } else codeline[i] = (char) (codeline[i] - (Character.toUpperCase(passcode[j]) - 'A'));
             }
             if (j == passcode.length - 1) {
                 j = 0;
@@ -326,7 +323,7 @@ public class Ciphers {
         for (char element : codeline) {
             result += element;
         }
-        return result;
+		return result;
 
     }
 
