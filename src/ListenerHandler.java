@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
+import java.io.IOException;
 
 import javax.swing.JTextField;
 import javax.swing.event.CaretEvent;
@@ -121,6 +122,14 @@ public class ListenerHandler extends MouseMotionAdapter implements
                 this.gui.setSize(new Dimension(900, 500));
             else if (name.equals("large"))
                 this.gui.setSize(new Dimension(1300, 500));
+            else if (name.equals("link1"))
+                openWebsite("http://www.google.com");
+            else if (name.equals("link2"))
+                openWebsite("https://plus.google.com/communities/114606795989653285746/stream/a65f12d5-7722-46e1-87c7-fc05197652a5");
+            else if (name.equals("link3"))
+                openWebsite("http://www.nianticproject.com/");
+            else if (name.equals("link4"))
+                openWebsite("http://www.ingress.com/intel");
 
     }
 
@@ -159,6 +168,15 @@ public class ListenerHandler extends MouseMotionAdapter implements
     public void mouseReleased(MouseEvent e) {
         // TODO Auto-generated method stub
 
+    }
+
+    public void openWebsite(String url) {
+        try {
+            Runtime.getRuntime().exec(
+                    "rundll32 url.dll,FileProtocolHandler " + url);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
