@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.KeyEvent;
 import java.net.URL;
 
 import javax.swing.BorderFactory;
@@ -151,6 +152,8 @@ public class GUI2 extends JFrame {
         this.tabbedPane.addTab("About us",
                 makeImageIcon("/images/enlightened.png"), this.about,
                 "About us");
+        this.tabbedPane.setMnemonicAt(0, KeyEvent.VK_0);
+        this.tabbedPane.setMnemonicAt(1, KeyEvent.VK_1);
 
         // adding components to mainpanel
         this.c.fill = GridBagConstraints.BOTH;
