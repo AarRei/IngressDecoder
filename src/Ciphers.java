@@ -221,8 +221,10 @@ public class Ciphers {
                 for (char element : line) {
                     if (codeline[i] == element) codeline[i] = '\u23AF';
                 }
+                if(codeline[i]!='\u00B7' && codeline[i]!='\u23AF')
+                	codeline[i] = ' ';
             }
-
+            
             for (int i = 0; i < codeline.length; i++) {
                 if (codeline[i] == '\u00B7')
                     codeline[i] = '.';
