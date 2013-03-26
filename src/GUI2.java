@@ -76,17 +76,17 @@ public class GUI2 extends JFrame {
 
         // menu bar items
         this.close = new JButton(makeImageIcon("/images/close.png"));
-         this.close.setRolloverIcon(makeImageIcon("/images/close_hover.png"));
-         this.close.setPressedIcon(makeImageIcon("/images/close_pressed.png"));
+        this.close.setRolloverIcon(makeImageIcon("/images/close_hover.png"));
+        this.close.setPressedIcon(makeImageIcon("/images/close_pressed.png"));
         this.close.setBorder(BorderFactory.createEmptyBorder());
         this.close.setContentAreaFilled(false);
         this.close.setName("close");
         this.close.addMouseListener(this.listener);
         this.minimize = new JButton(makeImageIcon("/images/minimize.png"));
-         this.minimize
-         .setRolloverIcon(makeImageIcon("/images/minimize_hover.png"));
-         this.minimize
-         .setPressedIcon(makeImageIcon("/images/minimize_pressed.png"));
+        this.minimize
+                .setRolloverIcon(makeImageIcon("/images/minimize_hover.png"));
+        this.minimize
+                .setPressedIcon(makeImageIcon("/images/minimize_pressed.png"));
         this.minimize.setBorder(BorderFactory.createEmptyBorder());
         this.minimize.setContentAreaFilled(false);
         this.minimize.setName("minimize");
@@ -229,7 +229,7 @@ public class GUI2 extends JFrame {
                 .getScreenSize().width * 0.66), 500));
         setIconImage(makeImageIcon("/images/Ingress_Logo_Middle.png")
                 .getImage());
-        setTitle("Decoder");
+        setTitle("Ingress Decoder");
         setUndecorated(true);
         setVisible(true);
     }
