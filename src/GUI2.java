@@ -25,7 +25,7 @@ public class GUI2 extends JFrame {
     public static JLabel makeTextLabel(String text) {
         JLabel label = new JLabel(text);
         label.setFont(new Font("Courier New", 1, 15));
-        label.setForeground(new Color(107, 255, 103));
+        label.setForeground(new Color(0, 205, 106));
         return label;
     }
 
@@ -43,7 +43,7 @@ public class GUI2 extends JFrame {
 
     Font               textfont     = new Font("Courier New", 1, 16);
 
-    Color              yellowColor  = new Color(107, 255, 103);
+    Color              yellowColor  = new Color(0, 205, 106);
 
     Font               mono         = new Font(Font.MONOSPACED, Font.PLAIN, 14);
     boolean            islivedecode = false;
@@ -76,38 +76,38 @@ public class GUI2 extends JFrame {
 
         // menu bar items
         this.close = new JButton(makeImageIcon("/images/close.png"));
-        // this.close.setRolloverIcon(makeImageIcon("/images/close_hover.png"));
-        // this.close.setPressedIcon(makeImageIcon("/images/close_pressed.png"));
+         this.close.setRolloverIcon(makeImageIcon("/images/close_hover.png"));
+         this.close.setPressedIcon(makeImageIcon("/images/close_pressed.png"));
         this.close.setBorder(BorderFactory.createEmptyBorder());
         this.close.setContentAreaFilled(false);
         this.close.setName("close");
         this.close.addMouseListener(this.listener);
         this.minimize = new JButton(makeImageIcon("/images/minimize.png"));
-        // this.minimize
-        // .setRolloverIcon(makeImageIcon("/images/minimize_hover.png"));
-        // this.minimize
-        // .setPressedIcon(makeImageIcon("/images/minimize_pressed.png"));
+         this.minimize
+         .setRolloverIcon(makeImageIcon("/images/minimize_hover.png"));
+         this.minimize
+         .setPressedIcon(makeImageIcon("/images/minimize_pressed.png"));
         this.minimize.setBorder(BorderFactory.createEmptyBorder());
         this.minimize.setContentAreaFilled(false);
         this.minimize.setName("minimize");
         this.minimize.addMouseListener(this.listener);
         this.large = new JButton(makeImageIcon("/images/large.png"));
-        // this.large.setRolloverIcon(makeImageIcon("/images/large_hover.png"));
-        // this.large.setPressedIcon(makeImageIcon("/images/large_pressed.png"));
+        this.large.setRolloverIcon(makeImageIcon("/images/large_hover.png"));
+        this.large.setPressedIcon(makeImageIcon("/images/large_pressed.png"));
         this.large.setBorder(BorderFactory.createEmptyBorder());
         this.large.setContentAreaFilled(false);
         this.large.setName("large");
         this.large.addMouseListener(this.listener);
         this.medium = new JButton(makeImageIcon("/images/medium.png"));
-        // this.medium.setRolloverIcon(makeImageIcon("/images/medium_hover.png"));
-        // this.medium.setPressedIcon(makeImageIcon("/images/medium_pressed.png"));
+        this.medium.setRolloverIcon(makeImageIcon("/images/medium_hover.png"));
+        this.medium.setPressedIcon(makeImageIcon("/images/medium_pressed.png"));
         this.medium.setBorder(BorderFactory.createEmptyBorder());
         this.medium.setContentAreaFilled(false);
         this.medium.setName("medium");
         this.medium.addMouseListener(this.listener);
         this.small = new JButton(makeImageIcon("/images/small.png"));
-        // this.small.setRolloverIcon(makeImageIcon("/images/small_hover.png"));
-        // this.small.setPressedIcon(makeImageIcon("/images/small_pressed.png"));
+        this.small.setRolloverIcon(makeImageIcon("/images/small_hover.png"));
+        this.small.setPressedIcon(makeImageIcon("/images/small_pressed.png"));
         this.small.setBorder(BorderFactory.createEmptyBorder());
         this.small.setContentAreaFilled(false);
         this.small.setName("small");
@@ -118,7 +118,7 @@ public class GUI2 extends JFrame {
 
         JLabel title = new JLabel("Ingress Decoder");
         title.setFont(new Font("Courier New", 1, 25));
-        title.setForeground(new Color(107, 255, 103));
+        title.setForeground(new Color(0, 205, 106));
 
         // init menubar
         this.menubar = new ColoredMenuBar();

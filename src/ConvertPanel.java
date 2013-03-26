@@ -14,7 +14,7 @@ public class ConvertPanel extends JPanel {
 
     GridBagConstraints        c                = new GridBagConstraints();
     Font                      textfont         = new Font("Courier New", 1, 15);
-    Color                     yellowColor      = new Color(107, 255, 103);
+    Color                     yellowColor      = new Color(0, 205, 106);
     Font                      mono             = new Font(Font.MONOSPACED,
                                                        Font.PLAIN, 12);
     ListenerHandler           listener;
