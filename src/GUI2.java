@@ -5,7 +5,6 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.Toolkit;
 import java.net.URL;
 
 import javax.swing.BorderFactory;
@@ -225,8 +224,7 @@ public class GUI2 extends JFrame {
         add(this.mainPanel, BorderLayout.CENTER);
 
         // general frame settings
-        setSize(new Dimension((int) (Toolkit.getDefaultToolkit()
-                .getScreenSize().width * 0.66), 500));
+        setSize(new Dimension(900, 500));
         setIconImage(makeImageIcon("/images/Ingress_Logo_Middle.png")
                 .getImage());
         setTitle("Ingress Decoder");
