@@ -11,21 +11,24 @@ import javax.swing.SwingConstants;
 
 public class CipherPanel2 extends JPanel {
 
-    GridBagConstraints c               = new GridBagConstraints();
-    Font               textfont        = new Font("Courier New", 1, 15);
-    Color              yellowColor     = new Color(0, 205, 106);
-    Font               mono            = new Font(Font.MONOSPACED, Font.PLAIN,
-                                               12);
-    ListenerHandler    listener;
+    private static final long serialVersionUID = -5796174709710193158L;
 
-    JTextField         tf_atbash       = new JTextField();
-    JTextField         tf_vinegerepass = new JTextField();
-    JTextField         tf_vinegere     = new JTextField();
-    JTextField         tf_letter       = new JTextField("1");
-    JTextField         tf_letterToNum  = new JTextField();
+    GridBagConstraints        c                = new GridBagConstraints();
+    Font                      textfont         = new Font("Courier New", 1, 15);
+    Color                     yellowColor      = new Color(0, 205, 106);
+    Font                      mono             = new Font(Font.MONOSPACED,
+                                                       Font.PLAIN, 12);
+    ListenerHandler           listener;
 
-    JSlider            sl_caesarian    = new JSlider(SwingConstants.HORIZONTAL,
-                                               0, 25, 0);
+    JTextField                tf_atbash        = new JTextField();
+    JTextField                tf_vinegerepass  = new JTextField();
+    JTextField                tf_vinegere      = new JTextField();
+    JTextField                tf_letter        = new JTextField("1");
+    JTextField                tf_letterToNum   = new JTextField();
+
+    JSlider                   sl_caesarian     = new JSlider(
+                                                       SwingConstants.HORIZONTAL,
+                                                       0, 25, 0);
 
     public CipherPanel2(ListenerHandler listenerHandler) {
         super(new GridBagLayout());

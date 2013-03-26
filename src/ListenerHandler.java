@@ -134,19 +134,7 @@ public class ListenerHandler extends MouseMotionAdapter implements
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        String name = e.getComponent().getName();
-        // if (name != null) if (name.equals("close")) {
-        // this.gui.changeIcon(0);
-        // }
-        // else if (name.equals("minimize"))
-        // this.gui.setState(Frame.ICONIFIED);
-        // else if (name.equals("small"))
-        // this.gui.setSize(new Dimension(450, 500));
-        // else if (name.equals("medium"))
-        // this.gui.setSize(new Dimension(900, 500));
-        // else if (name.equals("large"))
-        // this.gui.setSize(new Dimension(1300, 500));
-
+        // TODO Auto-generated method stub
     }
 
     @Override

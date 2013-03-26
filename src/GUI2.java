@@ -21,6 +21,8 @@ import javax.swing.border.EmptyBorder;
 
 public class GUI2 extends JFrame {
 
+    private static final long serialVersionUID = -849850209835435686L;
+
     public static JLabel makeTextLabel(String text) {
         JLabel label = new JLabel(text);
         label.setFont(new Font("Courier New", 1, 15));

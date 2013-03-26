@@ -6,6 +6,8 @@ import javax.swing.JMenuBar;
 
 public class ColoredMenuBar extends JMenuBar {
 
+    private static final long serialVersionUID = 7340663276533777634L;
+
     @Override
     protected void paintComponent(Graphics g) {
 
