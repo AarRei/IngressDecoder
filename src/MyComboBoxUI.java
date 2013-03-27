@@ -31,8 +31,10 @@ class MyComboBoxUI extends BasicComboBoxUI {
 
     @Override
     protected JButton createArrowButton() {
-        JButton button = new JButton(makeImageIcon("/images/close.png"));
+        JButton button = new JButton(makeImageIcon("/images/dropdown.png"));
         button.setBorder(BorderFactory.createEmptyBorder());
+        button.setRolloverIcon(makeImageIcon("/images/dropdown_hover.png"));
+        button.setPressedIcon(makeImageIcon("/images/dropdown_pressed.png"));
         button.setContentAreaFilled(false);
         return button;
     }

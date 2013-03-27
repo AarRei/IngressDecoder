@@ -235,7 +235,7 @@ public class ListenerHandler extends MouseMotionAdapter implements
         } catch (Exception e1) {
             letter = 1;
         }
-        this.gui.cipher2.tf_letterToNum.setText(Ciphers.lettertonumber(
-                this.gui.tf_code.getText().trim(), letter));
+        this.gui.cipher2.tf_letterToNum.setText(Ciphers.lettertonumber(code,
+                letter));
     }
 }
