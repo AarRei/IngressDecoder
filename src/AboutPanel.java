@@ -24,7 +24,8 @@ public class AboutPanel extends JPanel {
                                                        Font.PLAIN, 12);
 
     JLabel                    enlLogo, aboutUs, version, versionnumber,
-            weblink1, weblink2, weblink3, weblink4, weblink;
+            weblink1, weblink2, weblink3, weblink4, weblink, contact,
+            contact_mail, contact_g_M0P, contact_g_Xeno;
     JTextArea                 aboutUsText;
     Cursor                    hand             = new Cursor(Cursor.HAND_CURSOR);
 
@@ -38,14 +39,18 @@ public class AboutPanel extends JPanel {
         this.version = new JLabel("Version");
         this.versionnumber = new JLabel("0.8.17");
         this.weblink = new JLabel("Weblinks");
-
-        this.aboutUsText = new JTextArea("Blahhhhhhhhhhh\n"
-                + "hhhhhhhhhhhhhhhhhhhh" + "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
-                + "hhhhhhhhhhhhhhhhh\n" + "BLahhhhhhhhhhhhh");
-        this.weblink1 = new JLabel("Google");
+        this.weblink1 = new JLabel("Our Website");
         this.weblink2 = new JLabel("G+ Decode Community");
         this.weblink3 = new JLabel("Niantic Investigation");
         this.weblink4 = new JLabel("Intel Map");
+        this.contact = new JLabel("Contact us");
+        this.contact_mail = new JLabel("Write a mail");
+        this.contact_g_M0P = new JLabel("G+ MOP");
+        this.contact_g_Xeno = new JLabel("G+ Xenowarius");
+
+        this.aboutUsText = new JTextArea(
+                "This tool is developed by Xenowar and MOP.\n"
+                        + "We implemented some often used decoding methods from several different websites.");
 
         // apply style to elements
         this.aboutUs.setFont(this.textfont);
@@ -57,6 +62,10 @@ public class AboutPanel extends JPanel {
         this.weblink2.setFont(this.textfont);
         this.weblink3.setFont(this.textfont);
         this.weblink4.setFont(this.textfont);
+        this.contact.setFont(this.textfont);
+        this.contact_mail.setFont(this.textfont);
+        this.contact_g_M0P.setFont(this.textfont);
+        this.contact_g_Xeno.setFont(this.textfont);
 
         this.aboutUs.setBackground(Color.black);
         this.aboutUsText.setBackground(Color.black);
@@ -67,6 +76,10 @@ public class AboutPanel extends JPanel {
         this.weblink2.setBackground(Color.black);
         this.weblink3.setBackground(Color.black);
         this.weblink4.setBackground(Color.black);
+        this.contact.setBackground(Color.black);
+        this.contact_mail.setBackground(Color.black);
+        this.contact_g_M0P.setBackground(Color.black);
+        this.contact_g_Xeno.setBackground(Color.black);
 
         this.aboutUs.setForeground(this.yellowColor);
         this.aboutUsText.setForeground(this.yellowColor);
@@ -77,6 +90,10 @@ public class AboutPanel extends JPanel {
         this.weblink2.setForeground(this.yellowColor);
         this.weblink3.setForeground(this.yellowColor);
         this.weblink4.setForeground(this.yellowColor);
+        this.contact.setForeground(this.yellowColor);
+        this.contact_mail.setForeground(this.yellowColor);
+        this.contact_g_M0P.setForeground(this.yellowColor);
+        this.contact_g_Xeno.setForeground(this.yellowColor);
 
         this.aboutUsText.setEditable(false);
         this.aboutUsText.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -87,6 +104,9 @@ public class AboutPanel extends JPanel {
         this.weblink2.setCursor(this.hand);
         this.weblink3.setCursor(this.hand);
         this.weblink4.setCursor(this.hand);
+        this.contact_mail.setCursor(this.hand);
+        this.contact_g_M0P.setCursor(this.hand);
+        this.contact_g_Xeno.setCursor(this.hand);
 
         // adding listener for weblinks
         this.weblink1.setName("link1");
@@ -97,6 +117,12 @@ public class AboutPanel extends JPanel {
         this.weblink3.addMouseListener(this.listener);
         this.weblink4.setName("link4");
         this.weblink4.addMouseListener(this.listener);
+        this.contact_mail.setName("mail");
+        this.contact_mail.addMouseListener(this.listener);
+        this.contact_g_M0P.setName("MOP");
+        this.contact_g_M0P.addMouseListener(this.listener);
+        this.contact_g_Xeno.setName("Xeno");
+        this.contact_g_Xeno.addMouseListener(this.listener);
 
         // adding components to panel
         this.c.fill = GridBagConstraints.BOTH;
@@ -166,11 +192,39 @@ public class AboutPanel extends JPanel {
         add(this.weblink4, this.c);
 
         this.c.fill = GridBagConstraints.BOTH;
+        this.c.weightx = 0.8;
+        this.c.gridx = 3;
+        this.c.gridy = 9;
+        this.c.insets = new Insets(0, 0, 0, 0);
+        add(this.contact, this.c);
+
+        this.c.fill = GridBagConstraints.BOTH;
+        this.c.weightx = 0.8;
+        this.c.gridx = 3;
+        this.c.gridy = 10;
+        this.c.insets = new Insets(0, 30, 0, 0);
+        add(this.contact_mail, this.c);
+
+        this.c.fill = GridBagConstraints.BOTH;
+        this.c.weightx = 0.8;
+        this.c.gridx = 3;
+        this.c.gridy = 11;
+        this.c.insets = new Insets(0, 30, 0, 0);
+        add(this.contact_g_M0P, this.c);
+
+        this.c.fill = GridBagConstraints.BOTH;
+        this.c.weightx = 0.8;
+        this.c.gridx = 3;
+        this.c.gridy = 12;
+        this.c.insets = new Insets(0, 30, 0, 0);
+        add(this.contact_g_Xeno, this.c);
+
+        this.c.fill = GridBagConstraints.BOTH;
         this.c.weightx = 0.1;
         this.c.gridx = 0;
         this.c.gridy = 0;
         this.c.anchor = GridBagConstraints.WEST;
-        this.c.gridheight = 10;
+        this.c.gridheight = 20;
         this.c.insets = new Insets(0, 0, 0, 0);
         add(this.enlLogo, this.c);
 

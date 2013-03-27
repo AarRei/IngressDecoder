@@ -20,7 +20,17 @@ public class ListenerHandler extends MouseMotionAdapter implements
         MouseListener, KeyListener, ActionListener, ChangeListener,
         CaretListener {
 
+    public static void openWebsite(String url) {
+        try {
+            Runtime.getRuntime().exec(
+                    "rundll32 url.dll,FileProtocolHandler " + url);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     GUI2 gui;
+
     Point mouseclicked, windowlocation;
 
     public ListenerHandler(GUI2 mainGUI) {
@@ -123,13 +133,19 @@ public class ListenerHandler extends MouseMotionAdapter implements
             else if (name.equals("large"))
                 this.gui.setSize(new Dimension(1300, 500));
             else if (name.equals("link1"))
-                openWebsite("http://www.google.com");
+                openWebsite("http://www.xop.bplaced.de");
             else if (name.equals("link2"))
                 openWebsite("https://plus.google.com/communities/114606795989653285746/stream/a65f12d5-7722-46e1-87c7-fc05197652a5");
             else if (name.equals("link3"))
                 openWebsite("http://www.nianticproject.com/");
             else if (name.equals("link4"))
                 openWebsite("http://www.ingress.com/intel");
+            else if (name.equals("mail"))
+                openWebsite("mailto:mail.xop@gmail.com?subject=Ingress%20Decoder");
+            else if (name.equals("MOP"))
+                openWebsite("https://plus.google.com/100682658325412196401");
+            else if (name.equals("Xeno"))
+                openWebsite("https://plus.google.com/101142446913397219075");
 
     }
 
@@ -170,15 +186,6 @@ public class ListenerHandler extends MouseMotionAdapter implements
 
     }
 
-    public void openWebsite(String url) {
-        try {
-            Runtime.getRuntime().exec(
-                    "rundll32 url.dll,FileProtocolHandler " + url);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     @Override
     public void stateChanged(ChangeEvent e) {
         String code = this.gui.tf_code.getText().trim();
@@ -213,6 +220,5 @@ public class ListenerHandler extends MouseMotionAdapter implements
         }
         this.gui.cipher2.tf_letterToNum.setText(Ciphers.lettertonumber(
                 this.gui.tf_code.getText().trim(), letter));
-
     }
 }
