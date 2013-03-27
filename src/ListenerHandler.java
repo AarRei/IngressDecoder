@@ -40,7 +40,7 @@ public class ListenerHandler extends MouseMotionAdapter implements
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
-        String code = this.gui.tf_code.getText();
+        String code = this.gui.cb_code.getEditor().getItem().toString();
         if (command != null) if (command.equals("onTop"))
             this.gui.setAlwaysOnTop(!this.gui.isAlwaysOnTop());
         else if (command.equals("liveDecode")) {
@@ -69,7 +69,7 @@ public class ListenerHandler extends MouseMotionAdapter implements
     public void caretUpdate(CaretEvent e) {
         if (e.getSource() != null) {
             String name = ((JTextField) e.getSource()).getName();
-            String code = this.gui.tf_code.getText().trim();
+            String code = this.gui.cb_code.getEditor().getItem().toString();
             if (this.gui.islivedecode)
                 if (name.equals("code"))// currently not used see key/action
                                         // listener
@@ -196,7 +196,7 @@ public class ListenerHandler extends MouseMotionAdapter implements
 
     @Override
     public void stateChanged(ChangeEvent e) {
-        String code = this.gui.tf_code.getText().trim();
+        String code = this.gui.cb_code.getEditor().getItem().toString();
         this.gui.cipher1.tf_caesarian.setText(Ciphers.caesarianShift(code,
                 this.gui.cipher1.sl_caesarian.getValue()));
 

@@ -50,7 +50,7 @@ public class AboutPanel extends JPanel {
 
         this.aboutUsText = new JTextArea(
                 "This tool is developed by Xenowar and MOP.\n"
-                        + "We implemented some often used decoding methods from several different websites.");
+                        + "We implemented often used decoding methods from several different websites.");
 
         // apply style to elements
         this.aboutUs.setFont(this.textfont);
