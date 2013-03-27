@@ -7,18 +7,23 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.KeyEvent;
 import java.net.URL;
+import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.plaf.ComboBoxUI;
 
 public class GUI2 extends JFrame {
 
@@ -31,28 +36,33 @@ public class GUI2 extends JFrame {
         return label;
     }
 
-    ListenerHandler    listener;
-    JPanel             mainPanel, innerPane1, innerPane2;
-    JTabbedPane        tabbedPane;
-    JCheckBox          alwaysontop;
-    JCheckBox          livedecode;
+    ListenerHandler              listener;
+    JPanel                       mainPanel, innerPane1, innerPane2;
+    JTabbedPane                  tabbedPane;
+    JCheckBox                    alwaysontop;
+    JCheckBox                    livedecode;
 
-    JTextField         tf_code;
-    ColoredMenuBar     menubar;
-    JButton            btn_generate;
-    JButton            close, minimize, small, medium, large;
-    GridBagConstraints c            = new GridBagConstraints();
+    JTextField                   tf_code;
+    JComboBox<String>            cb_code;
+    DefaultComboBoxModel<String> model;
+    ColoredMenuBar               menubar;
+    JButton                      btn_generate;
+    JButton                      close, minimize, small, medium, large;
+    GridBagConstraints           c            = new GridBagConstraints();
 
-    Font               textfont     = new Font("Courier New", 1, 16);
+    Font                         textfont     = new Font("Courier New", 1, 16);
 
-    Color              yellowColor  = new Color(0, 205, 106);
+    Color                        yellowColor  = new Color(0, 205, 106);
 
-    Font               mono         = new Font(Font.MONOSPACED, Font.PLAIN, 14);
-    boolean            islivedecode = false;
-    CipherPanel        cipher1;
-    CipherPanel2       cipher2;
-    ConvertPanel       convert;
-    AboutPanel         about;
+    Font                         mono         = new Font(Font.MONOSPACED,
+                                                      Font.PLAIN, 14);
+    boolean                      islivedecode = false;
+
+    Vector<String>               codes        = new Vector<String>();
+    CipherPanel                  cipher1;
+    CipherPanel2                 cipher2;
+    ConvertPanel                 convert;
+    AboutPanel                   about;
 
     public GUI2() {
         this.listener = new ListenerHandler(this);
@@ -138,6 +148,9 @@ public class GUI2 extends JFrame {
         this.menubar.add(this.minimize);
         this.menubar.add(this.close);
 
+        // preparing combobox model
+        this.model = new DefaultComboBoxModel<>(this.codes);
+
         // adding pannels to tabbed pain
         this.tabbedPane
                 .addTab("Cipher", makeImageIcon("/images/Ingress_Logo.png"),
@@ -187,7 +200,22 @@ public class GUI2 extends JFrame {
         this.tf_code.setForeground(this.yellowColor);
         this.tf_code.setName("code");
         this.tf_code.addCaretListener(this.listener);
-        this.mainPanel.add(this.tf_code, this.c);
+
+        // combox testing
+        this.cb_code = new JComboBox<>(this.model);
+        this.cb_code.setBackground(Color.black);
+        this.cb_code.setEditable(true);
+        this.cb_code.setForeground(this.yellowColor);
+        this.cb_code.setBorder(new LineBorder(this.yellowColor, 1));
+        this.cb_code.setUI((ComboBoxUI) MyComboBoxUI.createUI(this.cb_code));
+        this.cb_code.setFont(this.mono);
+        this.cb_code.setName("code");
+        this.cb_code.getEditor().getEditorComponent()
+                .addKeyListener(this.listener);
+        this.cb_code.getEditor().getEditorComponent().setName("code");
+        // testing end
+
+        this.mainPanel.add(this.cb_code, this.c);
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 0.01;

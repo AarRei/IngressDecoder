@@ -47,6 +47,7 @@ public class ListenerHandler extends MouseMotionAdapter implements
             this.gui.islivedecode = !this.gui.islivedecode;
         } else if (command.equals("generate")) {
             generateAll();
+            addToComboBox();
         } else if (command.equals("conv_text")) {
             ;// TODO conv text-> all
         } else if (command.equals("conv_bin")) {
@@ -61,7 +62,6 @@ public class ListenerHandler extends MouseMotionAdapter implements
             this.gui.convert.tf_hex.setText("");// dectohex
             this.gui.convert.tf_base64.setText("");// dectobase64
             this.gui.convert.tf_dec.setText(code);
-
         }
     }
 
@@ -71,7 +71,8 @@ public class ListenerHandler extends MouseMotionAdapter implements
             String name = ((JTextField) e.getSource()).getName();
             String code = this.gui.tf_code.getText().trim();
             if (this.gui.islivedecode)
-                if (name.equals("code"))
+                if (name.equals("code"))// currently not used see key/action
+                                        // listener
                     generateAll();
                 else if (name.equals("letter")) {
                     int letter = 1;
@@ -101,21 +102,28 @@ public class ListenerHandler extends MouseMotionAdapter implements
     }
 
     @Override
-    public void keyPressed(KeyEvent arg0) {
+    public void keyPressed(KeyEvent e) {
         // TODO Auto-generated method stub
-
     }
 
     @Override
-    public void keyReleased(KeyEvent arg0) {
+    public void keyReleased(KeyEvent e) {
         // TODO Auto-generated method stub
-
     }
 
     @Override
-    public void keyTyped(KeyEvent arg0) {
-        // TODO Auto-generated method stub
-
+    public void keyTyped(KeyEvent e) {
+        if (e.getComponent() != null) {
+            String name = e.getComponent().getName();
+            if (name.equals("code")) {
+                if (this.gui.islivedecode) generateAll();
+                if (e.getKeyChar() == KeyEvent.VK_ENTER
+                        || (e.isControlDown() && e.getKeyChar() + 64 == KeyEvent.VK_V)) {
+                    addToComboBox();
+                    generateAll();
+                }
+            }
+        }
     }
 
     @Override
@@ -194,8 +202,17 @@ public class ListenerHandler extends MouseMotionAdapter implements
 
     }
 
+    private void addToComboBox() {
+        String code = this.gui.cb_code.getEditor().getItem().toString();
+        if (!this.gui.codes.contains(code)) {
+            this.gui.codes.add(code);
+            this.gui.cb_code.setModel(this.gui.model);
+        }
+    }
+
     private void generateAll() {
-        String code = this.gui.tf_code.getText().trim();
+        // String code = this.gui.tf_code.getText().trim();
+        String code = this.gui.cb_code.getEditor().getItem().toString();
         int letter = 1;
         // cipher 1
         this.gui.cipher1.tf_reversed.setText(Ciphers.reverse(code));
