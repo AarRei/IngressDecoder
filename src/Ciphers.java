@@ -142,7 +142,9 @@ public class Ciphers {
 	                spaces = true;
 	                space++;
 	            }
-	            if (element < '0' || element > '9') check = false;
+	            if (element < '0' || element > '9')
+	            	if(element != ' ')
+	            		check = false;
 	        }
 	        if (check) {
 	            if (spaces) {
@@ -193,6 +195,78 @@ public class Ciphers {
     	}
         return "";
 
+    }
+    
+    public static String dectohex(String code){
+    	if(code !=""){
+	        boolean check = true;
+	        char[] codeline = code.toCharArray();
+	        boolean spaces = false;
+	        int space = 0;
+	        String[] parts;
+	        String result = "";
+	
+	        for (char element : codeline) {
+	            if (element == ' ') {
+	                spaces = true;
+	                space++;
+	            }
+	            if (element < '0' || element > '9' ) 
+	            	if(element != ' ')
+	            		check = false;
+	        }
+	        if (check) {
+	            if (spaces) {
+	                parts = new String[space + 1];
+	                parts[0] = "";
+	                for (int i = 0, j = 0; i < codeline.length; i++) {
+	                    if (codeline[i] == ' ') {
+	                        j++;
+	                        parts[j] = "";
+	                    } else {
+	                        parts[j] += codeline[i];
+	                    }
+	                }
+	                for (int i = 0; i < parts.length; i++) {
+	                    String temp = parts[i];
+	                    parts[i] = "";
+	                    for (int j = 0; j < 2 - Integer.toHexString(Integer.parseInt(temp)).length(); j++) {
+	                        parts[i] += "0";
+	                    }
+	                    parts[i] += Integer.toHexString(Integer.parseInt(temp))
+	                            + " ";
+	                    result += parts[i];
+	                }
+	                return result;
+	            }
+	            parts = new String[(codeline.length + 2) / 3];
+	            parts[0] = "";
+	            for (int i = 0, j = 0; i < codeline.length; i++) {
+	                if (i % 3 == 0 && j != parts.length - 1 && i != 0) {
+	                    j++;
+	                    parts[j] = "";
+	                }
+	                parts[j] += codeline[i];
+	            }
+	            for (int i = 0; i < parts.length; i++) {
+	                String temp = parts[i];
+	                parts[i] = "";
+	                for (int j = 0; j < 2 - Integer.toHexString(Integer.parseInt(temp)).length(); j++) {
+	                    parts[i] += "0";
+	                }
+	                parts[i] += Integer.toHexString(Integer.parseInt(temp))
+	                        + " ";
+	                result += parts[i];
+	            }
+	            return result;
+	        }
+    	}
+        return "";
+    }
+    
+    public static String hextodec(String code){
+    	
+    	return "";
     }
 
     public static String lettertonumber(String code, int start) {
