@@ -98,6 +98,7 @@ public class AboutPanel extends JPanel {
         this.aboutUsText.setEditable(false);
         this.aboutUsText.setBorder(new EmptyBorder(0, 0, 0, 0));
         this.aboutUsText.setLineWrap(true);
+        this.aboutUsText.setWrapStyleWord(true);
 
         // setting custom cursor
         this.weblink1.setCursor(this.hand);
