@@ -59,6 +59,8 @@ public class Ciphers {
             "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
             "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7",
             "8", "9"            };
+    
+    static char[] hex = {'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'};
 
     public static String atbash(String code) {
         char[] codeline = code.toCharArray();
@@ -265,10 +267,90 @@ public class Ciphers {
     }
     
     public static String hextodec(String code){
+    	code = removeSpaces(code);
+    	char[] codeline = code.toLowerCase().toCharArray();
+    	String[] parts = new String[(int)((codeline.length+1)/2)];
+    	String result ="";
     	
-    	return "";
+    	parts[0]="";
+    	for(int i = 0,j=0; i < codeline.length;i++){
+    		if(i%2==0 && i != 0){
+    			j++;
+    			parts[j]="";
+    		}    			
+    		parts[j]+=codeline[i];
+    	}
+    	
+    	for(int i = 0; i < parts.length;i++){
+    		String temp = parts[i];
+    		for(int j = 0; j < hex.length; j++){
+    			 if(temp.charAt(0) == hex[j]){
+    				parts[i]=""+j*16;
+    			}
+    		}
+    		for(int j = 0; j < hex.length; j++){
+    			if(temp.charAt(1) == hex[j]){
+    				parts[i]=""+(Integer.parseInt(parts[i])+j);
+    			}
+    		}
+    	}
+    	for(int i = 0; i < parts.length;i++){
+    		result+=parts[i] +" ";
+    	}
+    	return result;
     }
-
+    
+    public static String bintodec(String code){
+    	code = removeSpaces(code);
+    	char[] codeline = code.toCharArray();
+    	String[] parts = new String[(int)((codeline.length+7)/8)];
+    	String result ="";
+    	
+    	parts[0]="";
+    	for(int i = 0,j=0; i < codeline.length;i++){
+    		if(i%8==0 && i != 0){
+    			j++;
+    			parts[j]="";
+    		}    			
+    		parts[j]+=codeline[i];
+    	}
+    	
+    	for(int i = 0; i < parts.length;i++){
+    		int temp = 0;
+    		int add = 128;
+    		for(int j = 0; j <8;j++){
+    			if(parts[i].charAt(j) == '1'){
+    				temp+=add;
+    			}
+    			add/=2;
+    		}
+    		parts[i]=""+temp;
+    	}
+    	for(int i = 0; i < parts.length;i++){
+    		result+=parts[i] +" ";
+    	}
+    	
+    	return result;
+    }
+    
+    public static String asctodec(String code){
+    	char[] codeline = removeSpaces(code).toCharArray();
+    	String[] parts= new String[codeline.length];
+    	String result="";
+    	
+    	for(int i = 0;i<codeline.length;i++){
+    		parts[i]="";
+    		if(codeline[i]/100 < 1){
+    			parts[i]+="0";
+    		}
+    		parts[i]+=(int)codeline[i];
+    	}
+    	for(int i = 0; i < parts.length;i++){
+    		result+=parts[i] +" ";
+    	}
+    	return result;
+    }
+    
     public static String lettertonumber(String code, int start) {
         char[] codeline = code.toCharArray();
         String result = "";
@@ -403,7 +485,7 @@ public class Ciphers {
 
     }
 
-    private static String removeSpaces(String input) {
+    public static String removeSpaces(String input) {
         char[] withSpace = input.toCharArray();
         input = "";
         for (char element : withSpace) {
