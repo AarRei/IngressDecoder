@@ -49,19 +49,15 @@ public class ListenerHandler extends MouseMotionAdapter implements
             generateAll();
             addToComboBox();
         } else if (command.equals("conv_text")) {
-            ;// TODO conv text-> all
+            convertDectoEverything(Ciphers.asctodec(code.trim()));
         } else if (command.equals("conv_bin")) {
-            ;// TODO conv text-> all
+            convertDectoEverything(Ciphers.bintodec(code.trim()));
         } else if (command.equals("conv_hex")) {
-            ;// TODO conv hex->all
+            convertDectoEverything(Ciphers.hextodec(code.trim()));
         } else if (command.equals("conv_base64")) {
-            ;// TODO conv base64->all
+            convertDectoEverything(Ciphers.base64todec(code.trim()));
         } else if (command.equals("conv_dec")) {
-            this.gui.convert.tf_text.setText(Ciphers.dectoasc(code));
-            this.gui.convert.tf_bin.setText(Ciphers.dectobin(code));
-            this.gui.convert.tf_hex.setText("");// dectohex
-            this.gui.convert.tf_base64.setText("");// dectobase64
-            this.gui.convert.tf_dec.setText(code);
+            convertDectoEverything(code);
         }
     }
 
@@ -208,6 +204,15 @@ public class ListenerHandler extends MouseMotionAdapter implements
             this.gui.codes.add(code);
             this.gui.cb_code.setModel(this.gui.model);
         }
+    }
+
+    private void convertDectoEverything(String code) {
+        String trimmedCode = code.trim();
+        this.gui.convert.tf_text.setText(Ciphers.dectoasc(trimmedCode));
+        this.gui.convert.tf_bin.setText(Ciphers.dectobin(trimmedCode));
+        this.gui.convert.tf_hex.setText(Ciphers.dectohex(trimmedCode));// dectohex
+        this.gui.convert.tf_base64.setText(Ciphers.dectobase64(trimmedCode));// dectobase64
+        this.gui.convert.tf_dec.setText(trimmedCode);
     }
 
     private void generateAll() {
