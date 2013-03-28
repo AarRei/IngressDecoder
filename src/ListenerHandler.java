@@ -156,7 +156,6 @@ public class ListenerHandler extends MouseMotionAdapter implements
             else if (name.equals("Xeno"))
                 openWebsite("https://plus.google.com/101142446913397219075");
             else if (name.equals("Ee")) {
-                System.out.println("go");
                 this.enl.setVisible(true);
 
             }
