@@ -261,6 +261,7 @@ public class GUI2 extends JFrame {
         setIconImage(makeImageIcon("/images/Ingress_Logo_Middle.png")
                 .getImage());
         setLocationByPlatform(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Ingress Decoder");
         setUndecorated(true);
         setVisible(true);

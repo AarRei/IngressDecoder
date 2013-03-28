@@ -50,7 +50,7 @@ public class AboutPanel extends JPanel {
 
         this.aboutUsText = new JTextArea(
                 "This tool is developed by Xenowar and MOP.\n"
-                        + "We implemented often used decoding methods from several different websites.");
+                        + "We implemented several decoding methods which were frequently used by the Ingress team.");
 
         // apply style to elements
         this.aboutUs.setFont(this.textfont);
@@ -124,6 +124,8 @@ public class AboutPanel extends JPanel {
         this.contact_g_M0P.addMouseListener(this.listener);
         this.contact_g_Xeno.setName("Xeno");
         this.contact_g_Xeno.addMouseListener(this.listener);
+        this.contact.setName("Ee");
+        this.contact.addMouseListener(this.listener);
 
         // adding components to panel
         this.c.fill = GridBagConstraints.BOTH;

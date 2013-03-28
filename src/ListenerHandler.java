@@ -29,9 +29,9 @@ public class ListenerHandler extends MouseMotionAdapter implements
         }
     }
 
-    GUI2 gui;
-
-    Point mouseclicked, windowlocation;
+    GUI2        gui;
+    Enlightened enl = new Enlightened();
+    Point       mouseclicked, windowlocation;
 
     public ListenerHandler(GUI2 mainGUI) {
         this.gui = mainGUI;
@@ -80,9 +80,9 @@ public class ListenerHandler extends MouseMotionAdapter implements
                     try {
                         letter = Integer.parseInt(this.gui.cipher2.tf_letter
                                 .getText().trim());
-                        if (letter < 1 || letter > 26) letter = 1;
                     } catch (Exception e1) {
-                        letter = 1;
+                        this.gui.cipher2.tf_letterToNum
+                                .setText("ERROR 1: INVALID INPUT");
                     }
                     this.gui.cipher2.tf_letterToNum.setText(Ciphers
                             .lettertonumber(code, letter));
@@ -109,11 +109,6 @@ public class ListenerHandler extends MouseMotionAdapter implements
 
     @Override
     public void keyReleased(KeyEvent e) {
-        // TODO Auto-generated method stub
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
         if (e.getComponent() != null) {
             String name = e.getComponent().getName();
             if (name.equals("code")) {
@@ -125,6 +120,11 @@ public class ListenerHandler extends MouseMotionAdapter implements
                 }
             }
         }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        // TODO Auto-generated method stub
     }
 
     @Override
@@ -155,6 +155,11 @@ public class ListenerHandler extends MouseMotionAdapter implements
                 openWebsite("https://plus.google.com/100682658325412196401");
             else if (name.equals("Xeno"))
                 openWebsite("https://plus.google.com/101142446913397219075");
+            else if (name.equals("Ee")) {
+                System.out.println("go");
+                this.enl.setVisible(true);
+
+            }
 
     }
 
