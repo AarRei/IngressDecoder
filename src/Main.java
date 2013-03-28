@@ -3,6 +3,7 @@ import javax.swing.UIManager.LookAndFeelInfo;
 
 public class Main {
     public static void main(String[] args) {
+    	System.out.println(Ciphers.bintodec("00011000"));
     	try {
             for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
