@@ -30,10 +30,7 @@ public class Enlightened extends JDialog {
             super.paintComponent(g);
             setBackground(this.c);
             g.drawImage(makeImageIcon("/images/Ingress_Green.png").getImage(),
-                    this.width / 2 - 256, this.heigh / 2 - 256,
-                    this.width / 2 + 256, this.heigh / 2 + 256,
-                    this.width / 2 - 256, this.heigh / 2 - 256,
-                    this.width / 2 + 256, this.heigh / 2 + 256, this);
+                    this.width / 2 - 256, this.heigh / 2 - 256, this);
             g.dispose();
         }
     }
@@ -44,7 +41,7 @@ public class Enlightened extends JDialog {
         add(this.fullscreen);
         setResizable(false);
         setSize(Toolkit.getDefaultToolkit().getScreenSize());
-        // setAlwaysOnTop(true);
+        setAlwaysOnTop(true);
         setUndecorated(true);
         setVisible(false);
         addKeyListener(new KeyListener() {
