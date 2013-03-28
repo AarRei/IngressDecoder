@@ -37,7 +37,7 @@ public class AboutPanel extends JPanel {
         this.enlLogo = new JLabel(makeImageIcon("/images/enlightened_big.png"));
         this.aboutUs = new JLabel("About us");
         this.version = new JLabel("Version");
-        this.versionnumber = new JLabel("0.8.17");
+        this.versionnumber = new JLabel("0.1.00");
         this.weblink = new JLabel("Weblinks");
         this.weblink1 = new JLabel("Our Website");
         this.weblink2 = new JLabel("G+ Decode Community");
