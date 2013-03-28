@@ -3,7 +3,10 @@ import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.net.URL;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
@@ -29,8 +32,31 @@ public class Enlightened extends JDialog {
 
             super.paintComponent(g);
             setBackground(this.c);
-            g.drawImage(makeImageIcon("/images/Ingress_Green.png").getImage(),
-                    this.width / 2 - 256, this.heigh / 2 - 256, this);
+            int random = new Random().nextInt(4);
+            if (random == 0)
+                g.drawImage(makeImageIcon("/images/Ingress_Green.png")
+                        .getImage(), this.width / 2 - 256,
+                        this.heigh / 2 - 256, this);
+            else if (random == 1)
+                g.drawImage(makeImageIcon("/images/Enlightened_Green.png")
+                        .getImage(), this.width / 2 - 256,
+                        this.heigh / 2 - 256, this);
+            else if (random == 2)
+                g.drawImage(makeImageIcon("/images/Resistance_Blue.png")
+                        .getImage(), this.width / 2 - 256,
+                        this.heigh / 2 - 256, this);
+            else if (random == 3) {
+                g.drawImage(makeImageIcon("/images/Enlightened_Green.png")
+                        .getImage(), this.width / 2 - 640,
+                        this.heigh / 2 - 128, this);
+                g.drawImage(makeImageIcon("/images/Ingress_Dual.png")
+                        .getImage(), this.width / 2 - 256,
+                        this.heigh / 2 - 384, this);
+                g.drawImage(makeImageIcon("/images/Resistance_Blue.png")
+                        .getImage(), this.width / 2 + 128,
+                        this.heigh / 2 - 128, this);
+            }
+
             g.dispose();
         }
     }
@@ -48,19 +74,49 @@ public class Enlightened extends JDialog {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                setVisible(false);
-
+                //
             }
 
             @Override
             public void keyReleased(KeyEvent arg0) {
-                // TODO Auto-generated method stub
+                dispose();
 
             }
 
             @Override
             public void keyTyped(KeyEvent arg0) {
+                dispose();
+
+            }
+        });
+        addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                dispose();
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent arg0) {
                 // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent arg0) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent arg0) {
+                //
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent arg0) {
+                dispose();
 
             }
         });
