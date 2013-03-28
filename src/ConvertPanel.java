@@ -205,7 +205,7 @@ public class ConvertPanel extends JPanel {
         this.c.gridy = 9;
         this.c.gridwidth = 5;
         this.c.insets = new Insets(0, 5, 0, 5);
-        add(GUI2.makeTextLabel("ASCII Dec/Char:"), this.c);
+        add(GUI2.makeTextLabel("Dec/Char:"), this.c);
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 1.0;
