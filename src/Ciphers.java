@@ -190,7 +190,7 @@ public class Ciphers {
                 result += part + " ";
             }
 
-            return result;
+            return result.trim();
         } catch (Exception e) {
             return "ERROR 2: An internal error occured".toUpperCase();
         }
@@ -214,7 +214,7 @@ public class Ciphers {
         for (char element : codeline) {
             result += element;
         }
-        return result;
+        return result.trim();
     }
 
     public static String dectoasc(String code) {
@@ -247,7 +247,7 @@ public class Ciphers {
                 } else solution += '\u2718';
             }
         }
-        return solution;
+        return solution.trim();
     }
 
     public static String dectobase64(String code) {
@@ -288,7 +288,7 @@ public class Ciphers {
             if (result.endsWith("A")) if (result.endsWith("AA"))
                 result = result.substring(0, result.length() - 2);
             else result = result.substring(0, result.length() - 1);
-            return result;
+            return result.trim();
         } catch (Exception e) {
 
             e.printStackTrace();
@@ -336,7 +336,7 @@ public class Ciphers {
                                 .parseInt(temp)) + " ";
                         result += parts[i];
                     }
-                    return result;
+                    return result.trim();
                 }
                 parts = new String[(codeline.length + 2) / 3];
                 parts[0] = "";
@@ -358,7 +358,7 @@ public class Ciphers {
                             + " ";
                     result += parts[i];
                 }
-                return result;
+                return result.trim();
             }
         }
         return "ERROR 1: INVALID INPUT";
@@ -427,7 +427,7 @@ public class Ciphers {
                             + " ";
                     result += parts[i];
                 }
-                return result;
+                return result.trim();
             }
         }
         return "ERROR 1: INVALID INPUT";
@@ -451,21 +451,35 @@ public class Ciphers {
 
             for (int i = 0; i < parts.length; i++) {
                 String temp = parts[i];
-                for (int j = 0; j < hex.length; j++) {
-                    if (temp.charAt(0) == hex[j]) {
-                        parts[i] = "" + j * 16;
-                    }
+	            if(parts[i].length()==2){
+	                for (int j = 0; j < hex.length; j++) {
+	                    if (temp.charAt(0) == hex[j]) {
+	                        parts[i] = "" + j * 16;
+	                    }
+	                }
+	                for (int j = 0; j < hex.length; j++) {
+	                    if (temp.charAt(1) == hex[j]) {
+	                        parts[i] = "" + (Integer.parseInt(parts[i]) + j);
+	                    }
+	                }
                 }
-                for (int j = 0; j < hex.length; j++) {
-                    if (temp.charAt(1) == hex[j]) {
-                        parts[i] = "" + (Integer.parseInt(parts[i]) + j);
-                    }
-                }
+	            else{
+	            	for (int j = 0; j < hex.length; j++) {
+	                    if (temp.charAt(0) == hex[j]) {
+	                        parts[i] = "" + j;
+	                    }
+	                }
+	            }
             }
             for (String part : parts) {
-                result += part + " ";
+            	if(part.length()==3)
+            		result += part + " ";
+            	else if(part.length()==2)
+            		result += "0"+part + " ";
+            	else if(part.length()==1)
+            		result += "00"+part + " ";
             }
-            return result;
+            return result.trim();
         } catch (Exception e) {
             return "ERROR 2: An internal error occured".toUpperCase();
         }
