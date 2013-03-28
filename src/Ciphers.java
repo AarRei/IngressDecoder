@@ -187,8 +187,14 @@ public class Ciphers {
                 parts[i] = "" + temp;
             }
             for (String part : parts) {
-                result += part + " ";
+                if(part.length()==3)
+            		result += part + " ";
+            	else if(part.length()==2)
+            		result += "0"+part + " ";
+            	else if(part.length()==1)
+            		result += "00"+part + " ";
             }
+            
 
             return result.trim();
         } catch (Exception e) {
