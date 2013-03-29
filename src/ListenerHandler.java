@@ -136,7 +136,7 @@ public class ListenerHandler extends MouseMotionAdapter implements
             else if (name.equals("minimize"))
                 this.gui.setState(Frame.ICONIFIED);
             else if (name.equals("small"))
-                this.gui.setSize(new Dimension(450, 500));
+                this.gui.setSize(new Dimension(500, 500));
             else if (name.equals("medium"))
                 this.gui.setSize(new Dimension(900, 500));
             else if (name.equals("large"))
@@ -157,7 +157,6 @@ public class ListenerHandler extends MouseMotionAdapter implements
                 openWebsite("https://plus.google.com/101142446913397219075");
             else if (name.equals("Ee")) {
                 this.enl.setVisible(true);
-
             }
 
     }

@@ -128,7 +128,7 @@ public class GUI2 extends JFrame {
         JLabel ingressIcon = new JLabel(
                 makeImageIcon("/images/Ingress_Logo_Middle.png"));
 
-        JLabel title = new JLabel("Ingress Decoder");
+        JLabel title = new JLabel("Ingress Cipher Tool");
         title.setFont(new Font("Courier New", 1, 25));
         title.setForeground(new Color(0, 205, 106));
 
@@ -262,7 +262,7 @@ public class GUI2 extends JFrame {
                 .getImage());
         setLocationByPlatform(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setTitle("Ingress Decoder");
+        setTitle("Ingress Cipher Tool");
         setUndecorated(true);
         setVisible(true);
     }
