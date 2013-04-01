@@ -187,14 +187,12 @@ public class Ciphers {
                 parts[i] = "" + temp;
             }
             for (String part : parts) {
-                if(part.length()==3)
-            		result += part + " ";
-            	else if(part.length()==2)
-            		result += "0"+part + " ";
-            	else if(part.length()==1)
-            		result += "00"+part + " ";
+                if (part.length() == 3)
+                    result += part + " ";
+                else if (part.length() == 2)
+                    result += "0" + part + " ";
+                else if (part.length() == 1) result += "00" + part + " ";
             }
-            
 
             return result.trim();
         } catch (Exception e) {
@@ -457,33 +455,31 @@ public class Ciphers {
 
             for (int i = 0; i < parts.length; i++) {
                 String temp = parts[i];
-	            if(parts[i].length()==2){
-	                for (int j = 0; j < hex.length; j++) {
-	                    if (temp.charAt(0) == hex[j]) {
-	                        parts[i] = "" + j * 16;
-	                    }
-	                }
-	                for (int j = 0; j < hex.length; j++) {
-	                    if (temp.charAt(1) == hex[j]) {
-	                        parts[i] = "" + (Integer.parseInt(parts[i]) + j);
-	                    }
-	                }
+                if (parts[i].length() == 2) {
+                    for (int j = 0; j < hex.length; j++) {
+                        if (temp.charAt(0) == hex[j]) {
+                            parts[i] = "" + j * 16;
+                        }
+                    }
+                    for (int j = 0; j < hex.length; j++) {
+                        if (temp.charAt(1) == hex[j]) {
+                            parts[i] = "" + (Integer.parseInt(parts[i]) + j);
+                        }
+                    }
+                } else {
+                    for (int j = 0; j < hex.length; j++) {
+                        if (temp.charAt(0) == hex[j]) {
+                            parts[i] = "" + j;
+                        }
+                    }
                 }
-	            else{
-	            	for (int j = 0; j < hex.length; j++) {
-	                    if (temp.charAt(0) == hex[j]) {
-	                        parts[i] = "" + j;
-	                    }
-	                }
-	            }
             }
             for (String part : parts) {
-            	if(part.length()==3)
-            		result += part + " ";
-            	else if(part.length()==2)
-            		result += "0"+part + " ";
-            	else if(part.length()==1)
-            		result += "00"+part + " ";
+                if (part.length() == 3)
+                    result += part + " ";
+                else if (part.length() == 2)
+                    result += "0" + part + " ";
+                else if (part.length() == 1) result += "00" + part + " ";
             }
             return result.trim();
         } catch (Exception e) {
@@ -626,7 +622,7 @@ public class Ciphers {
                             .toUpperCase(passcode[j])));
                 } else codeline[i] = (char) (codeline[i] - (Character
                         .toUpperCase(passcode[j]) - 'A'));
-            }
+            } else j--;
             if (j == passcode.length - 1) {
                 j = 0;
             } else {
