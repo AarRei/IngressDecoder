@@ -222,34 +222,64 @@ public class Ciphers {
     }
 
     public static String dectoasc(String code) {
-        char[] codeline = removeSpaces(code).toCharArray();
+        char[] codeline = code.toCharArray();
+        boolean spaces = false;
+        int space = 0;
         boolean check = true;
         String solution = "ERROR 1: INVALID INPUT";
 
         for (char element : codeline) {
-            if (element < '0' || element > '9') check = false;
+            if (element < '0' || element > '9')
+            	 if(element != ' ')
+            		 check = false;
+            if(element == ' '){
+            	spaces = true;
+            	space++;
+            }
         }
 
         if (check) {
-            String[] parted = new String[(codeline.length + 2) / 3];
-
-            for (int i = 0; i < parted.length; i++) {
-                parted[i] = "";
-            }
-            for (int i = 0, j = 0; i < codeline.length; i++) {
-                if (i == 0) {
-                    parted[j] += codeline[i];
-                } else if (i % 3 == 0) {
-                    j++;
-                    parted[j] += codeline[i];
-                } else parted[j] += codeline[i];
-            }
-            solution = "";
-            for (String element : parted) {
-                if (Integer.parseInt(element) < 123) {
-                    solution += asciitable[Integer.parseInt(element)];
-                } else solution += '\u2718';
-            }
+        	if(spaces){
+        		String[] parted = new String[space+1];
+        		for (int i = 0; i < parted.length; i++) {
+	                parted[i] = "";
+	            }
+        		for (int i = 0, j = 0; i < codeline.length; i++) {
+	                if (codeline[i]==' ') {
+	                    j++;
+	                }
+	                else{
+	                    parted[j] += codeline[i];
+	                }
+	            }
+        		solution = "";
+	            for (String element : parted) {
+	                if (Integer.parseInt(element) < 123) {
+	                    solution += asciitable[Integer.parseInt(element)];
+	                } else solution += '\u2718';
+	            }
+        	}
+	        else{
+	            String[] parted = new String[(codeline.length + 2) / 3];
+	
+	            for (int i = 0; i < parted.length; i++) {
+	                parted[i] = "";
+	            }
+	            for (int i = 0, j = 0; i < codeline.length; i++) {
+	                if (i == 0) {
+	                    parted[j] += codeline[i];
+	                } else if (i % 3 == 0) {
+	                    j++;
+	                    parted[j] += codeline[i];
+	                } else parted[j] += codeline[i];
+	            }
+	            solution = "";
+	            for (String element : parted) {
+	                if (Integer.parseInt(element) < 123) {
+	                    solution += asciitable[Integer.parseInt(element)];
+	                } else solution += '\u2718';
+	            }
+	        }
         }
         return solution.trim();
     }
@@ -635,6 +665,43 @@ public class Ciphers {
         return result;
 
     }
+    
+    public static String vinegereAutokey(String code, String pass) {
+        char[] passcode;
+        if (!pass.equals(""))
+            passcode = pass.toCharArray();
+        else {
+            passcode = new char[1];
+            passcode[0] = 'a';
+        }
+        char[] codeline = code.toCharArray();
+        String result = "";
+        for (int i = 0, j = 0; i < codeline.length; i++) {
+            if (codeline[i] >= 'a' && codeline[i] <= 'z') {
+                if ((codeline[i] - Character.toLowerCase(passcode[j])) + 'a' < 'a') {
+                    codeline[i] = (char) (('z' + 1) + (codeline[i] - Character.toLowerCase(passcode[j])));
+                } else codeline[i] = (char) (codeline[i] - (Character.toLowerCase(passcode[j]) - 'a'));
+            } else if (codeline[i] >= 'A' && codeline[i] <= 'Z') {
+                if ((codeline[i] - Character.toUpperCase(passcode[j])) + 'A' < 'A') {
+                    codeline[i] = (char) (('Z' + 1) + (codeline[i] - Character.toUpperCase(passcode[j])));
+                } else codeline[i] = (char) (codeline[i] - (Character.toUpperCase(passcode[j]) - 'A'));
+            } 
+            else{
+            	j--;
+            }
+            if (j == passcode.length - 1) {
+                j = 0;
+            } else {
+                j++;
+            }
+        }
+        for (char element : codeline) {
+            result += element;
+        }
+        return result;
+
+    }
+
 
     private static String getPostionInBase64Table(char c) {
         if ((c >= 65 && c <= 90))// Großbuchstabe
