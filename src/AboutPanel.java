@@ -14,20 +14,23 @@ import javax.swing.border.EmptyBorder;
 
 public class AboutPanel extends JPanel {
 
-    private static final long serialVersionUID = 766490351950584347L;
+    private static final long   serialVersionUID = 766490351950584347L;
+    private static final String VERSION          = "1.0.02";
 
-    ListenerHandler           listener;
-    GridBagConstraints        c                = new GridBagConstraints();
-    Font                      textfont         = new Font("Courier New", 1, 15);
-    Color                     yellowColor      = new Color(0, 205, 106);
-    Font                      mono             = new Font(Font.MONOSPACED,
-                                                       Font.PLAIN, 12);
+    ListenerHandler             listener;
+    GridBagConstraints          c                = new GridBagConstraints();
+    Font                        textfont         = new Font("Courier New", 1,
+                                                         15);
+    Color                       yellowColor      = new Color(0, 205, 106);
+    Font                        mono             = new Font(Font.MONOSPACED,
+                                                         Font.PLAIN, 12);
 
-    JLabel                    enlLogo, aboutUs, version, versionnumber,
+    JLabel                      enlLogo, aboutUs, version, versionnumber,
             weblink1, weblink2, weblink3, weblink4, weblink, contact,
             contact_mail, contact_g_M0P, contact_g_Xeno;
-    JTextArea                 aboutUsText;
-    Cursor                    hand             = new Cursor(Cursor.HAND_CURSOR);
+    JTextArea                   aboutUsText;
+    Cursor                      hand             = new Cursor(
+                                                         Cursor.HAND_CURSOR);
 
     public AboutPanel(ListenerHandler listenerHandler) {
         super(new GridBagLayout());
@@ -37,7 +40,7 @@ public class AboutPanel extends JPanel {
         this.enlLogo = new JLabel(makeImageIcon("/images/enlightened_big.png"));
         this.aboutUs = new JLabel("About us");
         this.version = new JLabel("Version");
-        this.versionnumber = new JLabel("0.1.01");
+        this.versionnumber = new JLabel(VERSION);
         this.weblink = new JLabel("Weblinks");
         this.weblink1 = new JLabel("Our Website");
         this.weblink2 = new JLabel("G+ Decode Community");
