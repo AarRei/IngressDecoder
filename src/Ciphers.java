@@ -676,27 +676,38 @@ public class Ciphers {
         }
         char[] codeline = code.toCharArray();
         String result = "";
-        for (int i = 0, j = 0; i < codeline.length; i++) {
-            if (codeline[i] >= 'a' && codeline[i] <= 'z') {
-                if ((codeline[i] - Character.toLowerCase(passcode[j])) + 'a' < 'a') {
-                    codeline[i] = (char) (('z' + 1) + (codeline[i] - Character.toLowerCase(passcode[j])));
-                } else codeline[i] = (char) (codeline[i] - (Character.toLowerCase(passcode[j]) - 'a'));
-            } else if (codeline[i] >= 'A' && codeline[i] <= 'Z') {
-                if ((codeline[i] - Character.toUpperCase(passcode[j])) + 'A' < 'A') {
-                    codeline[i] = (char) (('Z' + 1) + (codeline[i] - Character.toUpperCase(passcode[j])));
-                } else codeline[i] = (char) (codeline[i] - (Character.toUpperCase(passcode[j]) - 'A'));
-            } 
-            else{
-            	j--;
-            }
-            if (j == passcode.length - 1) {
-                j = 0;
-            } else {
-                j++;
-            }
-        }
-        for (char element : codeline) {
-            result += element;
+        if(passcode.length<=codeline.length){
+	        for (int i = 0, j = 0; i < passcode.length; i++, j++) {
+	            if (codeline[i] >= 'a' && codeline[i] <= 'z') {
+	                if ((codeline[i] - Character.toLowerCase(passcode[j])) + 'a' < 'a') {
+	                    codeline[i] = (char) (('z' + 1) + (codeline[i] - Character.toLowerCase(passcode[j])));
+	                } else codeline[i] = (char) (codeline[i] - (Character.toLowerCase(passcode[j]) - 'a'));
+	            } else if (codeline[i] >= 'A' && codeline[i] <= 'Z') {
+	                if ((codeline[i] - Character.toUpperCase(passcode[j])) + 'A' < 'A') {
+	                    codeline[i] = (char) (('Z' + 1) + (codeline[i] - Character.toUpperCase(passcode[j])));
+	                } else codeline[i] = (char) (codeline[i] - (Character.toUpperCase(passcode[j]) - 'A'));
+	            } 
+	            else{
+	            	j--;
+	            }
+	        }
+	        for (int i = passcode.length, j = 0; i < codeline.length; i++,j++) {
+	            if (codeline[i] >= 'a' && codeline[i] <= 'z') {
+	                if ((codeline[i] - Character.toLowerCase(codeline[j])) + 'a' < 'a') {
+	                    codeline[i] = (char) (('z' + 1) + (codeline[i] - Character.toLowerCase(codeline[j])));
+	                } else codeline[i] = (char) (codeline[i] - (Character.toLowerCase(codeline[j]) - 'a'));
+	            } else if (codeline[i] >= 'A' && codeline[i] <= 'Z') {
+	                if ((codeline[i] - Character.toUpperCase(codeline[j])) + 'A' < 'A') {
+	                    codeline[i] = (char) (('Z' + 1) + (codeline[i] - Character.toUpperCase(codeline[j])));
+	                } else codeline[i] = (char) (codeline[i] - (Character.toUpperCase(codeline[j]) - 'A'));
+	            } 
+	            else{
+	            	j--;
+	            }
+	        }
+	        for (char element : codeline) {
+	            result += element;
+	        }
         }
         return result;
 
