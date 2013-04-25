@@ -692,14 +692,21 @@ public class Ciphers {
 	            }
 	        }
 	        for (int i = passcode.length, j = 0; i < codeline.length; i++,j++) {
+	        	while(Character.toLowerCase(codeline[j]) < 'a' || Character.toLowerCase(codeline[j]) > 'z'){
+	        		j++;
+	        	}
 	            if (codeline[i] >= 'a' && codeline[i] <= 'z') {
 	                if ((codeline[i] - Character.toLowerCase(codeline[j])) + 'a' < 'a') {
 	                    codeline[i] = (char) (('z' + 1) + (codeline[i] - Character.toLowerCase(codeline[j])));
-	                } else codeline[i] = (char) (codeline[i] - (Character.toLowerCase(codeline[j]) - 'a'));
+	                } 
+	                else 
+	                	codeline[i] = (char) (codeline[i] - (Character.toLowerCase(codeline[j]) - 'a'));
 	            } else if (codeline[i] >= 'A' && codeline[i] <= 'Z') {
 	                if ((codeline[i] - Character.toUpperCase(codeline[j])) + 'A' < 'A') {
 	                    codeline[i] = (char) (('Z' + 1) + (codeline[i] - Character.toUpperCase(codeline[j])));
-	                } else codeline[i] = (char) (codeline[i] - (Character.toUpperCase(codeline[j]) - 'A'));
+	                } 
+	                else 
+	                	codeline[i] = (char) (codeline[i] - (Character.toUpperCase(codeline[j]) - 'A'));
 	            } 
 	            else{
 	            	j--;
@@ -712,7 +719,70 @@ public class Ciphers {
         return result;
 
     }
-
+    
+    public static String numbertoletter(String code, int start) {
+        char[] codeline = code.toCharArray();
+        String result = "";
+        boolean spaces = false;
+        int space=0;
+        int letters = 0;
+        for(int i = 0; i < codeline.length;i++){
+        	if(codeline[i]==' '){
+        		spaces = true;
+        		space++;
+        	}
+        	if((codeline[i]<'0' || codeline[i]> '9')&&codeline[i]!= ' '){
+        		letters++;
+        	}
+        }
+        if(spaces){
+        	String[] parts = new String[space+letters+1];
+        	parts[0]="";
+        	for(int i=0,j=0;i< codeline.length;i++){
+        		if(codeline[i]>='0' && codeline[i]<='9'){
+        			parts[j]+=codeline[i];
+        		}
+        		else if(codeline[i]==' '){
+        			if(j<parts.length-1){
+	        			j++;
+	        			parts[j]="";
+        			}
+        		}
+        		else{
+        			if(j<parts.length-1){
+        				if(codeline[i-1]!=' '){
+        					if(!(codeline[i-1]<'0' || codeline[i-1]> '9'))
+        						j++;
+        				}
+	        			parts[j]=""+codeline[i];
+	        			if(j<parts.length-1){
+		        			j++;
+		        			parts[j]="";
+	        			}
+        			}
+        		}
+        	}
+        	for(int i = 0; i< parts.length;i++){
+        		if(parts[i].length()>0){
+	        		if(parts[i].charAt(0)>='0' &&parts[i].charAt(0)<='9'){
+	        			result+=""+(char)(Integer.parseInt(parts[i])+('a'-start));
+	        		}
+	        		else{
+	        			result+= parts[i];
+	        		}
+        		}
+        	}
+        }
+	    else{
+	        for (char element : codeline) {
+	            if (element >= '0' && element <= '9')
+	                result += (char)(Integer.parseInt(""+element)+('a'-start));
+	            else
+	            	result+=element;
+	        }
+	    }
+        return result;   
+    }
 
     private static String getPostionInBase64Table(char c) {
         if ((c >= 65 && c <= 90))// Großbuchstabe
