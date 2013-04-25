@@ -693,6 +693,8 @@ public class Ciphers {
 	        }
 	        for (int i = passcode.length, j = 0; i < codeline.length; i++,j++) {
 	        	while(Character.toLowerCase(codeline[j]) < 'a' || Character.toLowerCase(codeline[j]) > 'z'){
+	        		if(j==codeline.length-1)
+	        			break;
 	        		j++;
 	        	}
 	            if (codeline[i] >= 'a' && codeline[i] <= 'z') {
