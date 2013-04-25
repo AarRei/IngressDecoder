@@ -15,7 +15,7 @@ import javax.swing.border.EmptyBorder;
 public class AboutPanel extends JPanel {
 
     private static final long   serialVersionUID = 766490351950584347L;
-    private static final String VERSION          = "1.0.02";
+    private static final String VERSION          = "1.1.00";
 
     ListenerHandler             listener;
     GridBagConstraints          c                = new GridBagConstraints();
