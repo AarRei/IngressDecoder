@@ -30,6 +30,8 @@ public class Ciphers2 {
         // Maximale Faktoranzahl ermitteln
         int maxFactors = (int) Math.ceil(Math.log10(number) / Math.log10(2));
 
+        if (maxFactors <= 0) maxFactors = 0;
+
         // Temporäres Array erzeugen
         long[] tmp = new long[maxFactors];
 
