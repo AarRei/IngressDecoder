@@ -30,8 +30,9 @@ public class ListenerHandler extends MouseMotionAdapter implements
     }
 
     GUI2        gui;
-    Enlightened enl = new Enlightened();
+    Enlightened enl         = new Enlightened();
     Point       mouseclicked, windowlocation;
+    boolean     numToLetter = false;
 
     public ListenerHandler(GUI2 mainGUI) {
         this.gui = mainGUI;
@@ -41,29 +42,75 @@ public class ListenerHandler extends MouseMotionAdapter implements
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
         String code = this.gui.cb_code.getEditor().getItem().toString();
-        if (command != null) if (command.equals("onTop"))
-            this.gui.setAlwaysOnTop(!this.gui.isAlwaysOnTop());
-        else if (command.equals("liveDecode")) {
-            this.gui.islivedecode = !this.gui.islivedecode;
-        } else if (command.equals("generate")) {
-            generateAll();
-            addToComboBox();
-        } else if (command.equals("conv_text")) {
-            convertDectoEverything(Ciphers.asctodec(code.trim()));
-            this.gui.convert.tf_text.setText(code.trim());
-        } else if (command.equals("conv_bin")) {
-            convertDectoEverything(Ciphers.bintodec(code.trim()));
-            this.gui.convert.tf_bin.setText(code.trim());
-        } else if (command.equals("conv_hex")) {
-            convertDectoEverything(Ciphers.hextodec(code.trim()));
-            this.gui.convert.tf_hex.setText(code.trim());
-        } else if (command.equals("conv_base64")) {
-            convertDectoEverything(Ciphers.base64todec(code.trim()));
-            this.gui.convert.tf_base64.setText(code.trim());
-        } else if (command.equals("conv_dec")) {
-            convertDectoEverything(code);
-            this.gui.convert.tf_dec.setText(code.trim());
-        }
+        if (command != null)
+            if (command.equals("onTop"))
+                this.gui.setAlwaysOnTop(!this.gui.isAlwaysOnTop());
+            else if (command.equals("liveDecode")) {
+                this.gui.islivedecode = !this.gui.islivedecode;
+            } else if (command.equals("generate")) {
+                generateAll();
+                addToComboBox();
+            } else if (command.equals("conv_text")) {
+                convertDectoEverything(Ciphers.asctodec(code.trim()));
+                this.gui.convert.tf_text.setText(code.trim());
+            } else if (command.equals("conv_bin")) {
+                convertDectoEverything(Ciphers.bintodec(code.trim()));
+                this.gui.convert.tf_bin.setText(code.trim());
+            } else if (command.equals("conv_hex")) {
+                convertDectoEverything(Ciphers.hextodec(code.trim()));
+                this.gui.convert.tf_hex.setText(code.trim());
+            } else if (command.equals("conv_base64")) {
+                convertDectoEverything(Ciphers.base64todec(code.trim()));
+                this.gui.convert.tf_base64.setText(code.trim());
+            } else if (command.equals("conv_dec")) {
+                convertDectoEverything(code);
+                this.gui.convert.tf_dec.setText(code.trim());
+            } else if (command.equals("skip_up")) {
+                this.gui.cipher3.tf_skip.setText(Ciphers2
+                        .getNextPossibleSkipNumber(this.gui.cipher3.tf_skip
+                                .getText().trim(), code, false)
+                        + "");
+                if (this.gui.islivedecode) {
+                    int number = 0;
+                    try {
+                        number = Integer.parseInt(this.gui.cipher3.tf_skip
+                                .getText().trim());
+                    } catch (Exception e1) {
+                        number = 1;
+                    }
+                    this.gui.cipher3.tf_skipresult.setText(Ciphers2.skip(code,
+                            number));
+                }
+            } else if (command.equals("skip_down")) {
+                this.gui.cipher3.tf_skip.setText(Ciphers2
+                        .getNextPossibleSkipNumber(this.gui.cipher3.tf_skip
+                                .getText().trim(), code, true)
+                        + "");
+                if (this.gui.islivedecode) {
+                    int number = 0;
+                    try {
+                        number = Integer.parseInt(this.gui.cipher3.tf_skip
+                                .getText().trim());
+                    } catch (Exception e1) {
+                        number = 1;
+                    }
+                    this.gui.cipher3.tf_skipresult.setText(Ciphers2.skip(code,
+                            number));
+                }
+            } else if (command.equals("NumToLetter")) {
+                this.numToLetter = !this.numToLetter;
+                int letter;
+                if (this.gui.islivedecode) {
+                    try {
+                        letter = Integer.parseInt(this.gui.cipher2.tf_letter
+                                .getText().trim());
+                    } catch (Exception e1) {
+                        letter = 1;
+                    }
+                    this.gui.cipher2.tf_letterToNum.setText(Ciphers
+                            .numbertoletter(code.trim(), letter).trim());
+                }
+            }
     }
 
     @Override
@@ -84,11 +131,30 @@ public class ListenerHandler extends MouseMotionAdapter implements
                         this.gui.cipher2.tf_letterToNum
                                 .setText("ERROR 1: INVALID INPUT");
                     }
-                    this.gui.cipher2.tf_letterToNum.setText(Ciphers
-                            .lettertonumber(code, letter));
+                    String result;
+                    if (this.numToLetter)
+                        result = Ciphers.numbertoletter(code, letter);
+                    else result = Ciphers.lettertonumber(code, letter);
+                    this.gui.cipher2.tf_letterToNum.setText(result);
+                } else if (name.equals("skip")) {
+                    int number = 1;
+                    try {
+                        number = Integer.parseInt(this.gui.cipher3.tf_skip
+                                .getText().trim());
+                    } catch (Exception e1) {
+                        this.gui.cipher3.tf_skipresult
+                                .setText("ERROR 1: INVALID INPUT");
+                    }
+                    this.gui.cipher3.tf_skipresult.setText(Ciphers2.skip(code,
+                            number));
                 } else if (name.equals("vignere")) {
                     this.gui.cipher2.tf_vinegere.setText(Ciphers.vinegere(code,
                             this.gui.cipher2.tf_vinegerepass.getText().trim()));
+                } else if (name.equals("vignere_autokey")) {
+                    this.gui.cipher2.tf_vinegereautokey.setText(Ciphers
+                            .vinegereAutokey(code,
+                                    this.gui.cipher2.tf_vinegereautokeypass
+                                            .getText().trim()));
                 } else if (name.equals("binary")) {
                     this.gui.cipher1.tf_patttobin.setText(Ciphers.patttobin(
                             code, this.gui.cipher1.tf_zeros.getText().trim(),
@@ -228,6 +294,7 @@ public class ListenerHandler extends MouseMotionAdapter implements
         // String code = this.gui.tf_code.getText().trim();
         String code = this.gui.cb_code.getEditor().getItem().toString();
         int letter = 1;
+        int number = 1;
         // cipher 1
         this.gui.cipher1.tf_reversed.setText(Ciphers.reverse(code));
         this.gui.cipher1.tf_patttobin.setText(Ciphers.patttobin(code,
@@ -242,14 +309,27 @@ public class ListenerHandler extends MouseMotionAdapter implements
         this.gui.cipher2.tf_atbash.setText(Ciphers.atbash(code));
         this.gui.cipher2.tf_vinegere.setText(Ciphers.vinegere(code,
                 this.gui.cipher2.tf_vinegerepass.getText().trim()));
+        this.gui.cipher2.tf_vinegereautokey
+                .setText(Ciphers.vinegereAutokey(code,
+                        this.gui.cipher2.tf_vinegereautokeypass.getText()
+                                .trim()));
         try {
             letter = Integer.parseInt(this.gui.cipher2.tf_letter.getText()
                     .trim());
-            if (letter < 1 || letter > 26) letter = 1;
         } catch (Exception e1) {
             letter = 1;
         }
-        this.gui.cipher2.tf_letterToNum.setText(Ciphers.lettertonumber(code,
-                letter));
+        String result = "";
+        if (this.numToLetter)
+            result = Ciphers.numbertoletter(code.trim(), letter);
+        else result = Ciphers.lettertonumber(code, letter);
+        this.gui.cipher2.tf_letterToNum.setText(result);
+        try {
+            number = Integer
+                    .parseInt(this.gui.cipher3.tf_skip.getText().trim());
+        } catch (Exception e1) {
+            number = 1;
+        }
+        this.gui.cipher3.tf_skipresult.setText(Ciphers2.skip(code, number));
     }
 }

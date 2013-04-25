@@ -58,9 +58,10 @@ public class GUI2 extends JFrame {
                                                       Font.PLAIN, 14);
     boolean                      islivedecode = false;
 
-    Vector<String>               codes        = new Vector<String>();
+    Vector<String>               codes        = new Vector<>();
     CipherPanel                  cipher1;
     CipherPanel2                 cipher2;
+    CipherPanel3                 cipher3;
     ConvertPanel                 convert;
     AboutPanel                   about;
 
@@ -68,6 +69,7 @@ public class GUI2 extends JFrame {
         this.listener = new ListenerHandler(this);
         this.cipher1 = new CipherPanel(this.listener);
         this.cipher2 = new CipherPanel2(this.listener);
+        this.cipher3 = new CipherPanel3(this.listener);
         this.convert = new ConvertPanel(this.listener);
         this.about = new AboutPanel(this.listener);
     }
@@ -159,6 +161,9 @@ public class GUI2 extends JFrame {
         this.tabbedPane.addTab("Cipher 2",
                 makeImageIcon("/images/Ingress_Logo.png"), this.cipher2,
                 "Atbash, Vigenere Key, Letter2Number");
+        this.tabbedPane
+                .addTab("Cipher 3", makeImageIcon("/images/Ingress_Logo.png"),
+                        this.cipher3, "Skip");
         this.tabbedPane.addTab("Converter",
                 makeImageIcon("/images/Ingress_Logo.png"), this.convert,
                 "Dec2ASCII");
