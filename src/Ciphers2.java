@@ -20,7 +20,7 @@ public class Ciphers2 {
         long primeFactors[] = primeFactors(codeLength);
         for (long primeFactor : primeFactors) {
             if (number % primeFactor == 0)
-                return getNextPossibleSkipNumber(number + "", code, lowerValue);
+                return getNextPossibleSkipNumber(number + "", code, lowerValue); //$NON-NLS-1$
         }
         return number;
     }
@@ -67,21 +67,21 @@ public class Ciphers2 {
 
     public static String skip(String code, int skip, long[] primeFactors) {
         // check if code isnt null or empty
-        if (code == null || code.equals("")) return "";
+        if (code == null || code.equals("")) return ""; //$NON-NLS-1$ //$NON-NLS-2$
         // check if skip is smaller or equal to 1
         if (skip <= 1) return code;
         // check if skip is larger than length of code
         if (skip >= code.length())
-            return "error 1: Skip must be smaller than the length of the text."
+            return Messages.getString("Ciphers2.Error_Skip1") //$NON-NLS-1$
                     .toUpperCase();
         // check if primeFactors contains skip
         for (long primeFactor : primeFactors) {
             if (skip % primeFactor == 0)
-                return "error 1: Skip has a prime factor that cleanly divides into the text length, so it can not be used."
+                return Messages.getString("Ciphers2.Error_Skip2") //$NON-NLS-1$
                         .toUpperCase();
         }
-        String result = "";
-        String input = "";
+        String result = ""; //$NON-NLS-1$
+        String input = ""; //$NON-NLS-1$
         // concat code to itself skip times
         for (int i = 0; i < skip; i++)
             input += code;

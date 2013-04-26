@@ -13,7 +13,7 @@ public class ConvertPanel extends JPanel {
     private static final long serialVersionUID = 7973879384634606607L;
 
     GridBagConstraints        c                = new GridBagConstraints();
-    Font                      textfont         = new Font("Courier New", 1, 15);
+    Font                      textfont         = new Font("Courier New", 1, 15); //$NON-NLS-1$
     Color                     yellowColor      = new Color(0, 205, 106);
     Font                      mono             = new Font(Font.MONOSPACED,
                                                        Font.PLAIN, 12);
@@ -26,11 +26,11 @@ public class ConvertPanel extends JPanel {
     JTextField                tf_base64        = new JTextField();
     JTextField                tf_dec           = new JTextField();
 
-    JButton                   btn_text         = new JButton("Text/ASCII");
-    JButton                   btn_bin          = new JButton("Binary");
-    JButton                   btn_hex          = new JButton("Hex");
-    JButton                   btn_base64       = new JButton("Base64");
-    JButton                   btn_dec          = new JButton("Dec/Char");
+    JButton                   btn_text         = new JButton(Messages.getString("ConvertPanel.Label_TextASCII")); //$NON-NLS-1$
+    JButton                   btn_bin          = new JButton(Messages.getString("ConvertPanel.Label_Binary")); //$NON-NLS-1$
+    JButton                   btn_hex          = new JButton(Messages.getString("ConvertPanel.Label_Hex")); //$NON-NLS-1$
+    JButton                   btn_base64       = new JButton(Messages.getString("ConvertPanel.Label_Base64")); //$NON-NLS-1$
+    JButton                   btn_dec          = new JButton(Messages.getString("ConvertPanel.Label_DecChar")); //$NON-NLS-1$
 
     public ConvertPanel(ListenerHandler listenerHandler) {
         super(new GridBagLayout());
@@ -86,11 +86,11 @@ public class ConvertPanel extends JPanel {
         this.btn_dec.setForeground(this.yellowColor);
 
         // add listener stuff
-        this.btn_text.setActionCommand("conv_text");
-        this.btn_bin.setActionCommand("conv_bin");
-        this.btn_hex.setActionCommand("conv_hex");
-        this.btn_base64.setActionCommand("conv_base64");
-        this.btn_dec.setActionCommand("conv_dec");
+        this.btn_text.setActionCommand("conv_text"); //$NON-NLS-1$
+        this.btn_bin.setActionCommand("conv_bin"); //$NON-NLS-1$
+        this.btn_hex.setActionCommand("conv_hex"); //$NON-NLS-1$
+        this.btn_base64.setActionCommand("conv_base64"); //$NON-NLS-1$
+        this.btn_dec.setActionCommand("conv_dec"); //$NON-NLS-1$
 
         this.btn_text.addActionListener(this.listener);
         this.btn_bin.addActionListener(this.listener);
@@ -141,7 +141,7 @@ public class ConvertPanel extends JPanel {
         this.c.gridy = 1;
         this.c.gridwidth = 5;
         this.c.insets = new Insets(0, 5, 0, 5);
-        add(GUI2.makeTextLabel("Text:"), this.c);
+        add(GUI2.makeTextLabel(Messages.getString("ConvertPanel.Label_TextLabel")), this.c); //$NON-NLS-1$
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 1.0;
@@ -157,7 +157,7 @@ public class ConvertPanel extends JPanel {
         this.c.gridy = 3;
         this.c.gridwidth = 5;
         this.c.insets = new Insets(0, 5, 0, 5);
-        add(GUI2.makeTextLabel("Binary:"), this.c);
+        add(GUI2.makeTextLabel(Messages.getString("ConvertPanel.Label_BinaryLabel")), this.c); //$NON-NLS-1$
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 1.0;
@@ -173,7 +173,7 @@ public class ConvertPanel extends JPanel {
         this.c.gridy = 5;
         this.c.gridwidth = 5;
         this.c.insets = new Insets(0, 5, 0, 5);
-        add(GUI2.makeTextLabel("Hex:"), this.c);
+        add(GUI2.makeTextLabel(Messages.getString("ConvertPanel.Label_HexLabel")), this.c); //$NON-NLS-1$
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 1.0;
@@ -189,7 +189,7 @@ public class ConvertPanel extends JPanel {
         this.c.gridy = 7;
         this.c.gridwidth = 5;
         this.c.insets = new Insets(0, 5, 0, 5);
-        add(GUI2.makeTextLabel("Base64:"), this.c);
+        add(GUI2.makeTextLabel(Messages.getString("ConvertPanel.Label_Base64Label")), this.c); //$NON-NLS-1$
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 1.0;
@@ -205,7 +205,7 @@ public class ConvertPanel extends JPanel {
         this.c.gridy = 9;
         this.c.gridwidth = 5;
         this.c.insets = new Insets(0, 5, 0, 5);
-        add(GUI2.makeTextLabel("Dec/Char:"), this.c);
+        add(GUI2.makeTextLabel(Messages.getString("ConvertPanel.Label_DecCharLabel")), this.c); //$NON-NLS-1$
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 1.0;

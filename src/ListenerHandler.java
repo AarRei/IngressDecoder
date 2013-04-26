@@ -207,7 +207,7 @@ public class ListenerHandler extends MouseMotionAdapter implements
             else if (name.equals("large")) //$NON-NLS-1$
                 this.gui.setSize(new Dimension(1300, 500));
             else if (name.equals("link1")) //$NON-NLS-1$
-                openWebsite("http://www.xop.bplaced.de"); //$NON-NLS-1$
+                openWebsite("http://www.blog.xop.bplaced.de"); //$NON-NLS-1$
             else if (name.equals("link2")) //$NON-NLS-1$
                 openWebsite("https://plus.google.com/communities/114606795989653285746/stream/a65f12d5-7722-46e1-87c7-fc05197652a5"); //$NON-NLS-1$
             else if (name.equals("link3")) //$NON-NLS-1$

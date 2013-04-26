@@ -34,25 +34,25 @@ public class Enlightened extends JDialog {
             setBackground(this.c);
             int random = new Random().nextInt(4);
             if (random == 0)
-                g.drawImage(makeImageIcon("/images/Ingress_Green.png")
+                g.drawImage(makeImageIcon("/images/Ingress_Green.png") //$NON-NLS-1$
                         .getImage(), this.width / 2 - 256,
                         this.heigh / 2 - 256, this);
             else if (random == 1)
-                g.drawImage(makeImageIcon("/images/Enlightened_Green.png")
+                g.drawImage(makeImageIcon("/images/Enlightened_Green.png") //$NON-NLS-1$
                         .getImage(), this.width / 2 - 256,
                         this.heigh / 2 - 256, this);
             else if (random == 2)
-                g.drawImage(makeImageIcon("/images/Resistance_Blue.png")
+                g.drawImage(makeImageIcon("/images/Resistance_Blue.png") //$NON-NLS-1$
                         .getImage(), this.width / 2 - 256,
                         this.heigh / 2 - 256, this);
             else if (random == 3) {
-                g.drawImage(makeImageIcon("/images/Enlightened_Green.png")
+                g.drawImage(makeImageIcon("/images/Enlightened_Green.png") //$NON-NLS-1$
                         .getImage(), this.width / 2 - 640,
                         this.heigh / 2 - 128, this);
-                g.drawImage(makeImageIcon("/images/Ingress_Dual.png")
+                g.drawImage(makeImageIcon("/images/Ingress_Dual.png") //$NON-NLS-1$
                         .getImage(), this.width / 2 - 256,
                         this.heigh / 2 - 384, this);
-                g.drawImage(makeImageIcon("/images/Resistance_Blue.png")
+                g.drawImage(makeImageIcon("/images/Resistance_Blue.png") //$NON-NLS-1$
                         .getImage(), this.width / 2 + 128,
                         this.heigh / 2 - 128, this);
             }
