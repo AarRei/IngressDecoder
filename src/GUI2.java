@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.util.Vector;
@@ -301,7 +302,9 @@ public class GUI2 extends JFrame {
         setSize(new Dimension(900, 500));
         setIconImage(makeImageIcon("/images/Ingress_Logo_Middle.png") //$NON-NLS-1$
                 .getImage());
-        setLocationByPlatform(true);
+        setLocation(
+                Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 450,
+                Toolkit.getDefaultToolkit().getScreenSize().height / 2 - 250);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle(Messages.getString("GUI2.Label_Title")); //$NON-NLS-1$
         setUndecorated(true);

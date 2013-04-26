@@ -21,9 +21,10 @@ public class Main {
     }
 
     public static void redrawGUI(String lang) {
-        gui.dispose();
+        GUI2 oldgui = gui;
         gui = new GUI2(lang);
         gui.initGUI();
+        oldgui.dispose();
 
     }
 }
