@@ -31,10 +31,10 @@ class MyComboBoxUI extends BasicComboBoxUI {
 
     @Override
     protected JButton createArrowButton() {
-        JButton button = new JButton(makeImageIcon("/images/dropdown.png"));
+        JButton button = new JButton(makeImageIcon("/images/dropdown.png")); //$NON-NLS-1$
         button.setBorder(BorderFactory.createEmptyBorder());
-        button.setRolloverIcon(makeImageIcon("/images/dropdown_hover.png"));
-        button.setPressedIcon(makeImageIcon("/images/dropdown_pressed.png"));
+        button.setRolloverIcon(makeImageIcon("/images/dropdown_hover.png")); //$NON-NLS-1$
+        button.setPressedIcon(makeImageIcon("/images/dropdown_pressed.png")); //$NON-NLS-1$
         button.setContentAreaFilled(false);
         return button;
     }

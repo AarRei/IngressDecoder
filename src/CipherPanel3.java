@@ -13,17 +13,17 @@ public class CipherPanel3 extends JPanel {
     private static final long serialVersionUID = -5697652893729686255L;
 
     GridBagConstraints        c                = new GridBagConstraints();
-    Font                      textfont         = new Font("Courier New", 1, 15);
+    Font                      textfont         = new Font("Courier New", 1, 15); //$NON-NLS-1$
     Color                     yellowColor      = new Color(0, 205, 106);
     Font                      mono             = new Font(Font.MONOSPACED,
                                                        Font.PLAIN, 12);
     ListenerHandler           listener;
 
-    JTextField                tf_skip          = new JTextField("1");
+    JTextField                tf_skip          = new JTextField("1"); //$NON-NLS-1$
     JTextField                tf_skipresult    = new JTextField();
 
-    JButton                   btn_higher_skip  = new JButton("+");
-    JButton                   btn_lower_skip   = new JButton("-");
+    JButton                   btn_higher_skip  = new JButton("+"); //$NON-NLS-1$
+    JButton                   btn_lower_skip   = new JButton("-"); //$NON-NLS-1$
 
     public CipherPanel3(ListenerHandler listenerHandler) {
         super(new GridBagLayout());
@@ -59,7 +59,7 @@ public class CipherPanel3 extends JPanel {
         this.c.gridy = 0;
         this.c.gridwidth = 4;
         this.c.insets = new Insets(0, 5, 0, 5);
-        add(GUI2.makeTextLabel("Skip"), this.c);
+        add(GUI2.makeTextLabel(Messages.getString("CipherPanel3.Label_Skip")), this.c); //$NON-NLS-1$
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 0.05;
@@ -67,7 +67,7 @@ public class CipherPanel3 extends JPanel {
         this.c.gridy = 1;
         this.c.gridwidth = 1;
         this.c.insets = new Insets(0, 5, 2, 5);
-        add(GUI2.makeTextLabel("Skip ="), this.c);
+        add(GUI2.makeTextLabel(Messages.getString("CipherPanel3.Label_Skip_ValueDesc")), this.c); //$NON-NLS-1$
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 10.0;
@@ -75,7 +75,7 @@ public class CipherPanel3 extends JPanel {
         this.c.gridy = 1;
         this.c.gridwidth = 1;
         this.c.insets = new Insets(0, 5, 2, 5);
-        this.tf_skip.setName("skip");
+        this.tf_skip.setName("skip"); //$NON-NLS-1$
         this.tf_skip.addCaretListener(this.listener);
         add(this.tf_skip, this.c);
 
@@ -85,7 +85,7 @@ public class CipherPanel3 extends JPanel {
         this.c.gridy = 1;
         this.c.gridwidth = 1;
         this.c.insets = new Insets(0, 5, 2, 5);
-        this.btn_higher_skip.setActionCommand("skip_up");
+        this.btn_higher_skip.setActionCommand("skip_up"); //$NON-NLS-1$
         this.btn_higher_skip.addActionListener(listenerHandler);
         add(this.btn_higher_skip, this.c);
 
@@ -95,7 +95,7 @@ public class CipherPanel3 extends JPanel {
         this.c.gridy = 1;
         this.c.gridwidth = 1;
         this.c.insets = new Insets(0, 5, 2, 5);
-        this.btn_lower_skip.setActionCommand("skip_down");
+        this.btn_lower_skip.setActionCommand("skip_down"); //$NON-NLS-1$
         this.btn_lower_skip.addActionListener(listenerHandler);
         add(this.btn_lower_skip, this.c);
 

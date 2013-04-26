@@ -14,7 +14,7 @@ public class CipherPanel extends JPanel {
     private static final long serialVersionUID   = 7264231748098817482L;
 
     GridBagConstraints        c                  = new GridBagConstraints();
-    Font                      textfont           = new Font("Courier New", 1,
+    Font                      textfont           = new Font("Courier New", 1, //$NON-NLS-1$
                                                          15);
     Color                     yellowColor        = new Color(0, 205, 106);
     Font                      mono               = new Font(Font.MONOSPACED,
@@ -95,7 +95,7 @@ public class CipherPanel extends JPanel {
         this.c.gridy = 2;
         this.c.gridwidth = 4;
         this.c.insets = new Insets(0, 5, 0, 5);
-        add(GUI2.makeTextLabel("Reversed"), this.c);
+        add(GUI2.makeTextLabel(Messages.getString("CipherPanel.Label_Reversed")), this.c); //$NON-NLS-1$
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 1.0;
@@ -111,7 +111,7 @@ public class CipherPanel extends JPanel {
         this.c.gridy = 6;
         this.c.gridwidth = 4;
         this.c.insets = new Insets(0, 5, 0, 5);
-        add(GUI2.makeTextLabel("Pattern to binary"), this.c);
+        add(GUI2.makeTextLabel(Messages.getString("CipherPanel.Label_PattToBin")), this.c); //$NON-NLS-1$
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 0.02;
@@ -119,14 +119,14 @@ public class CipherPanel extends JPanel {
         this.c.gridy = 7;
         this.c.gridwidth = 1;
         this.c.insets = new Insets(0, 5, 5, 5);
-        add(GUI2.makeTextLabel("0:"), this.c);
+        add(GUI2.makeTextLabel("0:"), this.c); //$NON-NLS-1$
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 0.48;
         this.c.gridx = 1;
         this.c.gridy = 7;
         this.c.insets = new Insets(0, 5, 5, 5);
-        this.tf_zeros.setName("binary");
+        this.tf_zeros.setName("binary"); //$NON-NLS-1$
         this.tf_zeros.addCaretListener(this.listener);
         add(this.tf_zeros, this.c);
 
@@ -135,14 +135,14 @@ public class CipherPanel extends JPanel {
         this.c.gridx = 2;
         this.c.gridy = 7;
         this.c.insets = new Insets(0, 5, 5, 5);
-        add(GUI2.makeTextLabel("1:"), this.c);
+        add(GUI2.makeTextLabel("1:"), this.c); //$NON-NLS-1$
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 0.48;
         this.c.gridx = 3;
         this.c.gridy = 7;
         this.c.insets = new Insets(0, 5, 5, 5);
-        this.tf_ones.setName("binary");
+        this.tf_ones.setName("binary"); //$NON-NLS-1$
         this.tf_ones.addCaretListener(this.listener);
         add(this.tf_ones, this.c);
 
@@ -160,7 +160,7 @@ public class CipherPanel extends JPanel {
         this.c.gridy = 9;
         this.c.gridwidth = 4;
         this.c.insets = new Insets(0, 5, 0, 5);
-        add(GUI2.makeTextLabel("Morsepattern to Ascii"), this.c);
+        add(GUI2.makeTextLabel(Messages.getString("CipherPanel.Label_MorseToAscii")), this.c); //$NON-NLS-1$
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 0.02;
@@ -168,14 +168,14 @@ public class CipherPanel extends JPanel {
         this.c.gridy = 10;
         this.c.gridwidth = 1;
         this.c.insets = new Insets(0, 5, 5, 5);
-        add(GUI2.makeTextLabel("short:"), this.c);
+        add(GUI2.makeTextLabel(Messages.getString("CipherPanel.Label_MorseToAscii_Short")), this.c); //$NON-NLS-1$
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 0.48;
         this.c.gridx = 1;
         this.c.gridy = 10;
         this.c.insets = new Insets(0, 5, 5, 5);
-        this.tf_short.setName("morse");
+        this.tf_short.setName("morse"); //$NON-NLS-1$
         this.tf_short.addCaretListener(this.listener);
         add(this.tf_short, this.c);
 
@@ -184,14 +184,14 @@ public class CipherPanel extends JPanel {
         this.c.gridx = 2;
         this.c.gridy = 10;
         this.c.insets = new Insets(0, 5, 5, 5);
-        add(GUI2.makeTextLabel("long:"), this.c);
+        add(GUI2.makeTextLabel(Messages.getString("CipherPanel.Label_MorseToAscii_Long")), this.c); //$NON-NLS-1$
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 0.48;
         this.c.gridx = 3;
         this.c.gridy = 10;
         this.c.insets = new Insets(0, 5, 5, 5);
-        this.tf_long.setName("morse");
+        this.tf_long.setName("morse"); //$NON-NLS-1$
         this.tf_long.addCaretListener(this.listener);
         add(this.tf_long, this.c);
 
@@ -209,14 +209,14 @@ public class CipherPanel extends JPanel {
         this.c.gridy = 12;
         this.c.gridwidth = 4;
         this.c.insets = new Insets(0, 5, 0, 5);
-        add(GUI2.makeTextLabel("Caesarian Shift"), this.c);
+        add(GUI2.makeTextLabel(Messages.getString("CipherPanel.Label_CaesariaShift")), this.c); //$NON-NLS-1$
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 0.05;
         this.c.gridx = 0;
         this.c.gridy = 13;
         this.c.insets = new Insets(0, 5, 2, 5);
-        add(GUI2.makeTextLabel("Shift:"), this.c);
+        add(GUI2.makeTextLabel(Messages.getString("CipherPanel.Label_CaesariaShift_Shift")), this.c); //$NON-NLS-1$
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 0.1;

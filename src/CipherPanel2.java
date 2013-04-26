@@ -24,14 +24,13 @@ public class CipherPanel2 extends JPanel {
                 s += s;
             formatter = new MaskFormatter(s);
         } catch (java.text.ParseException exc) {
-            System.err.println("formatter is bad: " + exc.getMessage());
             System.exit(-1);
         }
         return formatter;
     }
 
     GridBagConstraints  c                      = new GridBagConstraints();
-    Font                textfont               = new Font("Courier New", 1, 15);
+    Font                textfont               = new Font("Courier New", 1, 15);                              //$NON-NLS-1$
     Color               yellowColor            = new Color(0, 205, 106);
     Font                mono                   = new Font(Font.MONOSPACED,
                                                        Font.PLAIN, 12);
@@ -42,17 +41,17 @@ public class CipherPanel2 extends JPanel {
     JTextField          tf_vinegere            = new JTextField();
     // JTextField tf_vinegereautokeypass = new JTextField();
     JTextField          tf_vinegereautokey     = new JTextField();
-    JTextField          tf_letter              = new JTextField("1");
+    JTextField          tf_letter              = new JTextField("1");                                         //$NON-NLS-1$
 
     JTextField          tf_letterToNum         = new JTextField();
     JFormattedTextField tf_vinegerepass        = new JFormattedTextField(
-                                                       createFormatter("L"));
+                                                       createFormatter("L"));                                 //$NON-NLS-1$
 
     JFormattedTextField tf_vinegereautokeypass = new JFormattedTextField(
-                                                       createFormatter("L"));
+                                                       createFormatter("L"));                                 //$NON-NLS-1$
 
     JCheckBox           cb_NumToLetter         = new JCheckBox(
-                                                       "Number to Letter");
+                                                       Messages.getString("CipherPanel2.Label_NumberLetter")); //$NON-NLS-1$
 
     JSlider             sl_caesarian           = new JSlider(
                                                        SwingConstants.HORIZONTAL,
@@ -105,7 +104,7 @@ public class CipherPanel2 extends JPanel {
         this.c.gridy = 0;
         this.c.gridwidth = 3;
         this.c.insets = new Insets(0, 5, 0, 5);
-        add(GUI2.makeTextLabel("Atbash"), this.c);
+        add(GUI2.makeTextLabel(Messages.getString("CipherPanel2.Label_Atbash")), this.c); //$NON-NLS-1$
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 1;
@@ -121,7 +120,8 @@ public class CipherPanel2 extends JPanel {
         this.c.gridy = 2;
         this.c.gridwidth = 3;
         this.c.insets = new Insets(0, 5, 0, 5);
-        add(GUI2.makeTextLabel("Vigenere Cipher"), this.c);
+        add(GUI2.makeTextLabel(Messages
+                .getString("CipherPanel2.Label_Vigenere")), this.c); //$NON-NLS-1$
 
         // this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 0.1;
@@ -129,7 +129,8 @@ public class CipherPanel2 extends JPanel {
         this.c.gridy = 3;
         this.c.gridwidth = 1;
         this.c.insets = new Insets(0, 5, 2, 5);
-        add(GUI2.makeTextLabel("Passphrase:"), this.c);
+        add(GUI2.makeTextLabel(Messages
+                .getString("CipherPanel2.Label_Vigenere_Passphrase")), this.c); //$NON-NLS-1$
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 1;
@@ -137,7 +138,7 @@ public class CipherPanel2 extends JPanel {
         this.c.gridy = 3;
         this.c.gridwidth = 3;
         this.c.insets = new Insets(0, 5, 2, 5);
-        this.tf_vinegerepass.setName("vignere");
+        this.tf_vinegerepass.setName("vignere"); //$NON-NLS-1$
         this.tf_vinegerepass.addCaretListener(this.listener);
         add(this.tf_vinegerepass, this.c);
 
@@ -155,7 +156,8 @@ public class CipherPanel2 extends JPanel {
         this.c.gridy = 5;
         this.c.gridwidth = 3;
         this.c.insets = new Insets(0, 5, 0, 5);
-        add(GUI2.makeTextLabel("Vigenere Autokey Cipher"), this.c);
+        add(GUI2.makeTextLabel(Messages
+                .getString("CipherPanel2.Label_VigenereAutokey")), this.c); //$NON-NLS-1$
 
         // this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 0.1;
@@ -163,7 +165,8 @@ public class CipherPanel2 extends JPanel {
         this.c.gridy = 6;
         this.c.gridwidth = 1;
         this.c.insets = new Insets(0, 5, 2, 5);
-        add(GUI2.makeTextLabel("Passphrase:"), this.c);
+        add(GUI2.makeTextLabel(Messages
+                .getString("CipherPanel2.Label_VigenereAutokey_Passphrase")), this.c); //$NON-NLS-1$
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 1;
@@ -171,7 +174,7 @@ public class CipherPanel2 extends JPanel {
         this.c.gridy = 6;
         this.c.gridwidth = 3;
         this.c.insets = new Insets(0, 5, 2, 5);
-        this.tf_vinegereautokeypass.setName("vignere_autokey");
+        this.tf_vinegereautokeypass.setName("vignere_autokey"); //$NON-NLS-1$
         this.tf_vinegereautokeypass.addCaretListener(this.listener);
         add(this.tf_vinegereautokeypass, this.c);
 
@@ -189,7 +192,8 @@ public class CipherPanel2 extends JPanel {
         this.c.gridy = 8;
         this.c.gridwidth = 3;
         this.c.insets = new Insets(0, 5, 0, 5);
-        add(GUI2.makeTextLabel("Letter to Number"), this.c);
+        add(GUI2.makeTextLabel(Messages
+                .getString("CipherPanel2.Label_LetterToNumber")), this.c); //$NON-NLS-1$
 
         // this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 1;
@@ -216,7 +220,7 @@ public class CipherPanel2 extends JPanel {
         this.c.anchor = GridBagConstraints.LINE_END;
         this.c.gridwidth = 1;
         this.c.insets = new Insets(0, 5, 0, 5);
-        this.cb_NumToLetter.setActionCommand("NumToLetter");
+        this.cb_NumToLetter.setActionCommand("NumToLetter"); //$NON-NLS-1$
         this.cb_NumToLetter.addActionListener(this.listener);
         add(this.cb_NumToLetter, this.c);
 
@@ -226,7 +230,7 @@ public class CipherPanel2 extends JPanel {
         this.c.gridy = 9;
         this.c.gridwidth = 1;
         this.c.insets = new Insets(0, 5, 2, 5);
-        add(GUI2.makeTextLabel("a ="), this.c);
+        add(GUI2.makeTextLabel("a ="), this.c); //$NON-NLS-1$
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 1;
@@ -234,7 +238,7 @@ public class CipherPanel2 extends JPanel {
         this.c.gridy = 9;
         this.c.gridwidth = 3;
         this.c.insets = new Insets(0, 5, 2, 5);
-        this.tf_letter.setName("letter");
+        this.tf_letter.setName("letter"); //$NON-NLS-1$
         this.tf_letter.addCaretListener(this.listener);
         add(this.tf_letter, this.c);
 

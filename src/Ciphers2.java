@@ -67,7 +67,7 @@ public class Ciphers2 {
 
     public static String skip(String code, int skip, long[] primeFactors) {
         // check if code isnt null or empty
-        if (code == null || code == "") return "";
+        if (code == null || code.equals("")) return "";
         // check if skip is smaller or equal to 1
         if (skip <= 1) return code;
         // check if skip is larger than length of code

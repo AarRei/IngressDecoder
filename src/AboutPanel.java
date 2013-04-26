@@ -15,11 +15,13 @@ import javax.swing.border.EmptyBorder;
 public class AboutPanel extends JPanel {
 
     private static final long   serialVersionUID = 766490351950584347L;
-    private static final String VERSION          = "1.1.00";
+    private static final String VERSION          = Messages
+                                                         .getString("AboutPanel.Version"); //$NON-NLS-1$
 
     ListenerHandler             listener;
     GridBagConstraints          c                = new GridBagConstraints();
-    Font                        textfont         = new Font("Courier New", 1,
+    Font                        textfont         = new Font(
+                                                         Messages.getString("Courier New"), 1, //$NON-NLS-1$
                                                          15);
     Color                       yellowColor      = new Color(0, 205, 106);
     Font                        mono             = new Font(Font.MONOSPACED,
@@ -37,23 +39,34 @@ public class AboutPanel extends JPanel {
         this.listener = listenerHandler;
 
         //
-        this.enlLogo = new JLabel(makeImageIcon("/images/enlightened_big.png"));
-        this.aboutUs = new JLabel("About us");
-        this.version = new JLabel("Version");
+        this.enlLogo = new JLabel(makeImageIcon("/images/enlightened_big.png")); //$NON-NLS-1$
+        this.aboutUs = new JLabel(
+                Messages.getString("AboutPanel.Label_AboutUs")); //$NON-NLS-1$
+        this.version = new JLabel(
+                Messages.getString("AboutPanel.Label_Version")); //$NON-NLS-1$
         this.versionnumber = new JLabel(VERSION);
-        this.weblink = new JLabel("Weblinks");
-        this.weblink1 = new JLabel("Our Website");
-        this.weblink2 = new JLabel("G+ Decode Community");
-        this.weblink3 = new JLabel("Niantic Investigation");
-        this.weblink4 = new JLabel("Intel Map");
-        this.contact = new JLabel("Contact us");
-        this.contact_mail = new JLabel("Write a mail");
-        this.contact_g_M0P = new JLabel("G+ MOP");
-        this.contact_g_Xeno = new JLabel("G+ Xenowarius");
+        this.weblink = new JLabel(
+                Messages.getString("AboutPanel.Label_Weblink")); //$NON-NLS-1$
+        this.weblink1 = new JLabel(
+                Messages.getString("AboutPanel.Label_OurWebsite")); //$NON-NLS-1$
+        this.weblink2 = new JLabel(
+                Messages.getString("AboutPanel.Label_DeCodeCommunity")); //$NON-NLS-1$
+        this.weblink3 = new JLabel(
+                Messages.getString("AboutPanel.Label_Niantic")); //$NON-NLS-1$
+        this.weblink4 = new JLabel(
+                Messages.getString("AboutPanel.Label_IntelMap")); //$NON-NLS-1$
+        this.contact = new JLabel(
+                Messages.getString("AboutPanel.Label_ContactUs")); //$NON-NLS-1$
+        this.contact_mail = new JLabel(
+                Messages.getString("AboutPanel.Label_Mail")); //$NON-NLS-1$
+        this.contact_g_M0P = new JLabel(
+                Messages.getString("AboutPanel.Label_G+MOP")); //$NON-NLS-1$
+        this.contact_g_Xeno = new JLabel(
+                Messages.getString("AboutPanel.Label_G+Xenowarius")); //$NON-NLS-1$
 
         this.aboutUsText = new JTextArea(
-                "This tool is developed by Xenowar and MOP.\n"
-                        + "We implemented several decoding methods which were frequently used by the Ingress team.");
+                Messages.getString("AboutPanel.Label_Credit") //$NON-NLS-1$
+                        + Messages.getString("AboutPanel.Label_Description")); //$NON-NLS-1$
 
         // apply style to elements
         this.aboutUs.setFont(this.textfont);
@@ -113,21 +126,21 @@ public class AboutPanel extends JPanel {
         this.contact_g_Xeno.setCursor(this.hand);
 
         // adding listener for weblinks
-        this.weblink1.setName("link1");
+        this.weblink1.setName("link1"); //$NON-NLS-1$
         this.weblink1.addMouseListener(this.listener);
-        this.weblink2.setName("link2");
+        this.weblink2.setName("link2"); //$NON-NLS-1$
         this.weblink2.addMouseListener(this.listener);
-        this.weblink3.setName("link3");
+        this.weblink3.setName("link3"); //$NON-NLS-1$
         this.weblink3.addMouseListener(this.listener);
-        this.weblink4.setName("link4");
+        this.weblink4.setName("link4"); //$NON-NLS-1$
         this.weblink4.addMouseListener(this.listener);
-        this.contact_mail.setName("mail");
+        this.contact_mail.setName("mail"); //$NON-NLS-1$
         this.contact_mail.addMouseListener(this.listener);
-        this.contact_g_M0P.setName("MOP");
+        this.contact_g_M0P.setName("MOP"); //$NON-NLS-1$
         this.contact_g_M0P.addMouseListener(this.listener);
-        this.contact_g_Xeno.setName("Xeno");
+        this.contact_g_Xeno.setName("Xeno"); //$NON-NLS-1$
         this.contact_g_Xeno.addMouseListener(this.listener);
-        this.contact.setName("Ee");
+        this.contact.setName("Ee"); //$NON-NLS-1$
         this.contact.addMouseListener(this.listener);
 
         // adding components to panel
