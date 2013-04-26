@@ -137,8 +137,8 @@ public class GUI2 extends JFrame {
         JLabel ingressIcon = new JLabel(
                 makeImageIcon("/images/Ingress_Logo_Middle.png")); //$NON-NLS-1$
         JLabel flagGerman = new JLabel(makeImageIcon("/images/flag_german.png")); //$NON-NLS-1$
-        JLabel flagChinese = new JLabel(
-                makeImageIcon("/images/flag_chinese.png")); //$NON-NLS-1$
+        // JLabel flagChinese = new JLabel(
+        //                makeImageIcon("/images/flag_chinese.png")); //$NON-NLS-1$
         JLabel flagEnglish = new JLabel(
                 makeImageIcon("/images/flag_english.png")); //$NON-NLS-1$
 
@@ -148,11 +148,11 @@ public class GUI2 extends JFrame {
 
         flagGerman.setName("flag_de"); //$NON-NLS-1$
         flagEnglish.setName("flag_en"); //$NON-NLS-1$
-        flagChinese.setName("flag_cn"); //$NON-NLS-1$
+        //        flagChinese.setName("flag_cn"); //$NON-NLS-1$
 
         flagGerman.addMouseListener(this.listener);
         flagEnglish.addMouseListener(this.listener);
-        flagChinese.addMouseListener(this.listener);
+        // flagChinese.addMouseListener(this.listener);
 
         // init menubar
         this.menubar = new ColoredMenuBar();
@@ -167,15 +167,15 @@ public class GUI2 extends JFrame {
         if (GUI2.currentlang.equals("en")) { //$NON-NLS-1$
             this.menubar.add(flagGerman);
             this.menubar.add(Box.createHorizontalStrut(5));
-            this.menubar.add(flagChinese);
+            // this.menubar.add(flagChinese);
         } else if (GUI2.currentlang.equals("de")) { //$NON-NLS-1$
             this.menubar.add(flagEnglish);
             this.menubar.add(Box.createHorizontalStrut(5));
-            this.menubar.add(flagChinese);
-        } else if (GUI2.currentlang.equals("cn")) { //$NON-NLS-1$
-            this.menubar.add(flagEnglish);
-            this.menubar.add(Box.createHorizontalStrut(5));
-            this.menubar.add(flagGerman);
+            // this.menubar.add(flagChinese);
+            //        } else if (GUI2.currentlang.equals("cn")) { //$NON-NLS-1$
+            // this.menubar.add(flagEnglish);
+            // this.menubar.add(Box.createHorizontalStrut(5));
+            // this.menubar.add(flagGerman);
         }
         this.menubar.add(Box.createHorizontalStrut(10));
         this.menubar.add(this.small);
