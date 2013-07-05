@@ -43,18 +43,7 @@ public class Handler implements MouseListener, ActionListener, KeyListener, Care
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(e.getComponent().getName().equals("optionToggle")) parent.getMenuPanel().toggleOptions();
-        else if(e.getComponent().getName().equals("hideSidebar")) parent.toggleSidebar();
-        else if(e.getComponent().getName().equals("TitleText")) new Enlightened().setVisible(true);
-        else if(e.getComponent().getName().equals("globeMenu")) (aboutDialog = new AboutUsPanel(this)).setVisible(true);
-        else if(e.getComponent().getName().equals("weblink1")) openUrl("http://www.blog.xop.bplaced.net");
-        else if(e.getComponent().getName().equals("weblink2"))
-            openUrl("https://plus.google.com/communities/114606795989653285746");
-        else if(e.getComponent().getName().equals("weblink3")) openUrl("http://www.nianticproject.com/");
-        else if(e.getComponent().getName().equals("weblink4")) openUrl("http://www.ingress.com/intel");
-        else if(e.getComponent().getName().equals("contactMail"))
-            openUrl("mailto:mail.xop@gmail.com?subject=Ingress%20Decoder");
-        else if(e.getComponent().getName().equals("GPlusXOP")) openUrl("https://plus.google.com/101804890644445925541");
+        //java is to buggy for this
 
     }
 
@@ -66,6 +55,18 @@ public class Handler implements MouseListener, ActionListener, KeyListener, Care
     @Override
     public void mouseReleased(MouseEvent e) {
         if(e.getComponent().getName().equals("CipherResult") && e.isPopupTrigger()) doPop(e);
+        else if(e.getComponent().getName().equals("optionToggle")) parent.getMenuPanel().toggleOptions();
+        else if(e.getComponent().getName().equals("hideSidebar")) parent.toggleSidebar();
+        else if(e.getComponent().getName().equals("TitleText")) new Enlightened().setVisible(true);
+        else if(e.getComponent().getName().equals("globeMenu")) (aboutDialog = new AboutUsPanel(this)).setVisible(true);
+        else if(e.getComponent().getName().equals("weblink1")) openUrl("http://www.blog.xop.bplaced.net");
+        else if(e.getComponent().getName().equals("weblink2"))
+            openUrl("https://plus.google.com/communities/114606795989653285746");
+        else if(e.getComponent().getName().equals("weblink3")) openUrl("http://www.nianticproject.com/");
+        else if(e.getComponent().getName().equals("weblink4")) openUrl("http://www.ingress.com/intel");
+        else if(e.getComponent().getName().equals("contactMail"))
+            openUrl("mailto:mail.xop@gmail.com?subject=Ingress%20Decoder");
+        else if(e.getComponent().getName().equals("GPlusXOP")) openUrl("https://plus.google.com/101804890644445925541");
     }
 
     @Override
