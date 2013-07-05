@@ -5,8 +5,6 @@ import view.GUI3;
 
 public class Main {
 
-    static GUI3 gui;
-
     public static void main(String[] args) {
         try {
             for(LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -21,7 +19,7 @@ public class Main {
         }
         //        gui = new GUI2("en"
         //        gui.initGUI();
-        gui = new GUI3();
+        new GUI3();
     }
 
 }

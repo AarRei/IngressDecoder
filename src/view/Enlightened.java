@@ -21,15 +21,15 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class Enlightened extends JDialog {
 
-    OggClip clip;
+    private OggClip clip;
 
     class MyPanel extends JPanel {
 
-        Color c;
+        final Color c;
 
-        private boolean clipplayed;
-        private int     random;
-        private Image   image;
+        private       boolean clipplayed;
+        private final int     random;
+        private       Image   image;
 
 
         public MyPanel() {
@@ -86,10 +86,9 @@ public class Enlightened extends JDialog {
         }
     }
 
-    MyPanel fullscreen = new MyPanel();
-
     public Enlightened() {
-        add(this.fullscreen);
+        MyPanel fullscreen = new MyPanel();
+        add(fullscreen);
         setResizable(false);
         setSize(Toolkit.getDefaultToolkit().getScreenSize());
         setAlwaysOnTop(true);
@@ -145,10 +144,10 @@ public class Enlightened extends JDialog {
 
             }
         });
-        this.fullscreen.repaint();
+        fullscreen.repaint();
     }
 
-    public ImageIcon makeImageIcon(String relative_path) {
+    ImageIcon makeImageIcon(String relative_path) {
         URL imgURL = getClass().getResource(relative_path);
         return new ImageIcon(imgURL);
     }

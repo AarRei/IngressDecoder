@@ -13,7 +13,7 @@ import controller.Handler;
 
 public class TitlePanel extends JPanel {
 
-    private JLabel globe;
+    private final JLabel globe;
     private boolean globerHovered = false;
 
     public TitlePanel(Handler mlt) {
@@ -42,7 +42,7 @@ public class TitlePanel extends JPanel {
         this.add(globe);
     }
 
-    public ImageIcon makeImageIcon(String relative_path) {
+    ImageIcon makeImageIcon(String relative_path) {
         URL imgURL = getClass().getResource(relative_path);
         return new ImageIcon(imgURL);
     }

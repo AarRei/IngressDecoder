@@ -1,8 +1,8 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="IngressDecoder:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/IngressDecoder_jar</output-path>
-    <root id="archive" name="IngressDecoder.jar">
-      <element id="module-output" name="IngressDecoder" />
+  <artifact type="jar" name="IngressCipherTool:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/IngressCipherTool_jar</output-path>
+    <root id="archive" name="IngressCipherTool.jar">
+      <element id="module-output" name="IngressCipherTool" />
       <element id="library" level="project" name="miglayout-4.0-javadoc" />
       <element id="extracted-dir" path="$PROJECT_DIR$/src/lib/jogg-0.0.7.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/src/lib/jorbis-0.0.15.jar" path-in-jar="/" />

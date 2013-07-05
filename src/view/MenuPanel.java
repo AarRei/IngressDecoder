@@ -23,7 +23,7 @@ import model.TreeNodeObject;
 
 public class MenuPanel extends JPanel {
 
-    private       JTree        methodTree;
+    private final JTree        methodTree;
     private final Handler      handler;
     private       OptionsPanel optionPanel;
     private boolean optioncollapsed = true;
@@ -126,7 +126,7 @@ public class MenuPanel extends JPanel {
     }
 
 
-    public ImageIcon makeImageIcon(String relative_path) {
+    ImageIcon makeImageIcon(String relative_path) {
         URL imgURL = getClass().getResource(relative_path);
         return new ImageIcon(imgURL);
     }
@@ -148,7 +148,7 @@ public class MenuPanel extends JPanel {
             DefaultMutableTreeNode treeNode = (DefaultMutableTreeNode) path.getLastPathComponent();
             if(treeNode.getUserObject() instanceof TreeNodeObject) {
                 TreeNodeObject co = (TreeNodeObject) treeNode.getUserObject();
-                if(!co.isCategory()) {
+                if(co.isNoCategory()) {
                     co.setSelected(!co.isSelected());
                     handler.toggleDecodingMethod(co.getMethodID());
                 }
@@ -165,7 +165,7 @@ public class MenuPanel extends JPanel {
             DefaultMutableTreeNode treeNode = (DefaultMutableTreeNode) path.getLastPathComponent();
             if(treeNode.getUserObject() instanceof TreeNodeObject) {
                 TreeNodeObject co = (TreeNodeObject) treeNode.getUserObject();
-                if(co.isSelected() && !co.isCategory()) {
+                if(co.isSelected() && co.isNoCategory()) {
                     co.setSelected(false);
                     handler.toggleDecodingMethod(co.getMethodID());
                 }
@@ -182,7 +182,7 @@ public class MenuPanel extends JPanel {
             DefaultMutableTreeNode treeNode = (DefaultMutableTreeNode) path.getLastPathComponent();
             if(treeNode.getUserObject() instanceof TreeNodeObject) {
                 TreeNodeObject co = (TreeNodeObject) treeNode.getUserObject();
-                if(!co.isSelected() && !co.isCategory()) {
+                if(!co.isSelected() && co.isNoCategory()) {
                     co.setSelected(true);
                     handler.toggleDecodingMethod(co.getMethodID());
                 }

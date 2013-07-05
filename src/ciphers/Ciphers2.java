@@ -25,7 +25,7 @@ public class Ciphers2 {
         return number;
     }
 
-    public static long[] primeFactors(long number) {
+    private static long[] primeFactors(long number) {
 
         // Maximale Faktoranzahl ermitteln
         int maxFactors = (int) Math.ceil(Math.log10(number) / Math.log10(2));
@@ -56,7 +56,7 @@ public class Ciphers2 {
         return skip(code, skip, primeFactors(code.length()));
     }
 
-    public static String skip(String code, int skip, long[] primeFactors) {
+    private static String skip(String code, int skip, long[] primeFactors) {
         // check if code isnt null or empty
         if(code == null || code.equals("")) return ""; //$NON-NLS-1$ //$NON-NLS-2$
         // check if skip is smaller or equal to 1

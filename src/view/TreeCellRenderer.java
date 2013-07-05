@@ -11,20 +11,18 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 
 import model.TreeNodeObject;
 
-public class TreeCellRenderer extends DefaultTreeCellRenderer {
+class TreeCellRenderer extends DefaultTreeCellRenderer {
 
-    private DefaultMutableTreeNode treeNode;
-    private TreeNodeObject         chObj;
-    private JCheckBox chBox = new JCheckBox();
+    private final JCheckBox chBox = new JCheckBox();
 
     public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected, boolean expanded,
                                                   boolean leaf, int row, boolean hasFocus) {
         super.getTreeCellRendererComponent(tree, value, selected, expanded, leaf, row, hasFocus);
-        treeNode = (DefaultMutableTreeNode) value;
+        DefaultMutableTreeNode treeNode = (DefaultMutableTreeNode) value;
 
         if(treeNode.getUserObject() instanceof TreeNodeObject) {
-            chObj = (TreeNodeObject) treeNode.getUserObject();
-            if(!chObj.isCategory()) {
+            TreeNodeObject chObj = (TreeNodeObject) treeNode.getUserObject();
+            if(chObj.isNoCategory()) {
                 chBox.setText(chObj.getText());
                 chBox.setSelected(chObj.isSelected());
                 chBox.setBackground(Color.black);

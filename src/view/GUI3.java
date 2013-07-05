@@ -24,17 +24,19 @@ import controller.Handler;
 public class GUI3 {
 
     private boolean menuHidden, alwaysOnTop;
-    private JFrame mainFrame;
-    private JPanel mainPanel, decoderPanel, codePanel, titlePanel;
-    private       JScrollPane scrollPanel;
-    private       MenuPanel   menuPanel;
-    private final Handler     handler;
+    private final JFrame      mainFrame;
+    private final JPanel      mainPanel;
+    private       JPanel      decoderPanel;
+    private final JPanel      codePanel;
+    private final JPanel      titlePanel;
+    private final JScrollPane scrollPanel;
+    private final MenuPanel   menuPanel;
     private final int random, menuPanelWidth = 250;
 
     //static stuff
     public static Font INGRESS_FONT;
-    public static Color  LIME_GREEN = new Color(0, 205, 106);
-    public static String VERSION    = "2.0.00";
+    public static final Color  LIME_GREEN = new Color(0, 205, 106);
+    public static final String VERSION    = "2.0.00";
 
 
     public GUI3() {
@@ -49,7 +51,7 @@ public class GUI3 {
         mainPanel = new JPanel(new MigLayout("gap 0, insets 0, fill"));
         mainPanel.setBackground(Color.BLACK);
 
-        handler = new Handler(this);
+        Handler handler = new Handler(this);
 
         menuPanel = new MenuPanel(handler);
 
@@ -126,7 +128,7 @@ public class GUI3 {
 
     }
 
-    public ImageIcon makeImageIcon(String relative_path) {
+    ImageIcon makeImageIcon(String relative_path) {
         URL imgURL = getClass().getResource(relative_path);
         return new ImageIcon(imgURL);
     }
@@ -152,7 +154,7 @@ public class GUI3 {
         mainFrame.setAlwaysOnTop(alwaysOnTop);
     }
 
-    public DecoderPanel getDecoderPanel() {
+    DecoderPanel getDecoderPanel() {
         return (DecoderPanel) decoderPanel;
     }
 

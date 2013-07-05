@@ -13,9 +13,7 @@ import javax.swing.border.LineBorder;
 
 import controller.Handler;
 
-public class OptionsPanel extends JPanel {
-
-    private JLabel optionToggleImage;
+class OptionsPanel extends JPanel {
 
     public OptionsPanel(Handler handler, boolean optioncollapsed) {
         super();
@@ -27,8 +25,8 @@ public class OptionsPanel extends JPanel {
         JPanel optionPanel = new JPanel(new MigLayout("fill"));
 
         JLabel optionText = new JLabel("Options");
-        optionToggleImage = new JLabel(optioncollapsed ? makeImageIcon("/images/fold_up.png") : makeImageIcon
-                                                                                                        ("/images/fold_down.png"));
+        JLabel optionToggleImage = new JLabel(optioncollapsed ? makeImageIcon("/images/fold_up.png") : makeImageIcon
+                                                                                                               ("/images/fold_down.png"));
         optionToggleImage.setToolTipText(optioncollapsed ? "show options" : "hide options");
         JCheckBox liveDecode = new JCheckBox("Live Decode");
         JCheckBox alwaysOnTop = new JCheckBox("Always on top");

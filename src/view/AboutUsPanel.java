@@ -22,12 +22,6 @@ import controller.LangController;
 
 public class AboutUsPanel extends JDialog {
 
-    JLabel aboutUs, version, versionnumber, weblink1, weblink2, weblink3, weblink4, weblink, contact, contact_mail,
-            contact_g_XOP, noNianticGoogle;
-    JTextArea aboutUsText;
-    JButton   closeButton;
-    Cursor hand = new Cursor(Cursor.HAND_CURSOR);
-
     public AboutUsPanel(Handler handler) {
         super();
 
@@ -39,24 +33,24 @@ public class AboutUsPanel extends JDialog {
         JPanel logoPanel = new JPanel(new MigLayout("fill"));
         JPanel contentPanel = new JPanel(new MigLayout("fill"));
 
-        closeButton = new JButton("close");
+        JButton closeButton = new JButton("close");
 
-        this.aboutUs = new JLabel(LangController.getString("AboutPanel.Label_AboutUs"));
-        this.version = new JLabel(LangController.getString("AboutPanel.Label_Version"));
-        this.versionnumber = new JLabel(GUI3.VERSION);
-        this.weblink = new JLabel(LangController.getString("AboutPanel.Label_Weblink"));
-        this.weblink1 = new JLabel(LangController.getString("AboutPanel.Label_OurWebsite"));
-        this.weblink2 = new JLabel(LangController.getString("AboutPanel.Label_DeCodeCommunity"));
-        this.weblink3 = new JLabel(LangController.getString("AboutPanel.Label_Niantic"));
-        this.weblink4 = new JLabel(LangController.getString("AboutPanel.Label_IntelMap"));
-        this.contact = new JLabel(LangController.getString("AboutPanel.Label_ContactUs"));
-        this.contact_mail = new JLabel(LangController.getString("AboutPanel.Label_Mail"));
-        this.contact_g_XOP = new JLabel(LangController.getString("AboutPanel.Label_G+XOP"));
-        this.aboutUsText = new JTextArea(LangController.getString("AboutPanel.Label_Credit") + LangController
-                                                                                                       .getString
-                                                                                                                ("AboutPanel.Label_Description"));
-        this.noNianticGoogle = new JLabel("This Software is not officially affiliated with Ingress or Niantic Labs " +
-                                                  "at" + " Google.");
+        JLabel aboutUs = new JLabel(LangController.getString("AboutPanel.Label_AboutUs"));
+        JLabel version = new JLabel(LangController.getString("AboutPanel.Label_Version"));
+        JLabel versionnumber = new JLabel(GUI3.VERSION);
+        JLabel weblink = new JLabel(LangController.getString("AboutPanel.Label_Weblink"));
+        JLabel weblink1 = new JLabel(LangController.getString("AboutPanel.Label_OurWebsite"));
+        JLabel weblink2 = new JLabel(LangController.getString("AboutPanel.Label_DeCodeCommunity"));
+        JLabel weblink3 = new JLabel(LangController.getString("AboutPanel.Label_Niantic"));
+        JLabel weblink4 = new JLabel(LangController.getString("AboutPanel.Label_IntelMap"));
+        JLabel contact = new JLabel(LangController.getString("AboutPanel.Label_ContactUs"));
+        JLabel contact_mail = new JLabel(LangController.getString("AboutPanel.Label_Mail"));
+        JLabel contact_g_XOP = new JLabel(LangController.getString("AboutPanel.Label_G+XOP"));
+        JTextArea aboutUsText = new JTextArea(LangController.getString("AboutPanel.Label_Credit") + LangController
+                                                                                                            .getString("AboutPanel.Label_Description"));
+
+        JLabel noNianticGoogle = new JLabel("This Software is not officially affiliated with Ingress or Niantic Labs " +
+                                                    "at" + " Google.");
 
         aboutUs.setForeground(GUI3.LIME_GREEN);
         version.setForeground(GUI3.LIME_GREEN);
@@ -95,6 +89,7 @@ public class AboutUsPanel extends JDialog {
         contact_mail.setName("contactMail");
         contact_g_XOP.setName("GPlusXOP");
 
+        Cursor hand = new Cursor(Cursor.HAND_CURSOR);
         weblink1.setCursor(hand);
         weblink2.setCursor(hand);
         weblink3.setCursor(hand);

@@ -11,7 +11,7 @@ import ciphers.Ciphers2;
 public class CipherHandler {
 
     //    public static List<Integer>             activeCiphers = new ArrayList<>();
-    public static Map<Integer, JPanel> activeCiphers = new HashMap<>();
+    public static final Map<Integer, JPanel> activeCiphers = new HashMap<>();
 
 
     public static String[] getCipherInformation(int cipherID) {

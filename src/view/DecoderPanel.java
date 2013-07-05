@@ -15,16 +15,15 @@ import javax.swing.border.EmptyBorder;
 
 import controller.CipherHandler;
 
-public class DecoderPanel extends JPanel {
+class DecoderPanel extends JPanel {
 
-    private final int cipherPanelSize   = 400;
-    private final int cipherPanelHeight = 130;
     private final int random;
 
     public DecoderPanel(int usableSize, int random) {
         super();
 
         this.random = random;
+        int cipherPanelSize = 400;
         int wrapamount = (usableSize / cipherPanelSize);
 
         //set LayoutMng
@@ -34,6 +33,7 @@ public class DecoderPanel extends JPanel {
         Border panelBorder = new EmptyBorder(0, 0, 0, 0);
         this.setBorder(panelBorder);
 
+        int cipherPanelHeight = 130;
         for(JPanel jPanel : CipherHandler.activeCiphers.values())
             add(jPanel, "w " + cipherPanelSize + "!, h " + cipherPanelHeight + "!");
 
@@ -64,7 +64,7 @@ public class DecoderPanel extends JPanel {
         ((CipherPanel) CipherHandler.activeCiphers.get(methodID)).executeCipher(code);
     }
 
-    public ImageIcon makeImageIcon(String relative_path) {
+    ImageIcon makeImageIcon(String relative_path) {
         URL imgURL = getClass().getResource(relative_path);
         return new ImageIcon(imgURL);
     }

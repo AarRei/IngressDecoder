@@ -11,13 +11,11 @@ import view.GUI3;
 
 public class PopUpDemo extends JPopupMenu {
 
-    JMenuItem decodeItem, copyItem;
-
     public PopUpDemo(Handler handler) {
         this.setFont(GUI3.INGRESS_FONT);
         this.setForeground(GUI3.LIME_GREEN);
 
-        decodeItem = new JMenuItem("Decode this!");
+        JMenuItem decodeItem = new JMenuItem("Decode this!");
         decodeItem.setFont(GUI3.INGRESS_FONT);
         decodeItem.setForeground(GUI3.LIME_GREEN);
         decodeItem.setBackground(Color.black);
@@ -25,7 +23,7 @@ public class PopUpDemo extends JPopupMenu {
         decodeItem.setActionCommand("decodeIt");
         decodeItem.addActionListener(handler);
         add(decodeItem);
-        copyItem = new JMenuItem("Copy this!");
+        JMenuItem copyItem = new JMenuItem("Copy this!");
         copyItem.setFont(GUI3.INGRESS_FONT);
         copyItem.setForeground(GUI3.LIME_GREEN);
         copyItem.setBackground(Color.black);

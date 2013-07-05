@@ -22,22 +22,22 @@ import controller.Handler;
 
 public class CipherPanel extends JPanel {
 
-    private JLabel cipherTitle, regExImage, argument1Title, argument2Title;
-    private ImageIcon  regExCheck;
-    private JTextField cipherResult, argument1Input, argument2Input;
-    private JSlider sl_caesarian = new JSlider(SwingConstants.HORIZONTAL, 0, 25, 0);
-    private int    cipherID;
-    private String extraValue1, extraValue2;
-    private JButton btn_skip_up, btn_skip_down;
-    private String[] cipherInformation;
-    private boolean  specialCipher;
-    private final String regEx1 = "[2-9][p-z][a-h][2-9][a-z]*[p-z][2-9][p-z][2-9][p-z]",
-            regEx2 = "[2-9][p-z][p-z][a-h][2-9][a-z]*[p-z][2-9][2-9][2-9][p-z]";
+    private final JLabel     regExImage;
+    private       JLabel     argument1Title;
+    private       JLabel     argument2Title;
+    private final JTextField cipherResult;
+    private       JTextField argument1Input;
+    private       JTextField argument2Input;
+    private final JSlider sl_caesarian = new JSlider(SwingConstants.HORIZONTAL, 0, 25, 0);
+    private final int     cipherID;
+    private       JButton btn_skip_up, btn_skip_down;
+    private final String[] cipherInformation;
+    private       boolean  specialCipher;
 
     public CipherPanel(int cipherID) {
         this.cipherID = cipherID;
         this.cipherResult = new JTextField();
-        this.regExCheck = makeImageIcon("/images/regex_maybe.png");
+        ImageIcon regExCheck = makeImageIcon("/images/regex_maybe.png");
         this.regExImage = new JLabel(regExCheck);
         this.cipherInformation = CipherHandler.getCipherInformation(cipherID);
         if(cipherID > 39 && cipherID < 50) specialCipher = true;
@@ -47,9 +47,9 @@ public class CipherPanel extends JPanel {
         Border fieldBorder = new LineBorder(GUI3.LIME_GREEN, 1);
         Border border = new LineBorder(GUI3.LIME_GREEN, 2);
 
-        this.cipherTitle = new JLabel(cipherInformation[0]);
-        this.cipherTitle.setForeground(GUI3.LIME_GREEN);
-        this.cipherTitle.setFont(GUI3.INGRESS_FONT);
+        JLabel cipherTitle = new JLabel(cipherInformation[0]);
+        cipherTitle.setForeground(GUI3.LIME_GREEN);
+        cipherTitle.setFont(GUI3.INGRESS_FONT);
 
         //cipher with 1 extra argument
         if(!specialCipher && cipherInformation.length == 2) {
@@ -191,8 +191,8 @@ public class CipherPanel extends JPanel {
 
 
     public void executeCipher(String code) {
-        extraValue1 = "";
-        extraValue2 = "";
+        String extraValue1 = "";
+        String extraValue2 = "";
         if(!specialCipher && cipherInformation.length == 2) {
             extraValue1 = argument1Input.getText().trim();
         }
@@ -234,6 +234,8 @@ public class CipherPanel extends JPanel {
     private int checkRegEx(String result) {
         if(result == null || result.isEmpty()) return 0;
         result = result.toLowerCase();
+        String regEx1 = "[2-9][p-z][a-h][2-9][a-z]*[p-z][2-9][p-z][2-9][p-z]";
+        String regEx2 = "[2-9][p-z][p-z][a-h][2-9][a-z]*[p-z][2-9][2-9][2-9][p-z]";
         if(result.matches(regEx1) || result.matches(regEx2)) return 1;
         return 2;
 

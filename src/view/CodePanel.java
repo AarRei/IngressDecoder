@@ -20,11 +20,10 @@ import model.MyComboBoxUI;
 
 public class CodePanel extends JPanel {
 
-    private JComboBox<String>            codeBox;
-    private DefaultComboBoxModel<String> codeBoxModel;
-    private JButton                      decode;
-    private JLabel                       hide;
-    private Vector<String> recentCodes = new Vector<>();
+    private final JComboBox<String>            codeBox;
+    private final DefaultComboBoxModel<String> codeBoxModel;
+    private final JLabel                       hide;
+    private final Vector<String> recentCodes = new Vector<>();
 
     public CodePanel(Handler handler) {
         super();
@@ -49,7 +48,7 @@ public class CodePanel extends JPanel {
         codeBox.getEditor().getEditorComponent().addKeyListener(handler);
 
 
-        decode = new JButton("Decode");
+        JButton decode = new JButton("Decode");
         decode.setBackground(Color.BLACK);
         decode.setForeground(GUI3.LIME_GREEN);
         decode.setFont(GUI3.INGRESS_FONT);

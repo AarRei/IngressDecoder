@@ -21,11 +21,11 @@ public class MyComboBoxUI extends BasicComboBoxUI {
         return new MyComboBoxUI();
     }
 
-    Color yellowColor = new Color(0, 205, 106);
+    private final Color yellowColor = new Color(0, 205, 106);
 
-    Font mono = new Font(Font.MONOSPACED, Font.PLAIN, 14);
+    private final Font mono = new Font(Font.MONOSPACED, Font.PLAIN, 14);
 
-    public ImageIcon makeImageIcon(String relative_path) {
+    ImageIcon makeImageIcon(String relative_path) {
         URL imgURL = getClass().getResource(relative_path);
         return new ImageIcon(imgURL);
     }

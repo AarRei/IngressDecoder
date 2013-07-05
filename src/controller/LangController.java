@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 public class LangController {
 
     private static final String BUNDLE_NAME = "messages";
-    static               String langCode    = "-en";
+    private static final String langCode    = "-en";
 
     public static String getString(String key) {
         try {

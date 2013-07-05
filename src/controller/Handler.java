@@ -26,11 +26,11 @@ import view.GUI3;
 
 public class Handler implements MouseListener, ActionListener, KeyListener, CaretListener, ChangeListener {
 
-    private GUI3       parent;
-    private boolean    liveDecode;
-    private JTextField skipInputField;
-    private JDialog    aboutDialog;
-    private String     lastRightClickedCode;
+    private final GUI3       parent;
+    private       boolean    liveDecode;
+    private       JTextField skipInputField;
+    private       JDialog    aboutDialog;
+    private       String     lastRightClickedCode;
 
 
     public Handler(GUI3 mainGUI) {
@@ -212,7 +212,7 @@ public class Handler implements MouseListener, ActionListener, KeyListener, Care
     }
 
 
-    public void openUrl(String url) {
+    void openUrl(String url) {
         try {
             if(java.awt.Desktop.isDesktopSupported()) {
                 java.awt.Desktop desktop = java.awt.Desktop.getDesktop();

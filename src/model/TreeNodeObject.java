@@ -2,9 +2,10 @@ package model;
 
 public class TreeNodeObject {
 
-    private String  text;
-    private int     methodID;
-    private boolean selected, category;
+    private final String  text;
+    private       int     methodID;
+    private       boolean selected;
+    private final boolean category;
 
     public TreeNodeObject(String text) {
         this.text = text;
@@ -30,8 +31,8 @@ public class TreeNodeObject {
         return methodID;
     }
 
-    public boolean isCategory() {
-        return category;
+    public boolean isNoCategory() {
+        return !category;
     }
 
     public String getText() {
