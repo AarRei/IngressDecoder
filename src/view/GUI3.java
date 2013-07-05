@@ -36,7 +36,7 @@ public class GUI3 {
     //static stuff
     public static Font INGRESS_FONT;
     public static final Color  LIME_GREEN = new Color(0, 205, 106);
-    public static final String VERSION    = "2.0.02";
+    public static final String VERSION    = "2.0.03";
 
 
     public GUI3() {
