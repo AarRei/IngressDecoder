@@ -101,6 +101,7 @@ public class Handler implements MouseListener, ActionListener, KeyListener, Care
         String command = e.getActionCommand();
         switch(command) {
             case "decode":
+                parent.addCodeToHistory();
                 parent.executeCiphers();
                 break;
             case "TreeExpandAll":
