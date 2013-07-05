@@ -1,3 +1,0 @@
-String code="123456789123456789";
-int skip=0;
-System.out.println(Ciphers2.getNextPossibleSkipNumber(skip+"",code,true));

@@ -1,30 +1,27 @@
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
+import view.GUI3;
+
 public class Main {
-    static GUI2 gui;
+
+    static GUI3 gui;
 
     public static void main(String[] args) {
         try {
-            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) { //$NON-NLS-1$
+            for(LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if("Nimbus".equals(info.getName())) {
                     UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (Exception e) {
+        } catch(Exception e) {
             // If Nimbus is not available, you can set the GUI to another look
             // and feel.
         }
-        gui = new GUI2("en"); //$NON-NLS-1$
-        gui.initGUI();
+        //        gui = new GUI2("en"
+        //        gui.initGUI();
+        gui = new GUI3();
     }
 
-    public static void redrawGUI(String lang) {
-        GUI2 oldgui = gui;
-        gui = new GUI2(lang);
-        gui.initGUI();
-        oldgui.dispose();
-
-    }
 }
