@@ -36,10 +36,10 @@ class OptionsPanel extends JPanel {
         liveDecode.setBackground(Color.black);
         alwaysOnTop.setBackground(Color.black);
 
-        optionText.setForeground(GUI3.LIME_GREEN);
-        optionToggleImage.setForeground(GUI3.LIME_GREEN);
-        liveDecode.setForeground(GUI3.LIME_GREEN);
-        alwaysOnTop.setForeground(GUI3.LIME_GREEN);
+        optionText.setForeground(GUI3.guiColor);
+        optionToggleImage.setForeground(GUI3.guiColor);
+        liveDecode.setForeground(GUI3.guiColor);
+        alwaysOnTop.setForeground(GUI3.guiColor);
 
         optionText.setFont(GUI3.INGRESS_FONT);
         optionToggleImage.setFont(GUI3.INGRESS_FONT);
@@ -55,8 +55,8 @@ class OptionsPanel extends JPanel {
         setName("optionToggle");
         addMouseListener(handler);
 
-        titlePanel.setBorder(new LineBorder(GUI3.LIME_GREEN, 1));
-        optionPanel.setBorder(new LineBorder(GUI3.LIME_GREEN, 1));
+        titlePanel.setBorder(new LineBorder(GUI3.guiColor, 1));
+        optionPanel.setBorder(new LineBorder(GUI3.guiColor, 1));
 
         titlePanel.add(optionText, "growx, push");
         titlePanel.add(optionToggleImage);

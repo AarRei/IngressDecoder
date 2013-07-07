@@ -26,13 +26,13 @@ class TreeCellRenderer extends DefaultTreeCellRenderer {
                 chBox.setText(chObj.getText());
                 chBox.setSelected(chObj.isSelected());
                 chBox.setBackground(Color.black);
-                chBox.setForeground(GUI3.LIME_GREEN);
+                chBox.setForeground(GUI3.guiColor);
                 chBox.setFont(GUI3.INGRESS_FONT);
                 return chBox;
             }
             else {
                 JLabel title = new JLabel(chObj.getText());
-                title.setForeground(GUI3.LIME_GREEN);
+                title.setForeground(GUI3.guiColor);
                 title.setFont(GUI3.INGRESS_FONT);
                 return title;
             }

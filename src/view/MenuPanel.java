@@ -32,7 +32,7 @@ public class MenuPanel extends JPanel {
         super();
         this.handler = handler;
 
-        Border panelBorder = new LineBorder(GUI3.LIME_GREEN);
+        Border panelBorder = new LineBorder(GUI3.guiColor);
 
         //set LayoutMng
         this.setLayout(new MigLayout("fill"));

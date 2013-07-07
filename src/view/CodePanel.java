@@ -39,10 +39,10 @@ public class CodePanel extends JPanel {
         codeBox = new JComboBox<>(codeBoxModel);
         codeBox.setBackground(Color.black);
         codeBox.setEditable(true);
-        codeBox.setForeground(GUI3.LIME_GREEN);
+        codeBox.setForeground(GUI3.guiColor);
         codeBox.setFont(GUI3.INGRESS_FONT);
         codeBox.setUI((ComboBoxUI) MyComboBoxUI.createUI());
-        codeBox.setBorder(new BorderUIResource.EtchedBorderUIResource(Color.GREEN, Color.GRAY));
+        codeBox.setBorder(new BorderUIResource.EtchedBorderUIResource(GUI3.guiColor, Color.GRAY));
         codeBox.setName("codeBox");
         codeBox.getEditor().getEditorComponent().setName("codeBoxEdit");
         codeBox.getEditor().getEditorComponent().addKeyListener(handler);
@@ -50,11 +50,11 @@ public class CodePanel extends JPanel {
 
         JButton decode = new JButton("Decode");
         decode.setBackground(Color.BLACK);
-        decode.setForeground(GUI3.LIME_GREEN);
+        decode.setForeground(GUI3.guiColor);
         decode.setFont(GUI3.INGRESS_FONT);
 
         hide = new JLabel(makeImageIcon("/images/fold_left.png"));
-        hide.setForeground(GUI3.LIME_GREEN);
+        hide.setForeground(GUI3.guiColor);
         hide.setFont(GUI3.INGRESS_FONT);
         hide.setName("hideSidebar");
         hide.setToolTipText("hide sidebar");

@@ -34,9 +34,9 @@ public class GUI3 {
     private final int random, menuPanelWidth = 250;
 
     //static stuff
-    public static Font INGRESS_FONT;
-    public static final Color  LIME_GREEN = new Color(0, 205, 106);
-    public static final String VERSION    = "2.0.03";
+    public static Font  INGRESS_FONT;
+    public static Color guiColor;
+    public static final String VERSION = "2.0.04";
 
 
     public GUI3() {
@@ -47,6 +47,9 @@ public class GUI3 {
             INGRESS_FONT = new Font("Courier New", Font.PLAIN, 15);
         }
         this.random = new Random().nextInt(3);
+        if(random == 0) guiColor = new Color(0, 191, 1);//green
+        else if(random == 1) guiColor = new Color(0, 147, 207);//blue
+        else guiColor = new Color(205, 106, 0);//orange
         mainFrame = new JFrame();
         mainPanel = new JPanel(new MigLayout("gap 0, insets 0, fill"));
         mainPanel.setBackground(Color.BLACK);

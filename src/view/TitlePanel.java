@@ -27,7 +27,7 @@ public class TitlePanel extends JPanel {
         this.add(new JLabel(makeImageIcon("/images/Ingress_Dual_small.png")));
 
         JLabel title = new JLabel("Ingress Cipher Tool");
-        title.setForeground(GUI3.LIME_GREEN);
+        title.setForeground(GUI3.guiColor);
         title.setFont(GUI3.INGRESS_FONT.deriveFont(25f));
         title.setName("TitleText");
         title.addMouseListener(mlt);

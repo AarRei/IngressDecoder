@@ -52,20 +52,20 @@ public class AboutUsPanel extends JDialog {
         JLabel noNianticGoogle = new JLabel("This Software is not officially affiliated with Ingress or Niantic Labs " +
                                                     "at" + " Google.");
 
-        aboutUs.setForeground(GUI3.LIME_GREEN);
-        version.setForeground(GUI3.LIME_GREEN);
-        versionnumber.setForeground(GUI3.LIME_GREEN);
-        weblink.setForeground(GUI3.LIME_GREEN);
-        weblink1.setForeground(GUI3.LIME_GREEN);
-        weblink2.setForeground(GUI3.LIME_GREEN);
-        weblink3.setForeground(GUI3.LIME_GREEN);
-        weblink4.setForeground(GUI3.LIME_GREEN);
-        contact.setForeground(GUI3.LIME_GREEN);
-        contact_mail.setForeground(GUI3.LIME_GREEN);
-        contact_g_XOP.setForeground(GUI3.LIME_GREEN);
-        aboutUsText.setForeground(GUI3.LIME_GREEN);
-        closeButton.setForeground(GUI3.LIME_GREEN);
-        noNianticGoogle.setForeground(GUI3.LIME_GREEN);
+        aboutUs.setForeground(GUI3.guiColor);
+        version.setForeground(GUI3.guiColor);
+        versionnumber.setForeground(GUI3.guiColor);
+        weblink.setForeground(GUI3.guiColor);
+        weblink1.setForeground(GUI3.guiColor);
+        weblink2.setForeground(GUI3.guiColor);
+        weblink3.setForeground(GUI3.guiColor);
+        weblink4.setForeground(GUI3.guiColor);
+        contact.setForeground(GUI3.guiColor);
+        contact_mail.setForeground(GUI3.guiColor);
+        contact_g_XOP.setForeground(GUI3.guiColor);
+        aboutUsText.setForeground(GUI3.guiColor);
+        closeButton.setForeground(GUI3.guiColor);
+        noNianticGoogle.setForeground(GUI3.guiColor);
 
         aboutUs.setFont(GUI3.INGRESS_FONT);
         version.setFont(GUI3.INGRESS_FONT);
@@ -135,8 +135,8 @@ public class AboutUsPanel extends JDialog {
         closeButton.setActionCommand("closeDialog");
         closeButton.addActionListener(handler);
 
-        logoPanel.setBorder(new MatteBorder(2, 2, 2, 0, GUI3.LIME_GREEN));
-        contentPanel.setBorder(new MatteBorder(2, 0, 2, 2, GUI3.LIME_GREEN));
+        logoPanel.setBorder(new MatteBorder(2, 2, 2, 0, GUI3.guiColor));
+        contentPanel.setBorder(new MatteBorder(2, 0, 2, 2, GUI3.guiColor));
 
         add(logoPanel, "growy");
         add(contentPanel, "grow, push,wrap");

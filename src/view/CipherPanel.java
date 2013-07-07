@@ -44,20 +44,20 @@ public class CipherPanel extends JPanel {
     }
 
     public JPanel createPanel(Handler handler) {
-        Border fieldBorder = new LineBorder(GUI3.LIME_GREEN, 1);
-        Border border = new LineBorder(GUI3.LIME_GREEN, 2);
+        Border fieldBorder = new LineBorder(GUI3.guiColor, 1);
+        Border border = new LineBorder(GUI3.guiColor, 2);
 
         JLabel cipherTitle = new JLabel(cipherInformation[0]);
-        cipherTitle.setForeground(GUI3.LIME_GREEN);
+        cipherTitle.setForeground(GUI3.guiColor);
         cipherTitle.setFont(GUI3.INGRESS_FONT);
 
         //cipher with 1 extra argument
         if(!specialCipher && cipherInformation.length == 2) {
             argument1Title = new JLabel(cipherInformation[1]);
-            argument1Title.setForeground(GUI3.LIME_GREEN);
+            argument1Title.setForeground(GUI3.guiColor);
             argument1Title.setFont(GUI3.INGRESS_FONT);
             argument1Input = new JTextField();
-            argument1Input.setForeground(GUI3.LIME_GREEN);
+            argument1Input.setForeground(GUI3.guiColor);
             argument1Input.setFont(GUI3.INGRESS_FONT);
             argument1Input.setBackground(Color.BLACK);
             argument1Input.setBorder(fieldBorder);
@@ -67,10 +67,10 @@ public class CipherPanel extends JPanel {
         //cipher with 2 extra arguments
         if(!specialCipher && cipherInformation.length == 3) {
             argument1Title = new JLabel(cipherInformation[1]);
-            argument1Title.setForeground(GUI3.LIME_GREEN);
+            argument1Title.setForeground(GUI3.guiColor);
             argument1Title.setFont(GUI3.INGRESS_FONT);
             argument1Input = new JTextField();
-            argument1Input.setForeground(GUI3.LIME_GREEN);
+            argument1Input.setForeground(GUI3.guiColor);
             argument1Input.setFont(GUI3.INGRESS_FONT);
             argument1Input.setBackground(Color.BLACK);
             argument1Input.setBorder(fieldBorder);
@@ -78,10 +78,10 @@ public class CipherPanel extends JPanel {
             argument1Input.addCaretListener(handler);
 
             argument2Title = new JLabel(cipherInformation[2]);
-            argument2Title.setForeground(GUI3.LIME_GREEN);
+            argument2Title.setForeground(GUI3.guiColor);
             argument2Title.setFont(GUI3.INGRESS_FONT);
             argument2Input = new JTextField();
-            argument2Input.setForeground(GUI3.LIME_GREEN);
+            argument2Input.setForeground(GUI3.guiColor);
             argument2Input.setFont(GUI3.INGRESS_FONT);
             argument2Input.setBackground(Color.BLACK);
             argument2Input.setBorder(fieldBorder);
@@ -94,7 +94,7 @@ public class CipherPanel extends JPanel {
                 //slider
                 case 40:
                     argument1Title = new JLabel(cipherInformation[1]);
-                    argument1Title.setForeground(GUI3.LIME_GREEN);
+                    argument1Title.setForeground(GUI3.guiColor);
                     argument1Title.setFont(GUI3.INGRESS_FONT);
 
                     // slider settings
@@ -104,17 +104,17 @@ public class CipherPanel extends JPanel {
                     sl_caesarian.setPaintTicks(true);
                     sl_caesarian.setPaintLabels(true);
                     sl_caesarian.setBackground(Color.black);
-                    sl_caesarian.setForeground(GUI3.LIME_GREEN);
+                    sl_caesarian.setForeground(GUI3.guiColor);
                     sl_caesarian.setFont(GUI3.INGRESS_FONT);
                     break;
                 //skip
                 case 41:
                     argument1Title = new JLabel(cipherInformation[1]);
-                    argument1Title.setForeground(GUI3.LIME_GREEN);
+                    argument1Title.setForeground(GUI3.guiColor);
                     argument1Title.setFont(GUI3.INGRESS_FONT);
 
                     argument1Input = new JTextField();
-                    argument1Input.setForeground(GUI3.LIME_GREEN);
+                    argument1Input.setForeground(GUI3.guiColor);
                     argument1Input.setFont(GUI3.INGRESS_FONT);
                     argument1Input.setBackground(Color.BLACK);
                     argument1Input.setFont(Font.getFont(Font.MONOSPACED));
@@ -126,13 +126,13 @@ public class CipherPanel extends JPanel {
                     btn_skip_up.setActionCommand("skipCipherUp");
                     btn_skip_up.addActionListener(handler);
                     btn_skip_up.setBackground(Color.black);
-                    btn_skip_up.setForeground(GUI3.LIME_GREEN);
+                    btn_skip_up.setForeground(GUI3.guiColor);
                     btn_skip_up.setFont(GUI3.INGRESS_FONT);
                     btn_skip_down = new JButton("-");
                     btn_skip_down.setActionCommand("skipCipherDown");
                     btn_skip_down.addActionListener(handler);
                     btn_skip_down.setBackground(Color.black);
-                    btn_skip_down.setForeground(GUI3.LIME_GREEN);
+                    btn_skip_down.setForeground(GUI3.guiColor);
                     btn_skip_down.setFont(GUI3.INGRESS_FONT);
                     btn_skip_down.setText("-");
                     handler.setSkipInputField(argument1Input);
@@ -140,7 +140,7 @@ public class CipherPanel extends JPanel {
             }
         }
 
-        cipherResult.setForeground(GUI3.LIME_GREEN);
+        cipherResult.setForeground(GUI3.guiColor);
         cipherResult.setFont(GUI3.INGRESS_FONT);
         cipherResult.setBackground(Color.BLACK);
         cipherResult.setBorder(fieldBorder);
@@ -149,10 +149,10 @@ public class CipherPanel extends JPanel {
 
         this.setLayout(new MigLayout("fill"));
         this.setBackground(Color.BLACK);
-        this.setForeground(GUI3.LIME_GREEN);
+        this.setForeground(GUI3.guiColor);
 
         Border panelBorder = new TitledBorder(border, cipherInformation[0], TitledBorder.LEADING, TitledBorder.TOP,
-                                              GUI3.INGRESS_FONT, GUI3.LIME_GREEN);
+                                              GUI3.INGRESS_FONT, GUI3.guiColor);
         this.setBorder(panelBorder);
 
         cipherResult.setEditable(false);

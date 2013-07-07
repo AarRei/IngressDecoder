@@ -13,11 +13,11 @@ public class PopUpDemo extends JPopupMenu {
 
     public PopUpDemo(Handler handler) {
         this.setFont(GUI3.INGRESS_FONT);
-        this.setForeground(GUI3.LIME_GREEN);
+        this.setForeground(GUI3.guiColor);
 
         JMenuItem decodeItem = new JMenuItem("Decode this!");
         decodeItem.setFont(GUI3.INGRESS_FONT);
-        decodeItem.setForeground(GUI3.LIME_GREEN);
+        decodeItem.setForeground(GUI3.guiColor);
         decodeItem.setBackground(Color.black);
         decodeItem.setOpaque(true);
         decodeItem.setActionCommand("decodeIt");
@@ -25,7 +25,7 @@ public class PopUpDemo extends JPopupMenu {
         add(decodeItem);
         JMenuItem copyItem = new JMenuItem("Copy this!");
         copyItem.setFont(GUI3.INGRESS_FONT);
-        copyItem.setForeground(GUI3.LIME_GREEN);
+        copyItem.setForeground(GUI3.guiColor);
         copyItem.setBackground(Color.black);
         copyItem.setOpaque(true);
         copyItem.setActionCommand("copyIt");
@@ -37,7 +37,7 @@ public class PopUpDemo extends JPopupMenu {
     public void paintComponent(final Graphics g) {
         g.setColor(Color.black);
         g.fillRect(0, 0, getWidth(), getHeight());
-        g.setColor(GUI3.LIME_GREEN);
+        g.setColor(GUI3.guiColor);
         g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
     }
 }

@@ -15,13 +15,13 @@ import javax.swing.plaf.basic.BasicComboBoxUI;
 import javax.swing.plaf.basic.BasicComboPopup;
 import javax.swing.plaf.basic.ComboPopup;
 
+import view.GUI3;
+
 public class MyComboBoxUI extends BasicComboBoxUI {
 
     public static ComponentUI createUI() {
         return new MyComboBoxUI();
     }
-
-    private final Color yellowColor = new Color(0, 205, 106);
 
     private final Font mono = new Font(Font.MONOSPACED, Font.PLAIN, 14);
 
@@ -45,14 +45,14 @@ public class MyComboBoxUI extends BasicComboBoxUI {
         ComboBoxEditor editor1 = new BasicComboBoxEditor();
         editor1.getEditorComponent().setBackground(Color.black);
         editor1.getEditorComponent().setFont(this.mono);
-        editor1.getEditorComponent().setForeground(this.yellowColor);
+        editor1.getEditorComponent().setForeground(GUI3.guiColor);
         return editor1;
     }
 
     @Override
     protected ComboPopup createPopup() {
         BasicComboPopup popup1 = new BasicComboPopup(this.comboBox);
-        popup1.setBorder(new LineBorder(this.yellowColor, 1));
+        popup1.setBorder(new LineBorder(GUI3.guiColor, 1));
         popup1.getAccessibleContext().setAccessibleParent(this.comboBox);
         return popup1;
     }
