@@ -27,10 +27,17 @@ public class MenuPanel extends JPanel {
     private final Handler      handler;
     private       OptionsPanel optionPanel;
     private boolean optioncollapsed = true;
+    private String  color           = "_green";
+    private int random;
 
-    public MenuPanel(final Handler handler) {
+    public MenuPanel(final Handler handler, int random) {
         super();
         this.handler = handler;
+        this.random = random;
+
+        if(random == 0) color = "_green";
+        else if(random == 1) color = "_blue";
+        else color = "_orange";
 
         Border panelBorder = new LineBorder(GUI3.guiColor);
 
@@ -62,16 +69,16 @@ public class MenuPanel extends JPanel {
         });
 
         JPanel toolbar = new JPanel();
-        optionPanel = new OptionsPanel(handler, optioncollapsed);
+        optionPanel = new OptionsPanel(handler, optioncollapsed, random);
         JScrollPane treeView = new JScrollPane(methodTree);
         treeView.setBorder(new EmptyBorder(0, 0, 0, 0));
         treeView.setFont(GUI3.INGRESS_FONT);
 
-        JButton expandAll = new JButton(makeImageIcon("/images/expand_all.png"));
-        JButton collapseAll = new JButton(makeImageIcon("/images/collapse_all.png"));
-        JButton selectAll = new JButton(makeImageIcon("/images/check_all.png"));
-        JButton selectNone = new JButton(makeImageIcon("/images/check_none.png"));
-        JButton inverseSelection = new JButton(makeImageIcon("/images/check_invert.png"));
+        JButton expandAll = new JButton(makeImageIcon("/images/expand_all" + color + ".png"));
+        JButton collapseAll = new JButton(makeImageIcon("/images/collapse_all" + color + ".png"));
+        JButton selectAll = new JButton(makeImageIcon("/images/check_all" + color + ".png"));
+        JButton selectNone = new JButton(makeImageIcon("/images/check_none" + color + ".png"));
+        JButton inverseSelection = new JButton(makeImageIcon("/images/check_invert" + color + ".png"));
 
         expandAll.setToolTipText("expand all");
         collapseAll.setToolTipText("collapse all");
@@ -265,7 +272,7 @@ public class MenuPanel extends JPanel {
     public void toggleOptions() {
         optioncollapsed = !optioncollapsed;
         this.remove(optionPanel);
-        this.add(optionPanel = new OptionsPanel(handler, optioncollapsed), "dock south");
+        this.add(optionPanel = new OptionsPanel(handler, optioncollapsed, random), "dock south");
         this.revalidate();
     }
 }

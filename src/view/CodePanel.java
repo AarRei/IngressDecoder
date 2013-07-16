@@ -24,9 +24,14 @@ public class CodePanel extends JPanel {
     private final DefaultComboBoxModel<String> codeBoxModel;
     private final JLabel                       hide;
     private final Vector<String> recentCodes = new Vector<>();
+    private       String         color       = "_green";
 
-    public CodePanel(Handler handler) {
+    public CodePanel(Handler handler, int random) {
         super();
+
+        if(random == 0) color = "_green";
+        else if(random == 1) color = "_blue";
+        else color = "_orange";
 
         //set LayoutMng
         this.setLayout(new MigLayout("fill"));
@@ -53,7 +58,7 @@ public class CodePanel extends JPanel {
         decode.setForeground(GUI3.guiColor);
         decode.setFont(GUI3.INGRESS_FONT);
 
-        hide = new JLabel(makeImageIcon("/images/fold_left.png"));
+        hide = new JLabel(makeImageIcon("/images/fold_left" + color + ".png"));
         hide.setForeground(GUI3.guiColor);
         hide.setFont(GUI3.INGRESS_FONT);
         hide.setName("hideSidebar");
@@ -88,7 +93,8 @@ public class CodePanel extends JPanel {
     }
 
     public void changeHideIcon(boolean hidden) {
-        hide.setIcon(hidden ? makeImageIcon("/images/fold_right.png") : makeImageIcon("/images/fold_left.png"));
+        hide.setIcon(hidden ? makeImageIcon("/images/fold_right" + color + ".png") : makeImageIcon
+                                                                                             ("/images/fold_left" + color + ".png"));
         hide.setToolTipText(hidden ? "show sidebar" : "hide sidebar");
     }
 

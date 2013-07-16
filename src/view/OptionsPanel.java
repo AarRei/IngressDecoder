@@ -15,8 +15,14 @@ import controller.Handler;
 
 class OptionsPanel extends JPanel {
 
-    public OptionsPanel(Handler handler, boolean optioncollapsed) {
+    private String color = "_green";
+
+    public OptionsPanel(Handler handler, boolean optioncollapsed, int random) {
         super();
+
+        if(random == 0) color = "_green";
+        else if(random == 1) color = "_blue";
+        else color = "_orange";
 
         this.setLayout(new MigLayout("fill"));
         this.setBackground(Color.black);
@@ -25,8 +31,8 @@ class OptionsPanel extends JPanel {
         JPanel optionPanel = new JPanel(new MigLayout("fill"));
 
         JLabel optionText = new JLabel("Options");
-        JLabel optionToggleImage = new JLabel(optioncollapsed ? makeImageIcon("/images/fold_up.png") : makeImageIcon
-                                                                                                               ("/images/fold_down.png"));
+        JLabel optionToggleImage = new JLabel(optioncollapsed ? makeImageIcon("/images/fold_up" + color + ".png") :
+                                                      makeImageIcon("/images/fold_down" + color + ".png"));
         optionToggleImage.setToolTipText(optioncollapsed ? "show options" : "hide options");
         JCheckBox liveDecode = new JCheckBox("Live Decode");
         JCheckBox alwaysOnTop = new JCheckBox("Always on top");

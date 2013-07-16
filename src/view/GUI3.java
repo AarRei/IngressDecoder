@@ -56,7 +56,7 @@ public class GUI3 {
 
         Handler handler = new Handler(this);
 
-        menuPanel = new MenuPanel(handler);
+        menuPanel = new MenuPanel(handler, random);
 
         mainPanel.add(titlePanel = new TitlePanel(handler), "dock north");
         mainPanel.add(getMenuPanel(), "dock west, width " + menuPanelWidth + "!");
@@ -67,7 +67,7 @@ public class GUI3 {
         scrollPanel.setBorder(new EmptyBorder(0, 0, 0, 0));
         scrollPanel.getVerticalScrollBar().setUnitIncrement(16);
 
-        mainPanel.add(codePanel = new CodePanel(handler), "growx,wrap");
+        mainPanel.add(codePanel = new CodePanel(handler, random), "growx,wrap");
         mainPanel.add(scrollPanel, "grow, push");
         mainFrame.add(mainPanel);
         mainFrame.setMinimumSize(new Dimension(600, 400));
