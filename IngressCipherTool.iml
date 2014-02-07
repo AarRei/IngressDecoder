@@ -7,10 +7,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="miglayout-4.0" level="project" />
-    <orderEntry type="library" name="miglayout-4.0-javadoc" level="project" />
     <orderEntry type="library" name="easyogg" level="project" />
     <orderEntry type="library" name="jogg-0.0.7" level="project" />
+    <orderEntry type="library" name="miglayout-4.0" level="project" />
+    <orderEntry type="library" name="miglayout-4.0-javadoc" level="project" />
   </component>
 </module>
 
